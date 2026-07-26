@@ -2,18 +2,20 @@
 
 // Colores sólo validos cuando el icono está dentro de un InputCheck o InputGroup
 const colorsChecked = {
-    red: "peer-checked:fill-red-400",
-    green: "peer-checked:fill-green-400",
-    blue: "peer-checked:fill-blue-400",
-    yellow: "peer-checked:fill-yellow-400",
-    orange: "peer-checked:fill-orange-400",
-    lime: "peer-checked:fill-lime-400",
-    indigo: "peer-checked:fill-indigo-400",
-    purple: "peer-checked:fill-purple-400",
-    pink: "peer-checked:fill-pink-400",
+    red: "peer-checked:fill-red-500",
+    green: "peer-checked:fill-green-500",
+    blue: "peer-checked:fill-blue-500",
+    yellow: "peer-checked:fill-yellow-500",
+    orange: "peer-checked:fill-orange-500",
+    lime: "peer-checked:fill-lime-500",
+    indigo: "peer-checked:fill-indigo-500",
+    purple: "peer-checked:fill-purple-500",
+    pink: "peer-checked:fill-pink-500",
 }
 
 
+
+// ICONOS PARA INPUTS RADIO Y CHECKBOX
 
 export const CircleIcon = ({ color = "text-white", colorChecked = "indigo" }) => (
     <svg
@@ -95,7 +97,7 @@ export const StarIcon = ({ color = "text-white", colorChecked = "yellow" }) => (
 )
 
 
-export const HexagonIcon = ({ color = "text-white", colorChecked = "green" }) => (
+export const HexagonIcon = ({ color = "text-white", colorChecked = "lime" }) => (
     <svg
         height={24}
         width={24}
@@ -114,7 +116,7 @@ export const HexagonIcon = ({ color = "text-white", colorChecked = "green" }) =>
 )
 
 
-export const CrossIcon = ({ color = "text-white", colorChecked = "lime" }) => (
+export const CrossIcon = ({ color = "text-white", colorChecked = "green" }) => (
     <svg
         height={26}
         width={26}
@@ -135,4 +137,64 @@ export const CrossIcon = ({ color = "text-white", colorChecked = "lime" }) => (
         />
     </svg>
 
+)
+
+
+// ICONOS PARA ACCIONES
+
+export const CreateIcon = ({ className }) => (
+    <svg
+        width={24}
+        height={24}
+        viewBox="0 0 24 24"
+        className={className}
+        fill="none"
+    >
+        <path
+            d="M13 3H8.2c-1.12 0-1.68 0-2.108.218a2 2 0 00-.874.874C5 4.52 5 5.08 5 6.2v11.6c0 1.12 0 1.68.218 2.108a2 2 0 00.874.874C6.52 21 7.08 21 8.2 21H12m1-18l6 6m-6-6v4.4c0 .56 0 .84.109 1.054a1 1 0 00.437.437C13.76 9 14.04 9 14.6 9H19m0 0v3m-2 7h4m-2-2v4"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+)
+
+
+export const UpdateIcon = ({ className }) => (
+    <svg
+        width={24}
+        height={24}
+        viewBox="0 0 24 24"
+        className={className}
+        fill="none"
+    >
+        <path
+            d="M17 19h4m-2-2v4M13 3H8.2c-1.12 0-1.68 0-2.108.218a2 2 0 00-.874.874C5 4.52 5 5.08 5 6.2v11.6c0 1.12 0 1.68.218 2.108a2 2 0 00.874.874C6.52 21 7.08 21 8.2 21H12m1-18l6 6m-6-6v4.4c0 .56 0 .84.109 1.054a1 1 0 00.437.437C13.76 9 14.04 9 14.6 9H19m0 0v3M9 17h3m-3-4h6M9 9h1"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+)
+
+
+
+export const DeleteIcon = ({ className }) => (
+    <svg
+        width={24}
+        height={24}
+        viewBox="0 0 24 24"
+        className={className}
+        fill="none"
+    >
+        <path
+            d="M13 3H8.2c-1.12 0-1.68 0-2.108.218a2 2 0 00-.874.874C5 4.52 5 5.08 5 6.2v11.6c0 1.12 0 1.68.218 2.108a2 2 0 00.874.874C6.52 21 7.08 21 8.2 21H12m1-18l6 6m-6-6v4.4c0 .56 0 .84.109 1.054a1 1 0 00.437.437C13.76 9 14.04 9 14.6 9H19m0 0v5.5M9 17h2.5M9 13h6M9 9h1m5.5 9.5h5"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
 )

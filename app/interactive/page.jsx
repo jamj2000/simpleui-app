@@ -1,66 +1,115 @@
 'use client'
 
-import { Button, Form, InputText, Submit } from "@/components/simpleui"
+import { Button, Form } from "@/components/simpleui"
 import Link from "next/link"
+
+
+{/* SVG Repo, www.svgrepo.com */ }
+// <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+//     <path d="M7.45508 2V3M11.3438 3.61084L10.6366 4.31795M4.27344 10.6821L3.56633 11.3892M1.95508 7.5H2.95508M3.56641 3.61084L4.27351 4.31795M6.50049 9.21251C6.38862 9.15163 6.2832 9.08038 6.18553 9.00006C5.73952 8.63325 5.45508 8.07714 5.45508 7.45459C5.45508 6.35002 6.35051 5.45459 7.45508 5.45459C8.21398 5.45459 8.87416 5.87727 9.21303 6.50006C9.29756 6.65541 9.3621 6.82321 9.40319 7M9.8 21C7.14903 21 5 18.9466 5 16.4137C5 14.3144 6.6 12.375 9 12C9.75283 10.274 11.5346 9 13.6127 9C16.2747 9 18.4504 10.9907 18.6 13.5C20.0127 14.0956 21 15.5574 21 17.1402C21 19.2719 19.2091 21 17 21L9.8 21Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+// </svg>
+
 
 export default function Page() {
     return (
-        <div className="md:p-8">
+        <div className="p-4 md:p-8">
             <h1 className="text-4xl text-indigo-800 dark:text-indigo-300">Componentes interactivos</h1>
             <Link href={'/'} className="font-bold text-red-700 dark:text-red-300">Componentes SSR</Link>
 
 
             <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Button</h2>
 
-            <Button
-                onClick={() => alert("Mensaje mostrado en el navegador")}
-                className="p-2 rounded-full border border-slate-400 bg-linear-to-b dark:from-slate-800 dark:to-slate-950 from-slate-100 to-slate-300"
-            >
-                {/* SVG Repo, www.svgrepo.com */}
-                <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <Button onClick={() => alert("Mensaje mostrado en el navegador")}>
+                <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http:www.w3.org/2000/svg">
                     <path d="M7.45508 2V3M11.3438 3.61084L10.6366 4.31795M4.27344 10.6821L3.56633 11.3892M1.95508 7.5H2.95508M3.56641 3.61084L4.27351 4.31795M6.50049 9.21251C6.38862 9.15163 6.2832 9.08038 6.18553 9.00006C5.73952 8.63325 5.45508 8.07714 5.45508 7.45459C5.45508 6.35002 6.35051 5.45459 7.45508 5.45459C8.21398 5.45459 8.87416 5.87727 9.21303 6.50006C9.29756 6.65541 9.3621 6.82321 9.40319 7M9.8 21C7.14903 21 5 18.9466 5 16.4137C5 14.3144 6.6 12.375 9 12C9.75283 10.274 11.5346 9 13.6127 9C16.2747 9 18.4504 10.9907 18.6 13.5C20.0127 14.0956 21 15.5574 21 17.1402C21 19.2719 19.2091 21 17 21L9.8 21Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-
             </Button>
 
+            {/* <Button color="white" onClick={() => alert("Mensaje mostrado en el navegador")}>
+                <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http:www.w3.org/2000/svg">
+                    <path d="M7.45508 2V3M11.3438 3.61084L10.6366 4.31795M4.27344 10.6821L3.56633 11.3892M1.95508 7.5H2.95508M3.56641 3.61084L4.27351 4.31795M6.50049 9.21251C6.38862 9.15163 6.2832 9.08038 6.18553 9.00006C5.73952 8.63325 5.45508 8.07714 5.45508 7.45459C5.45508 6.35002 6.35051 5.45459 7.45508 5.45459C8.21398 5.45459 8.87416 5.87727 9.21303 6.50006C9.29756 6.65541 9.3621 6.82321 9.40319 7M9.8 21C7.14903 21 5 18.9466 5 16.4137C5 14.3144 6.6 12.375 9 12C9.75283 10.274 11.5346 9 13.6127 9C16.2747 9 18.4504 10.9907 18.6 13.5C20.0127 14.0956 21 15.5574 21 17.1402C21 19.2719 19.2091 21 17 21L9.8 21Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+            </Button>
 
-            {/* <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Form, InputText, InputNumber InputGroup</h2>
-            <Form action={null} className="w-3/4 mx-auto m-4 p-8 border border-slate-300 rounded-md shadow-md" /> */}
+            <Button color="black" onClick={() => alert("Mensaje mostrado en el navegador")}>
+                <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http:www.w3.org/2000/svg">
+                    <path d="M7.45508 2V3M11.3438 3.61084L10.6366 4.31795M4.27344 10.6821L3.56633 11.3892M1.95508 7.5H2.95508M3.56641 3.61084L4.27351 4.31795M6.50049 9.21251C6.38862 9.15163 6.2832 9.08038 6.18553 9.00006C5.73952 8.63325 5.45508 8.07714 5.45508 7.45459C5.45508 6.35002 6.35051 5.45459 7.45508 5.45459C8.21398 5.45459 8.87416 5.87727 9.21303 6.50006C9.29756 6.65541 9.3621 6.82321 9.40319 7M9.8 21C7.14903 21 5 18.9466 5 16.4137C5 14.3144 6.6 12.375 9 12C9.75283 10.274 11.5346 9 13.6127 9C16.2747 9 18.4504 10.9907 18.6 13.5C20.0127 14.0956 21 15.5574 21 17.1402C21 19.2719 19.2091 21 17 21L9.8 21Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+            </Button>
 
-            {/* <Form
-                // action={saveEmpleado}
-                data={{ empresa: "Junta Andalucía", cargo: "Gerente" }}
-            /> */}
+            <Button color="red" size="xs" onClick={() => alert("Mensaje mostrado en el navegador")}>
+                Boton
+            </Button>
 
+            <Button color="red" size="sm" onClick={() => alert("Mensaje mostrado en el navegador")}>
+                Boton
+            </Button>
 
+            <Button color="amber" size="md" onClick={() => alert("Mensaje mostrado en el navegador")}>
+                Boton
+            </Button>
+
+            <Button color="blue" size="lg" onClick={() => alert("Mensaje mostrado en el navegador")}>
+                Boton
+            </Button>
+
+            <Button color="yellow" size="xl" onClick={() => alert("Mensaje mostrado en el navegador")}>
+                Boton
+            </Button>
+
+            <Button color="purple" size="2xl" onClick={() => alert("Mensaje mostrado en el navegador")}>
+                Boton
+            </Button>
+
+            <Button color="slate" size="3xl" className="" onClick={() => alert("Mensaje mostrado en el navegador")}>
+                Boton
+            </Button> */}
+
+            <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Form</h2>
+
+            <Form
+                action={async () => { await new Promise(resolve => setTimeout(resolve, 2000)) }}
+                data={{ nombre: "Ana", empresa: "Junta Andalucía" }}
+                fields={[
+                    {
+                        name: "nombre",
+                        label: "Introduzca nombre:",
+                    },
+                    {
+                        name: "empresa",
+                        label: "Introduzca empresa:",
+                    },
+                    {
+                        name: "perfil",
+                        label: "Perfil laboral:",
+                        component: "InputGroup",
+                        radio: true,
+                        values: [
+                            ["conserje", false],
+                            ["administrativo", true],
+                            ["profesor", true],
+                            ["alumno", false]
+                        ]
+                    },
+                    {
+                        name: "hobbies",
+                        label: "Hobbies:",
+                        component: "InputGroup",
+                        radio: false,
+                        values: [
+                            ["leer", false],
+                            ["cine", true],
+                            ["musica", true],
+                            ["playa", false]
+                        ]
+                    },
+
+                ]}
+                className="border border-slate-100 shadow-lg rounded-md p-8 w-3/4 mx-auto"
+            />
         </div>
     )
 }
 
 
-// const FormEmpleado = ({
-//     state,
-//     isPending,
-//     data,
-//     disabled,
-// }) => (
-//     <div className="p-8 border border-slate-200 shadow-lg rounded-md">
-//         <InputText
-//             label="Empresa"
-//             name="empresa"
-//             defaultValue={state.values?.empresa ?? data.empresa}
-//             disabled={disabled}
-//         />
-
-//         <InputText
-//             label="Cargo"
-//             name="cargo"
-//             defaultValue={state.values?.cargo ?? data.cargo}
-//             disabled={disabled}
-//         />
-
-//         <Submit disabled={isPending}>
-//             Guardar
-//         </Submit>
-//     </div>
-// );

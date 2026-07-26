@@ -2,9 +2,9 @@
 "use client";
 
 import { useState } from "react";
-import { Form as FormEmpleado } from "@/components/simpleui";
+import { Button, DeleteIcon, Form, UpdateIcon } from "@/components/simpleui";
 import { Modal } from "@/components/simpleui";
-import { updateEmpleado } from "@/lib/actions";
+import { deleteEmpleado, updateEmpleado } from "@/lib/actions";
 
 export default function TablaEmpleados({ empleados }) {
     const [orden, setOrden] = useState({
@@ -43,7 +43,7 @@ export default function TablaEmpleados({ empleados }) {
     if (!empleados?.data) return <p>Cargando empleados...</p>;
 
     return (
-        <table>
+        <table className="min-w-200">
             <thead>
                 <tr>
                     <th onClick={() => ordenar("nombre")} style={{ cursor: "pointer" }}>
@@ -69,52 +69,17 @@ export default function TablaEmpleados({ empleados }) {
                         <td>{empleado.cargo}</td>
                         <td>
                             <div className="flex gap-2">
-                                {/* MODAL EDITAR */}
-                                <Modal
-                                    trigger={
-                                        <button className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
-                                            Editar
-                                        </button>
-                                    }
-                                >
+                                <Modal trigger={<ButtonUpdate />} >
+
                                     <h2 className="text-xl font-bold mb-4">Editar Empleado</h2>
+                                    <FormEmpleado data={empleado} action={updateEmpleado} />
 
-                                    <FormEmpleado
-                                        data={empleado}
-                                        action={updateEmpleado}
-                                        fields={[
-                                            {
-                                                name: "nombre",
-                                                label: "Nombre",
-                                                component: "InputText"
-                                            },
-                                            {
-                                                name: "empresa",
-                                                label: "Empresa",
-                                                component: "InputText"
-                                            },
+                                </Modal>
+                                <Modal trigger={<ButtonDelete />} >
 
-                                            {
-                                                name: "cargo",
-                                                label: "Cargo",
-                                                component: "InputText"
-                                            },
-                                            {
-                                                name: "habilidades",
-                                                label: "Habilidades",
-                                                component: "InputGroup",
-                                                props: {
-                                                    radio: false,
-                                                    values: [
-                                                        ["leer", empleado.habilidades.includes("leer")],
-                                                        ["cine", empleado.habilidades.includes("cine")],
-                                                        ["música", empleado.habilidades.includes("música")],
-                                                        ["deporte", empleado.habilidades.includes("deporte")]
-                                                    ]
-                                                },
-                                            },
-                                        ]}
-                                    />
+                                    <h2 className="text-xl font-bold mb-4">Eliminar Empleado</h2>
+                                    <FormEmpleado data={empleado} action={deleteEmpleado} disabled />
+
                                 </Modal>
 
                             </div>
@@ -126,3 +91,54 @@ export default function TablaEmpleados({ empleados }) {
     );
 }
 
+const ButtonUpdate = () => (
+    <Button>
+        <UpdateIcon className={"text-indigo-700 dark:text-indigo-300"} />
+    </Button>
+)
+
+const ButtonDelete = () => (
+    <Button>
+        <DeleteIcon className={"text-red-700 dark:text-red-300"} />
+    </Button>
+)
+
+
+const FormEmpleado = ({ action, data, disabled }) => (
+    <Form
+        data={data}
+        action={action}
+        disabled={disabled}
+        fields={[
+            {
+                name: "nombre",
+                label: "Nombre",
+                component: "InputText"
+            },
+            {
+                name: "empresa",
+                label: "Empresa",
+                component: "InputText"
+            },
+
+            {
+                name: "cargo",
+                label: "Cargo",
+                component: "InputText"
+            },
+            {
+                name: "habilidades",
+                label: "Habilidades",
+                component: "InputGroup",
+                radio: false,
+                values: [
+                    ["leer", data.habilidades.includes("leer")],
+                    ["cine", data.habilidades.includes("cine")],
+                    ["música", data.habilidades.includes("música")],
+                    ["deporte", data.habilidades.includes("deporte")]
+                ]
+
+            },
+        ]}
+    />
+)

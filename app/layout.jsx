@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { MainMenu, MenuLink } from "@/components/simpleui";
+import { Toaster } from "sonner";
 
 
 const geistSans = Geist({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
 
 
         {children}
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );
@@ -45,7 +47,7 @@ export default function RootLayout({ children }) {
 
 const GithubIcon = () => (
   <svg width="50px" height="50px" viewBox="-5 -5 30 30"
-    className="fixed top-20 right-5 bg-white rounded-full border border-slate-400"
+    className="fixed bottom-5 right-5 bg-white rounded-full border border-slate-400"
   >
     <g id="Page-1" stroke="currentColor" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -7559.000000)" fill="#000000">

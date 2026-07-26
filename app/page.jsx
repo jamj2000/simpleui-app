@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Form, AlertInfo, AlertSuccess, AlertWarning, AlertError, BadgeInfo, BadgeSuccess, BadgeWarning, BadgeError, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, InputCheck, HeartIcon, CrossIcon, InputGroup } from "@/components/simpleui";
+import { Form, AlertInfo, AlertSuccess, AlertWarning, AlertError, BadgeInfo, BadgeSuccess, BadgeWarning, BadgeError, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, InputCheck, HeartIcon, CrossIcon, InputGroup, Button, InputNumber } from "@/components/simpleui";
 
 
 
@@ -8,40 +8,7 @@ import { Form, AlertInfo, AlertSuccess, AlertWarning, AlertError, BadgeInfo, Bad
 export default function Page() {
 
   return (
-    <div className="md:p-8">
-
-      <Form
-        // action={saveEmpleado}
-        data={{ empresa: "Junta Andalucía", cargo: "Gerente" }}
-        className="border border-slate-100 shadow-lg rounded-md p-8 w-3/4 mx-auto"
-      />
-
-      <InputGroup
-        label="Habilidades"
-        name="habilidades"
-        values={[
-          ["leer", true],
-          ["deporte", false],
-          ["cine", true],
-          ["playa", true]
-        ]}
-        icon={<HeartIcon />}
-      />
-
-      <InputGroup
-        radio
-        label="Nivel"
-        name="nivel"
-        values={[
-          ["amateur", false],
-          ["junior", false],
-          ["senior", true],
-          ["veterano", false]
-        ]}
-      // icon={<CrossIcon />}
-      />
-
-
+    <div className="p-4 md:p-8">
 
       <h1 className="text-4xl text-indigo-800 dark:text-indigo-300">Componentes SSR</h1>
       <Link href={'/interactive'} className="font-bold text-red-700 dark:text-red-300">Componentes interactivos</Link>
@@ -194,6 +161,50 @@ export default function Page() {
 
       <Skeleton />
 
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputText </h2>
+
+      <InputText
+        label="Introduce tu nombre"
+        name="nombre"
+      />
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputNumber </h2>
+
+      <InputNumber
+        label="Introduce tu edad"
+        name="edad"
+      />
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup (radio) </h2>
+
+      <InputGroup
+        radio
+        label="Nivel"
+        name="nivel"
+        values={[
+          ["amateur", false],
+          ["junior", false],
+          ["senior", true],
+          ["veterano", false]
+        ]}
+        icon={<CrossIcon />}
+      />
+
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup (checkbox)</h2>
+
+      <InputGroup
+        label="Habilidades"
+        name="habilidades"
+        values={[
+          ["leer", true],
+          ["deporte", false],
+          ["cine", true],
+          ["playa", true]
+        ]}
+        icon={<HeartIcon />}
+      />
 
     </div>
   )

@@ -19,6 +19,9 @@ export { HeartIcon } from './icons'
 export { StarIcon } from './icons'
 export { HexagonIcon } from './icons'
 export { CrossIcon } from './icons'
+export { CreateIcon } from './icons'
+export { UpdateIcon } from './icons'
+export { DeleteIcon } from './icons'
 
 
 

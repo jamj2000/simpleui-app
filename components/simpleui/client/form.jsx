@@ -26,35 +26,30 @@ const fields = [
     {
         name: "nombre",
         label: "Nombre",
-        type: "text",
         component: "InputText"
     },
     {
         name: "empresa",
         label: "Empresa",
-        type: "text",
         component: "InputText"
     },
 
     {
         name: "cargo",
         label: "Cargo",
-        type: "text",
         component: "InputText"
     },
     {
         name: "habilidades",
         label: "Habilidades",
         component: "InputGroup",
-        props: {
-            radio: false,
-            values: [
-                ["leer", false],
-                ["cine", true],
-                ["música", true],
-                ["deporte", false]
-            ]
-        },
+        radio: false,
+        values: [
+            ["leer", false],
+            ["cine", true],
+            ["música", true],
+            ["deporte", false]
+        ]
     },
 ];
 
@@ -87,7 +82,7 @@ export const Form = ({
 
     return (
         <form ref={formRef} id={formId} action={formAction} className={className}>
-            <input type="hidden" name="id" defaultValue={data.id ?? 0} />
+            <input type="hidden" name="id" defaultValue={data.id} />
 
             {fields.map((field) => {
                 // 3. Resolvemos el componente según el string pasado en 'field.component'
@@ -104,7 +99,7 @@ export const Form = ({
                             name={field.name}
                             defaultValue={valorDefault}
                             disabled={disabled || field.disabled}
-                            {...field.props} // Pasa cualquier prop extra específica que necesites
+                            {...field} // Pasa cualquier otro campo
                         />
 
                         {errorCampo && (
@@ -114,9 +109,10 @@ export const Form = ({
                 );
             })}
 
-            <Submit disabled={isPending || disabled}>
-                {isPending ? "Guardando..." : "Guardar"}
+            <Submit disabled={isPending || disabled} className="w-full">
+                {isPending ? <span className="animate-pulse">Espere por favor...</span> : "Aceptar"}
             </Submit>
+
         </form>
     );
 };
