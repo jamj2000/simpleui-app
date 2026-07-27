@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { MainMenu, MenuLink } from "@/components/simpleui";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "next-themes";
+import { ThemeToggle } from "@/components/simpleui";
 
 
 const geistSans = Geist({
@@ -19,26 +21,33 @@ export const metadata = { title: "Simple UI App" };
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
+      lang="es"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scrollbar-gutter-stable`}
     >
       <body className="min-h-full flex flex-col">
-        <nav>
-          <MainMenu>
-            <MenuLink href="/">Inicio</MenuLink>
-            <MenuLink href="/interactive">Interactive</MenuLink>
-            <MenuLink href="/test">Test</MenuLink>
-          </MainMenu>
-        </nav>
 
-        <a href="https://github.com/jamj2000/simpleui-app">
-          <GithubIcon />
-        </a>
+        {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} enableColorScheme>
+
+          <nav className="flex justify-end py-4">
+            <ThemeToggle />
+            <MainMenu>
+              <MenuLink href="/">Inicio</MenuLink>
+              <MenuLink href="/interactive">Interactive</MenuLink>
+              <MenuLink href="/test">Test</MenuLink>
+            </MainMenu>
+          </nav>
+
+          <a href="https://github.com/jamj2000/simpleui-app">
+            <GithubIcon />
+          </a>
 
 
 
-        {children}
-        <Toaster position="top-center" richColors />
+          {children}
+          <Toaster position="top-center" richColors />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,14 +1,13 @@
-// Form.jsx
 "use client"
 
-import { useActionState, useEffect, useId, useRef } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { InputNumber, InputText, Submit, BadgeError } from "../server";
 
 
 
 
-export const Form = ({
+const FormRaw = ({
     action = async () => { },
     data = {},
     disabled = false,
@@ -16,16 +15,23 @@ export const Form = ({
 }) => {
     const [state, formAction, isPending] = useActionState(action, {});
     const formRef = useRef(null);
-    // const formId = useId()
 
     useEffect(() => {
-        toast[state?.type]?.(state.message);
-        formRef.current?.closest("dialog")?.close();
-        // document.getElementById(formId)?.closest("dialog")?.close();
+        if (!state) return;
+
+        if (state.message && state.type && toast[state.type]) {
+            toast[state.type](state.message);
+        }
+
+        if (state.type === "success" || state.success) {
+            formRef.current?.closest("dialog")?.close();
+        }
     }, [state]);
 
     return (
         <form ref={formRef} action={formAction} className={className}>
+            <input type="hidden" name="id" defaultValue={data.id} />
+
             <InputText
                 label="Nombre"
                 name="nombre"

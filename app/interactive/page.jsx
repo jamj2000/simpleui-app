@@ -79,12 +79,14 @@ export default function Page() {
                     {
                         name: "empresa",
                         label: "Introduzca empresa:",
+                        disabled: true
                     },
                     {
                         name: "perfil",
                         label: "Perfil laboral:",
                         component: "InputGroup",
                         radio: true,
+                        disabled: true,
                         values: [
                             ["conserje", false],
                             ["administrativo", true],

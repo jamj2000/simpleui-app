@@ -16,19 +16,35 @@ export default function Page() {
       <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Alert</h2>
 
       <AlertInfo>
-        <strong>¡Información importante!</strong> Este es un mensaje informativo.
+        <strong>¡Información!</strong> Este es un mensaje informativo.
       </AlertInfo>
 
       <AlertSuccess>
-        <strong>¡Información importante!</strong> Este es un mensaje de éxito.
+        <strong>¡Éxito!</strong> Este es un mensaje de éxito.
       </AlertSuccess>
 
       <AlertWarning>
-        <strong>¡Información importante!</strong> Este es un mensaje de aviso.
+        <strong>¡Aviso!</strong> Este es un mensaje de aviso.
       </AlertWarning>
 
       <AlertError>
-        <strong>¡Información importante!</strong> Este es un mensaje de error.
+        <strong>¡Error!</strong> Este es un mensaje de error.
+      </AlertError>
+
+      <AlertInfo small>
+        <strong>¡Información!</strong> Este es un mensaje informativo.
+      </AlertInfo>
+
+      <AlertSuccess small>
+        <strong>¡Éxito!</strong> Este es un mensaje de éxito.
+      </AlertSuccess>
+
+      <AlertWarning small>
+        <strong>¡Aviso!</strong> Este es un mensaje de aviso.
+      </AlertWarning>
+
+      <AlertError small>
+        <strong>¡Error!</strong> Este es un mensaje de error.
       </AlertError>
 
       <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Badge</h2>
@@ -167,6 +183,7 @@ export default function Page() {
       <InputText
         label="Introduce tu nombre"
         name="nombre"
+        disabled
       />
 
       <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputNumber </h2>

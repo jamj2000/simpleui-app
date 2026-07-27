@@ -71,13 +71,13 @@ export default function TablaEmpleados({ empleados }) {
                             <div className="flex gap-2">
                                 <Modal trigger={<ButtonUpdate />} >
 
-                                    <h2 className="text-xl font-bold mb-4">Editar Empleado</h2>
+                                    <h2 className="text-xl font-bold mb-4 text-blue-400">Editar Empleado</h2>
                                     <FormEmpleado data={empleado} action={updateEmpleado} />
 
                                 </Modal>
                                 <Modal trigger={<ButtonDelete />} >
 
-                                    <h2 className="text-xl font-bold mb-4">Eliminar Empleado</h2>
+                                    <h2 className="text-xl font-bold mb-4 text-red-400">Eliminar Empleado</h2>
                                     <FormEmpleado data={empleado} action={deleteEmpleado} disabled />
 
                                 </Modal>

@@ -8,7 +8,8 @@ const toggle = (event) => {
     input.checked = !input.checked;
 }
 
-const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1)
+const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1).toLowerCase()
+// String.prototype.toCapitalize = function () { return this.at(0).toUpperCase() + this.slice(1).toLowerCase() }
 
 
 export const InputCheck = ({ label = "", name, value, defaultChecked, disabled, icon, radio = false }) => (

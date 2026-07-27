@@ -1,5 +1,3 @@
-// page.jsx (Server Component)
-
 import { getEmpleados } from "@/lib/data";
 import { Suspense } from "react";
 import TablaEmpleados from "./TablaEmpleados";
@@ -14,7 +12,7 @@ export default async function Page({ searchParams }) {
             <div className="p-4 md:p-8 mx-auto  max-w-300 overflow-auto border border-slate-300 shadow-2xl">
 
                 <Modal trigger={<ButtonCreate />}>
-                    <h2 className="text-xl font-bold mb-4">Nuevo Empleado</h2>
+                    <h2 className="text-xl font-bold mb-4 text-green-400">Nuevo Empleado</h2>
 
                     <FormEmpleado action={createEmpleado} />
                 </Modal>
@@ -47,7 +45,7 @@ async function LoadData({ searchParams }) {
 
 const ButtonCreate = () => (
     <Button>
-        <CreateIcon className={"text-green-700 dark:text-green-300"} />
+        <CreateIcon className={"text-green-600 dark:text-green-300"} />
     </Button>
 )
 

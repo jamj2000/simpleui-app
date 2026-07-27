@@ -1,9 +1,9 @@
 "use client";
 
-import { useActionState, useEffect, useRef, useId } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 
-// 1. Importas todos los componentes de UI disponibles
+// Importamos todos los componentes de UI disponibles
 import {
     InputText,
     InputNumber,
@@ -12,7 +12,7 @@ import {
     BadgeError
 } from "@/components/simpleui";
 
-// 2. Creas el mapa que relaciona el nombre (String) con el componente (React)
+// Creamos el mapa que relaciona el nombre (String) con el componente (React)
 const COMPONENT_MAP = {
     InputText,
     InputNumber,
@@ -66,7 +66,6 @@ export const Form = ({
 }) => {
     const [state, formAction, isPending] = useActionState(action, null);
     const formRef = useRef(null);
-    const formId = useId();
 
     useEffect(() => {
         if (!state) return;
@@ -81,7 +80,7 @@ export const Form = ({
     }, [state]);
 
     return (
-        <form ref={formRef} id={formId} action={formAction} className={className}>
+        <form ref={formRef} action={formAction} className={className}>
             <input type="hidden" name="id" defaultValue={data.id} />
 
             {fields.map((field) => {
@@ -93,7 +92,7 @@ export const Form = ({
                 const errorCampo = state?.errors?.[field.name];
 
                 return (
-                    <div key={field.name} className="flex flex-col gap-1">
+                    <div key={field.name} className="flex flex-col gap-1 my-6">
                         <ComponenteUI
                             label={field.label}
                             name={field.name}

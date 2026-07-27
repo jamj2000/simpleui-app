@@ -3,7 +3,7 @@ const styles = {
     info: "bg-blue-100 text-blue-700 border-blue-300/70 dark:bg-blue-700/30 dark:text-blue-200",
     success: "bg-green-100 text-green-700 border-green-300/70 dark:bg-green-700/30 dark:text-green-200",
     warning: "bg-orange-100 text-orange-700 border-orange-300/70 dark:bg-orange-700/30 dark:text-orange-200",
-    error: "bg-red-100 text-red-700 border-red-300/70 dark:bg-red-700/30 dark:text-red-200",
+    error: "bg-red-100 text-red-700 border-red-300/70 dark:bg-red-700/30 dark:text-red-700",
 }
 
 
@@ -14,7 +14,7 @@ const InfoIcon = () => (
         height={24}
         width={24}
         viewBox="0 0 24 24"
-        fill="oklch(48.8% 0.243 264.376)"
+        fill="oklch(48.8% 0.243 264.376)"   // text-blue-700
     >
         <path
             fillRule="evenodd"
@@ -30,7 +30,7 @@ const SuccessIcon = () => (
         height={24}
         width={24}
         viewBox="0 0 24 24"
-        fill="oklch(52.7% 0.154 150.069)"
+        fill="oklch(52.7% 0.154 150.069)"  // text-green-700
     >
         <path
             fillRule="evenodd"
@@ -44,7 +44,7 @@ const WarningIcon = () => (
         height={24}
         width={24}
         viewBox="0 0 24 24"
-        fill="oklch(55.3% 0.195 38.402)"
+        fill="oklch(55.3% 0.195 38.402)"  // text-orange-700
     >
         <path
             fillRule="evenodd"
@@ -59,7 +59,7 @@ const ErrorIcon = () => (
         height={24}
         width={24}
         viewBox="0 0 24 24"
-        fill="oklch(50.5% 0.213 27.518)"
+        fill="oklch(50.5% 0.213 27.518)" // text-red-700
     >
         <path
             fillRule="evenodd"
