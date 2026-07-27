@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Form, AlertInfo, AlertSuccess, AlertWarning, AlertError, BadgeInfo, BadgeSuccess, BadgeWarning, BadgeError, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, InputCheck, HeartIcon, CrossIcon, InputGroup, Button, InputNumber } from "@/components/simpleui";
+import { Form, Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, InputCheck, HeartIcon, CrossIcon, InputGroup, Button, InputNumber } from "@/components/simpleui";
 
 
 
@@ -15,44 +15,44 @@ export default function Page() {
 
       <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Alert</h2>
 
-      <AlertInfo>
+      <Alert>
         <strong>¡Información!</strong> Este es un mensaje informativo.
-      </AlertInfo>
+      </Alert>
 
-      <AlertSuccess>
+      <Alert type="success">
         <strong>¡Éxito!</strong> Este es un mensaje de éxito.
-      </AlertSuccess>
+      </Alert>
 
-      <AlertWarning>
+      <Alert type="warning">
         <strong>¡Aviso!</strong> Este es un mensaje de aviso.
-      </AlertWarning>
+      </Alert>
 
-      <AlertError>
+      <Alert type="error">
         <strong>¡Error!</strong> Este es un mensaje de error.
-      </AlertError>
+      </Alert>
 
-      <AlertInfo small>
+      <Alert small>
         <strong>¡Información!</strong> Este es un mensaje informativo.
-      </AlertInfo>
+      </Alert>
 
-      <AlertSuccess small>
+      <Alert type="success" small>
         <strong>¡Éxito!</strong> Este es un mensaje de éxito.
-      </AlertSuccess>
+      </Alert>
 
-      <AlertWarning small>
+      <Alert type="warning" small>
         <strong>¡Aviso!</strong> Este es un mensaje de aviso.
-      </AlertWarning>
+      </Alert>
 
-      <AlertError small>
+      <Alert type="error" small>
         <strong>¡Error!</strong> Este es un mensaje de error.
-      </AlertError>
+      </Alert>
 
       <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Badge</h2>
 
-      <BadgeInfo>Información</BadgeInfo>
-      <BadgeSuccess>Éxito</BadgeSuccess>
-      <BadgeWarning>Aviso</BadgeWarning>
-      <BadgeError>Error</BadgeError>
+      <Badge>Información</Badge>
+      <Badge type="success">Éxito</Badge>
+      <Badge type="warning">Aviso</Badge>
+      <Badge type="error">Error</Badge>
 
       <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Space, Separator</h2>
 
@@ -222,6 +222,7 @@ export default function Page() {
         ]}
         icon={<HeartIcon />}
       />
+
 
     </div>
   )

@@ -4,13 +4,12 @@ import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 
 // Importamos todos los componentes de UI disponibles
-import {
-    InputText,
-    InputNumber,
-    InputGroup,
-    Submit,
-    BadgeError
-} from "@/components/simpleui";
+import { InputText } from "../server/InputText";
+import { InputNumber } from "../server/InputNumber";
+import { InputGroup } from "../server/InputGroup";
+import { Submit } from "../server/Submit";
+import { Badge } from "../server/Badge";
+
 
 // Creamos el mapa que relaciona el nombre (String) con el componente (React)
 const COMPONENT_MAP = {
@@ -102,7 +101,7 @@ export const Form = ({
                         />
 
                         {errorCampo && (
-                            <BadgeError>{errorCampo}</BadgeError>
+                            <Badge type="error">{errorCampo}</Badge>
                         )}
                     </div>
                 );

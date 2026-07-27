@@ -71,6 +71,7 @@ export default function Page() {
             <Form
                 action={async () => { await new Promise(resolve => setTimeout(resolve, 2000)) }}
                 data={{ nombre: "Ana", empresa: "Junta Andalucía" }}
+                className="border border-slate-100 shadow-lg rounded-md p-8 md:w-3/4 mx-auto"
                 fields={[
                     {
                         name: "nombre",
@@ -86,7 +87,7 @@ export default function Page() {
                         label: "Perfil laboral:",
                         component: "InputGroup",
                         radio: true,
-                        disabled: true,
+                        // disabled: true,
                         values: [
                             ["conserje", false],
                             ["administrativo", true],
@@ -99,6 +100,7 @@ export default function Page() {
                         label: "Hobbies:",
                         component: "InputGroup",
                         radio: false,
+                        disabled: true,
                         values: [
                             ["leer", false],
                             ["cine", true],
@@ -108,7 +110,6 @@ export default function Page() {
                     },
 
                 ]}
-                className="border border-slate-100 shadow-lg rounded-md p-8 w-3/4 mx-auto"
             />
         </div>
     )

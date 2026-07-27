@@ -2,12 +2,14 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
-import { InputNumber, InputText, Submit, BadgeError } from "../server";
+import { InputText } from "../server/InputText";
+import { InputNumber } from "../server/InputNumber";
+import { Submit } from "../server/Submit";
+import { Badge } from "../server/Badge";
 
 
 
-
-const FormRaw = ({
+export const FormRaw = ({
     action = async () => { },
     data = {},
     disabled = false,
@@ -38,7 +40,7 @@ const FormRaw = ({
                 defaultValue={state?.values?.nombre ?? data.nombre}
                 disabled={disabled}
             />
-            {state?.errors?.nombre && <BadgeError> {state.errors.nombre} </BadgeError>}
+            {state?.errors?.nombre && <Badge type="error"> {state.errors.nombre} </Badge>}
 
             <InputNumber
                 label="Edad"
@@ -46,7 +48,7 @@ const FormRaw = ({
                 defaultValue={state?.values?.edad ?? data.edad}
                 disabled={disabled}
             />
-            {state?.errors?.edad && <BadgeError> {state.errors.edad} </BadgeError>}
+            {state?.errors?.edad && <Badge type="error"> {state.errors.edad} </Badge>}
 
             <Submit disabled={isPending}>
                 {isPending ? "Guardando..." : "Guardar"}
