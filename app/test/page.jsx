@@ -49,41 +49,48 @@ const ButtonCreate = () => (
     </Button>
 )
 
-const FormEmpleado = ({ action, data, disabled }) => (
-    <Form
-        data={data}
-        action={action}
-        disabled={disabled}
-        fields={[
-            {
-                name: "nombre",
-                label: "Nombre",
-                component: "InputText"
-            },
-            {
-                name: "empresa",
-                label: "Empresa",
-                component: "InputText"
-            },
+const FormEmpleado = ({ action, data, disabled }) => {
 
-            {
-                name: "cargo",
-                label: "Cargo",
-                component: "InputText"
-            },
-            {
-                name: "habilidades",
-                label: "Habilidades",
-                component: "InputGroup",
-                radio: false,
-                values: [
-                    ["leer", data?.habilidades?.includes("leer")],
-                    ["cine", data?.habilidades?.includes("cine")],
-                    ["música", data?.habilidades?.includes("música")],
-                    ["deporte", data?.habilidades?.includes("deporte")]
-                ]
+    const modifiedAction = process.env.NODE_ENV == 'production'
+        ? async () => ({ type: "info", message: "Esta acción ha sido desactivada en producción" })
+        : action
 
-            },
-        ]}
-    />
-)
+    return (
+        <Form
+            data={data}
+            action={modifiedAction}
+            disabled={disabled}
+            fields={[
+                {
+                    name: "nombre",
+                    label: "Nombre",
+                    component: "InputText"
+                },
+                {
+                    name: "empresa",
+                    label: "Empresa",
+                    component: "InputText"
+                },
+
+                {
+                    name: "cargo",
+                    label: "Cargo",
+                    component: "InputText"
+                },
+                {
+                    name: "habilidades",
+                    label: "Habilidades",
+                    component: "InputGroup",
+                    radio: false,
+                    values: [
+                        ["leer", data?.habilidades?.includes("leer")],
+                        ["cine", data?.habilidades?.includes("cine")],
+                        ["música", data?.habilidades?.includes("música")],
+                        ["deporte", data?.habilidades?.includes("deporte")]
+                    ]
+
+                },
+            ]}
+        />
+    )
+}

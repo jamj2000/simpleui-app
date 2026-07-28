@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
             </MainMenu>
           </nav>
 
-          <a href="https://github.com/jamj2000/simpleui-app">
+          <a href="https://github.com/jamj2000/simpleui-app" className="z-50">
             <GithubIcon />
           </a>
 

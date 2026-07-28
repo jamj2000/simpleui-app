@@ -27,7 +27,7 @@ const baseStyle = "shadow-md cursor-pointer active:translate-y-0.5 hover:opacity
 const extraStyle = "rounded-full border border-slate-400 bg-radial-[at_25%_25%] to-75%"
 
 const colors = {
-    current: "from-gray-50 to-gray-200 text-gray-700 dark:from-gray-500 dark:to-gray-800 dark:text-gray-100",
+    current: "from-zinc-50 to-zinc-200 text-zinc-700 dark:from-zinc-500 dark:to-zinc-800 dark:text-zinc-100",
     white: "from-gray-50 to-gray-200 dark:text-gray-700",
     black: "from-gray-500 to-gray-800 text-gray-100",
     slate: "from-slate-500 to-slate-800",

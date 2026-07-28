@@ -23,7 +23,7 @@ export const InputCheck = ({ label = "", name, value, defaultChecked, disabled, 
             className="hidden peer"
         />
         {icon ? icon : (radio ? <CircleIcon /> : <SquareIcon />)}
-        <span className="peer-disabled:text-slate-400">{label || capitalize(value)}</span>
+        <span className="peer-disabled:text-zinc-400">{label || capitalize(value)}</span>
     </label>
 )
 

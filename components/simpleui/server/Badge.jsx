@@ -72,7 +72,7 @@ const ErrorIcon = () => (
 
 
 export const Badge = ({ type = "info", children }) => (
-    <div className={`${styles[type]} inline-flex items-center gap-1 px-2 py-1 rounded-full border`}>
+    <div className={`${styles[type]} inline-flex flex-wrap not-md:text-sm items-center gap-1 px-2 py-1 rounded-full border`}>
         <InfoIcon /> {children}
     </div>
 )
