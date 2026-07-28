@@ -73,28 +73,22 @@ export const Form = ({
 
         if (state.message && state.type && toast[state.type]) {
             toast[state.type](state.message);
-        }
 
-        if (state.type === "success") {
             setShowMessage(true);
 
             const timer = setTimeout(() => {
                 setShowMessage(false);
-                formRef.current?.closest("dialog")?.close();
+                if (state.type == "success") formRef.current?.closest("dialog")?.close();
             }, 2000);
 
             return () => clearTimeout(timer);
         }
 
-        // if (state.type === "success") {
-        //     formRef.current?.closest("dialog")?.close();
-        // }
-
     }, [state]);
 
     return (
         <form ref={formRef} action={formAction} className={className}>
-            <input type="hidden" name="id" defaultValue={data.id} />
+            {data.id && <input type="hidden" name="id" defaultValue={data.id} />}
 
             {showMessage && <Alert type={state?.type}> {state?.message} </Alert>}
 
@@ -125,7 +119,7 @@ export const Form = ({
                 })
             }
 
-            <Submit disabled={isPending || disabled} className="w-full">
+            <Submit disabled={isPending} className="w-full">
                 {isPending ? <span className="animate-pulse">Espere por favor...</span> : "Aceptar"}
             </Submit>
 

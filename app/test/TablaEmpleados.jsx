@@ -2,9 +2,10 @@
 "use client";
 
 import { useState } from "react";
-import { Button, DeleteIcon, Form, UpdateIcon } from "@/components/simpleui";
+import { Button, DeleteIcon, UpdateIcon } from "@/components/simpleui";
 import { Modal } from "@/components/simpleui";
 import { deleteEmpleado, updateEmpleado } from "@/lib/actions";
+import { FormEmpleado } from "./FormEmpleado";
 
 export default function TablaEmpleados({ empleados }) {
     const [orden, setOrden] = useState({
@@ -104,41 +105,3 @@ const ButtonDelete = () => (
 )
 
 
-const FormEmpleado = ({ action, data, disabled }) => (
-    <Form
-        data={data}
-        action={action}
-        disabled={disabled}
-        fields={[
-            {
-                name: "nombre",
-                label: "Nombre",
-                component: "InputText"
-            },
-            {
-                name: "empresa",
-                label: "Empresa",
-                component: "InputText"
-            },
-
-            {
-                name: "cargo",
-                label: "Cargo",
-                component: "InputText"
-            },
-            {
-                name: "habilidades",
-                label: "Habilidades",
-                component: "InputGroup",
-                radio: false,
-                values: [
-                    ["leer", data.habilidades.includes("leer")],
-                    ["cine", data.habilidades.includes("cine")],
-                    ["música", data.habilidades.includes("música")],
-                    ["deporte", data.habilidades.includes("deporte")]
-                ]
-
-            },
-        ]}
-    />
-)
