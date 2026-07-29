@@ -13,6 +13,8 @@ export function crearEmpleadoAleatorio() {
         nombre: faker.person.fullName(),
         empresa: faker.company.name(),
         cargo: faker.person.jobTitle(),
+        nivel: faker.helpers.arrayElement(['amateur', 'junior', 'senior', 'veterano']),
+        habilidades: faker.helpers.arrayElements(['leer', 'deporte', 'cine', 'playa'], { min: 1, max: 4 })
     }
 }
 
@@ -42,14 +44,15 @@ db.exec(`
         nombre_sort TEXT NOT NULL,
         empresa TEXT NOT NULL,
         cargo TEXT NOT NULL,
+        nivel TEXT NOT NULL,
         habilidades TEXT CHECK(json_valid(habilidades) OR habilidades IS NULL)
     );
 `);
 
 // 3. Sentencia preparada
 const insertEmpleado = db.prepare(`
-    INSERT INTO empleados (nombre, nombre_sort, empresa, cargo)
-    VALUES (@nombre, @nombre_sort, @empresa, @cargo)
+    INSERT INTO empleados (nombre, nombre_sort, empresa, cargo, nivel, habilidades)
+    VALUES (@nombre, @nombre_sort, @empresa, @cargo, @nivel, @habilidades)
 `);
 
 // 4. Datos de prueba
@@ -57,12 +60,13 @@ const listaEmpleados = empleados
 
 // 5. Insertar pasando getEsKey(emp.nombre)
 
-insertEmpleado.run({ nombre: 'Álvaro', nombre_sort: getEsKey('Álvaro'), empresa: 'Acme', cargo: 'Dev' }); // Pruebas
+// insertEmpleado.run({ nombre: 'Álvaro', nombre_sort: getEsKey('Álvaro'), empresa: 'Acme', cargo: 'Dev' }); // Pruebas
 
 for (const empleado of listaEmpleados) {
     insertEmpleado.run({
         ...empleado,
-        nombre_sort: getEsKey(empleado.nombre) // Se calcula aquí en JS
+        nombre_sort: getEsKey(empleado.nombre), // Se calcula aquí en JS
+        habilidades: JSON.stringify(empleado.habilidades)
     });
 }
 

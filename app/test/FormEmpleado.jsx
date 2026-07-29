@@ -33,6 +33,18 @@ export const FormEmpleado = ({ action, data, disabled }) => {
                     component: "InputText"
                 },
                 {
+                    name: "nivel",
+                    label: "Nivel",
+                    component: "InputGroup",
+                    radio: true,
+                    values: [
+                        ["amateur", data?.nivel?.includes("amateur")],
+                        ["junior", data?.nivel?.includes("junior")],
+                        ["senior", data?.nivel?.includes("senior")],
+                        ["veterano", data?.nivel?.includes("veterano")]
+                    ]
+                },
+                {
                     name: "habilidades",
                     label: "Habilidades",
                     component: "InputGroup",
@@ -43,7 +55,6 @@ export const FormEmpleado = ({ action, data, disabled }) => {
                         ["música", data?.habilidades?.includes("música")],
                         ["deporte", data?.habilidades?.includes("deporte")]
                     ]
-
                 },
             ]}
         />

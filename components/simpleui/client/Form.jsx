@@ -12,6 +12,7 @@ import { Badge } from "../server/Badge";
 import { Alert } from "../server";
 
 
+
 // Creamos el mapa que relaciona el nombre (String) con el componente (React)
 const COMPONENT_MAP = {
     InputText,
@@ -68,6 +69,7 @@ export const Form = ({
     const [showMessage, setShowMessage] = useState(false);
     const formRef = useRef(null);
 
+
     useEffect(() => {
         if (!state) return;
 
@@ -78,7 +80,9 @@ export const Form = ({
 
             const timer = setTimeout(() => {
                 setShowMessage(false);
-                if (state.type == "success") formRef.current?.closest("dialog")?.close();
+                if (state.type == "success" || state.type == "info") {
+                    formRef.current?.closest("dialog")?.close();
+                }
             }, 2000);
 
             return () => clearTimeout(timer);

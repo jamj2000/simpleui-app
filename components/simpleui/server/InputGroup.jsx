@@ -20,7 +20,7 @@ export const InputGroup = ({
     icon,
     radio
 }) => (
-    <fieldset className={classGroup}>
+    <fieldset className={classGroup} key={values.toString()}>
         <legend className={`${classLabel} ${disabled ? "text-zinc-400" : ""}`}>{label}</legend>
         <div className="grid @sm:grid-cols-2 @lg:grid-cols-3 @xl:grid-cols-4">
             {values?.map(([value, isChecked]) => (

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Form, Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, InputCheck, HeartIcon, CrossIcon, InputGroup, Button, InputNumber } from "@/components/simpleui";
+import { Form, Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, InputCheck, HeartIcon, CrossIcon, InputGroup, Button, InputNumber, Select } from "@/components/simpleui";
 
 
 
@@ -223,7 +223,35 @@ export default function Page() {
         icon={<HeartIcon />}
       />
 
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Select</h2>
 
+      <Select
+        label="Nivel"
+        name="nivel"
+        values={[
+          ["amateur", false],
+          ["junior", false],
+          ["senior", true],
+          ["veterano", false]
+        ]}
+      />
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Select (multiple)</h2>
+
+      <Select
+        label="Habiliades"
+        name="habilidades"
+        values={[
+          ["leer", true],
+          ["deporte", false],
+          ["cine", true],
+          ["playa", true]
+        ]}
+        multiple
+      />
+
+
+      <Space height={50} />
     </div>
   )
 }
