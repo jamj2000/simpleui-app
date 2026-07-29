@@ -1,12 +1,12 @@
-'use client'
+// 'use client'
 
-import { CircleIcon, SquareIcon } from "../server/Icons";
+import { CircleIcon, SquareIcon } from "./Icons";
 
 
-const toggle = (event) => {
-    const input = event.currentTarget.parentNode.firstElementChild;
-    input.checked = !input.checked;
-}
+// const toggle = (event) => {
+//     const input = event.currentTarget.parentNode.firstElementChild;
+//     input.checked = !input.checked;
+// }
 
 const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1).toLowerCase()
 // String.prototype.toCapitalize = function () { return this.at(0).toUpperCase() + this.slice(1).toLowerCase() }
@@ -23,7 +23,7 @@ export const InputCheck = ({ label = "", name, value, defaultChecked, disabled, 
             className="hidden peer"
         />
         {icon ? icon : (radio ? <CircleIcon /> : <SquareIcon />)}
-        <span className="peer-disabled:text-zinc-400">{label || capitalize(value)}</span>
+        <span className="peer-disabled:text-zinc-400">{capitalize(value)}</span>
     </label>
 )
 

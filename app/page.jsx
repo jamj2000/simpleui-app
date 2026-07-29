@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Form, Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, InputCheck, HeartIcon, CrossIcon, InputGroup, Button, InputNumber, Select } from "@/components/simpleui";
+import { Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, InputCheck, HeartIcon, CrossIcon, InputGroup, Button, InputNumber, Select, InputSelect } from "@/components/simpleui";
 
 
 
@@ -9,6 +9,69 @@ export default function Page() {
 
   return (
     <div className="p-4 md:p-8">
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputSelect </h2>
+
+      <InputSelect
+        label="Vivienda"
+        name="vivienda"
+        values={[
+          ["casa", true],
+          ["piso", false],
+          ["chalet", false],
+          ["apartamento", true]
+        ]}
+        // multiple
+        className="w-50"
+      />
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputText </h2>
+
+      <InputText
+        label="Introduce tu nombre"
+        name="nombre"
+        defaultValue={"hola"}
+        disabled
+      />
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputNumber </h2>
+
+      <InputNumber
+        label="Introduce tu edad"
+        name="edad"
+      />
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup (radio) </h2>
+
+      <InputGroup
+        radio
+        label="Nivel"
+        name="nivel"
+        values={[
+          ["amateur", false],
+          ["junior", false],
+          ["senior", true],
+          ["veterano", false]
+        ]}
+        icon={<CrossIcon />}
+      />
+
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup (checkbox)</h2>
+
+      <InputGroup
+        label="Habilidades"
+        name="habilidades"
+        values={[
+          ["leer", true],
+          ["deporte", false],
+          ["cine", true],
+          ["playa", true]
+        ]}
+        icon={<HeartIcon />}
+      />
+
+
 
       <h1 className="text-4xl text-indigo-800 dark:text-indigo-300">Componentes SSR</h1>
       <Link href={'/interactive'} className="font-bold text-red-700 dark:text-red-300">Componentes interactivos</Link>
@@ -66,7 +129,8 @@ export default function Page() {
       <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Separator, Tooltip, Popover, Dropdown, Dropdown2</h2>
 
       <div className="flex items-center gap-4 flex-wrap">
-        <Popover title="Popover">
+
+        <Popover title="Popover" className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
           <div className="flex flex-col gap-1">
             <Link href="#" className="hover:opacity-60 active:opacity-40">Dashboard</Link>
             <Link href="#" className="hover:opacity-60 active:opacity-40">Autores</Link>
@@ -178,52 +242,8 @@ export default function Page() {
       <Skeleton />
 
 
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputText </h2>
 
-      <InputText
-        label="Introduce tu nombre"
-        name="nombre"
-        disabled
-      />
-
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputNumber </h2>
-
-      <InputNumber
-        label="Introduce tu edad"
-        name="edad"
-      />
-
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup (radio) </h2>
-
-      <InputGroup
-        radio
-        label="Nivel"
-        name="nivel"
-        values={[
-          ["amateur", false],
-          ["junior", false],
-          ["senior", true],
-          ["veterano", false]
-        ]}
-        icon={<CrossIcon />}
-      />
-
-
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup (checkbox)</h2>
-
-      <InputGroup
-        label="Habilidades"
-        name="habilidades"
-        values={[
-          ["leer", true],
-          ["deporte", false],
-          ["cine", true],
-          ["playa", true]
-        ]}
-        icon={<HeartIcon />}
-      />
-
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Select</h2>
+      {/* <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Select</h2>
 
       <Select
         label="Nivel"
@@ -248,7 +268,7 @@ export default function Page() {
           ["playa", true]
         ]}
         multiple
-      />
+      /> */}
 
 
       <Space height={50} />

@@ -1,4 +1,4 @@
-import { InputCheck } from "../client/InputCheck"
+import { InputCheck } from "./InputCheck"
 
 
 const classGroup = `relative @container gap-2 p-5 pt-10 rounded-md shadow-sm 
@@ -22,7 +22,8 @@ export const InputGroup = ({
 }) => (
     <fieldset className={classGroup} key={values.toString()}>
         <legend className={`${classLabel} ${disabled ? "text-zinc-400" : ""}`}>{label}</legend>
-        <div className="grid @sm:grid-cols-2 @lg:grid-cols-3 @xl:grid-cols-4">
+        {/* <div className="grid  @lg:grid-cols-2 @xl:grid-cols-3 @2xl:grid-cols-4"> */}
+        <div className="columns-md @md:columns-2 @2xl:columns-3">
             {values?.map(([value, isChecked]) => (
                 <InputCheck
                     radio={radio}

@@ -92,7 +92,11 @@ export default function Page() {
                             ["conserje", false],
                             ["administrativo", true],
                             ["profesor", true],
-                            ["alumno", false]
+                            ["alumno", false],
+                            ["conserje2", false],
+                            ["administrativo2", true],
+                            ["profesor2", true],
+                            ["alumno2", false],
                         ]
                     },
                     {
