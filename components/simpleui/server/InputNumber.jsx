@@ -26,14 +26,14 @@ const classLabel = `absolute left-3.75 top-1/2 -translate-y-1/2
 
 
 
-export const InputNumber = ({ label, name, defaultValue, ...props }) => (
+export const InputNumber = ({ label, name, value, ...props }) => (
     <div className="relative my-2">
         <input
             type="number"
             id={name}
             name={name}
             placeholder=""
-            defaultValue={defaultValue}
+            defaultValue={value}
             className={classInput + " text-center"}
             {...props}
         />

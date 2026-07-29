@@ -1,13 +1,13 @@
 'use client'
 
 import { Form } from "@/components/simpleui"
-import { noAction } from "./noAction"
+import { disabledAction } from "./action"
 
 
 export const FormEmpleado = ({ action, data, disabled }) => {
 
     const modifiedAction = process.env.NODE_ENV == 'production'
-        ? noAction
+        ? disabledAction
         : action
 
     return (
@@ -35,8 +35,7 @@ export const FormEmpleado = ({ action, data, disabled }) => {
                 {
                     name: "nivel",
                     label: "Nivel",
-                    component: "InputGroup",
-                    radio: true,
+                    component: "InputSelect",
                     values: [
                         ["amateur", data?.nivel?.includes("amateur")],
                         ["junior", data?.nivel?.includes("junior")],
@@ -47,8 +46,8 @@ export const FormEmpleado = ({ action, data, disabled }) => {
                 {
                     name: "habilidades",
                     label: "Habilidades",
-                    component: "InputGroup",
-                    radio: false,
+                    component: "InputSelect",
+                    multiple: true,
                     values: [
                         ["leer", data?.habilidades?.includes("leer")],
                         ["cine", data?.habilidades?.includes("cine")],

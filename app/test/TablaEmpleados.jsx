@@ -6,6 +6,7 @@ import { Button, DeleteIcon, UpdateIcon } from "@/components/simpleui";
 import { Modal } from "@/components/simpleui";
 import { deleteEmpleado, updateEmpleado } from "@/lib/actions";
 import { FormEmpleado } from "./FormEmpleado";
+import { FormRawEmpleado } from "./FormRawEmpleado";
 
 export default function TablaEmpleados({ empleados }) {
     const [orden, setOrden] = useState({
@@ -74,12 +75,14 @@ export default function TablaEmpleados({ empleados }) {
 
                                     <h2 className="text-xl font-bold mb-4 text-blue-400">Editar Empleado</h2>
                                     <FormEmpleado data={empleado} action={updateEmpleado} />
+                                    {/* <FormRawEmpleado key={empleado.id + empleado.updatedAt} data={empleado} action={updateEmpleado} /> */}
 
                                 </Modal>
                                 <Modal trigger={<ButtonDelete />} >
 
                                     <h2 className="text-xl font-bold mb-4 text-red-400">Eliminar Empleado</h2>
                                     <FormEmpleado data={empleado} action={deleteEmpleado} disabled />
+                                    {/* <FormRawEmpleado key={empleado.id + empleado.updatedAt} data={empleado} action={deleteEmpleado} disabled /> */}
 
                                 </Modal>
 

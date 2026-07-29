@@ -2,15 +2,12 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
-import { InputText } from "../server/InputText";
-import { InputNumber } from "../server/InputNumber";
-import { Submit } from "../server/Submit";
-import { Badge } from "../server/Badge";
-import { InputSelect } from "../client/InputSelect";
+import { InputText, InputSelect, Submit, Badge, InputGroup, InputSelect2, Space } from "@/components/simpleui";
+import { useRouter } from "next/navigation";
 
 
 
-export const FormRaw = ({
+export const FormRawEmpleado = ({
     action = async () => { },
     data = {},
     disabled = false,
@@ -18,6 +15,7 @@ export const FormRaw = ({
 }) => {
     const [state, formAction, isPending] = useActionState(action, {});
     const formRef = useRef(null);
+    const router = useRouter()
 
     useEffect(() => {
         if (!state) return;
@@ -31,9 +29,12 @@ export const FormRaw = ({
         }
     }, [state]);
 
+
+
     return (
         <form ref={formRef} action={formAction} className={className}>
             <input type="hidden" name="id" defaultValue={data.id} />
+
 
             {/* <InputText
                 label="Nombre"
@@ -51,10 +52,25 @@ export const FormRaw = ({
             />
             {state?.errors?.edad && <Badge type="error"> {state.errors.edad} </Badge>} */}
 
-            <InputText name="nombre" label="Nombre" />
-            <InputText name="empresa" label="Empresa" />
-            <InputText name="cargo" label="Cargo" />
+            <InputText name="nombre" label="Nombre" value={state?.values?.nombre ?? data?.nombre} disabled={disabled} />
+            {state?.errors?.nombre && <Badge type="error">{state.errors.nombre}</Badge>}
 
+            <InputText name="empresa" label="Empresa" value={data?.empresa} disabled={disabled} />
+            {state?.errors?.empresa && <Badge type="error">{state?.values?.empresa ?? state.errors.empresa}</Badge>}
+
+            <InputText name="cargo" label="Cargo" value={data?.cargo} disabled={disabled} />
+            {state?.errors?.curso && <Badge type="error">{state?.values?.empresa ?? state.errors.curso}</Badge>}
+
+            {/* <InputGroup name="nivel" label="Nivel" disabled={disabled}
+                values={[
+                    ["amateur", data?.nivel?.includes("amateur")],
+                    ["junior", data?.nivel?.includes("junior")],
+                    ["senior", data?.nivel?.includes("senior")],
+                    ["veterano", data?.nivel?.includes("veterano")]
+                ]}
+            /> */}
+
+            <Space height={40} />
             <InputSelect name="nivel" label="Nivel"
                 values={[
                     ["amateur", data?.nivel?.includes("amateur")],
@@ -63,8 +79,10 @@ export const FormRaw = ({
                     ["veterano", data?.nivel?.includes("veterano")]
                 ]}
             />
+            {state?.errors?.nivel && <Badge type="error">{state.errors.nivel}</Badge>}
+            <Space height={40} />
 
-            <InputSelect name="habilidades" label="Habilidades"
+            <InputSelect name="habilidades" label="Habilidades" disabled={disabled}
                 multiple={true}
                 values={[
                     ["leer", data?.habilidades?.includes("leer")],
@@ -73,6 +91,8 @@ export const FormRaw = ({
                     ["deporte", data?.habilidades?.includes("deporte")]
                 ]}
             />
+            {state?.errors?.habilidades && <Badge type="error">{state.errors.habilidades}</Badge>}
+
 
             <Submit disabled={isPending}>
                 {isPending ? "Guardando..." : "Guardar"}

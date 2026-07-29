@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef, useState } from "react";
-import { toast } from "sonner";
+// import { toast } from "sonner";
 
 // Importamos todos los componentes de UI disponibles
 import { InputText } from "../server/InputText";
@@ -10,6 +10,7 @@ import { InputGroup } from "../server/InputGroup";
 import { Submit } from "../server/Submit";
 import { Badge } from "../server/Badge";
 import { Alert } from "../server";
+import { InputSelect } from ".";
 
 
 
@@ -18,6 +19,7 @@ const COMPONENT_MAP = {
     InputText,
     InputNumber,
     InputGroup,
+    InputSelect
 };
 
 
@@ -73,8 +75,8 @@ export const Form = ({
     useEffect(() => {
         if (!state) return;
 
-        if (state.message && state.type && toast[state.type]) {
-            toast[state.type](state.message);
+        if (state.message && state.type) {
+            // toast[state.type](state.message);
 
             setShowMessage(true);
 

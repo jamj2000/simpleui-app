@@ -2,26 +2,46 @@ import { getEmpleados } from "@/lib/data";
 import { Suspense } from "react";
 import TablaEmpleados from "./TablaEmpleados";
 import { createEmpleado } from "@/lib/actions";
-import { Button, CreateIcon, Modal } from "@/components/simpleui";
+import { Button, CreateIcon, InputSelect, Modal, Submit } from "@/components/simpleui";
 import { FormEmpleado } from "./FormEmpleado";
 import Form from 'next/form'
+import { FormRawEmpleado } from "./FormRawEmpleado";
 
 export default async function Page({ searchParams }) {
+
+    const { sort, direction } = await searchParams
 
     return (
         <div>
             <h1 className="text-4xl text-center">Lista de empleados</h1>
 
-            {/* <Form action="/search">
-            <input name="query" />
-            <button type="submit">Submit</button>
-        </Form> */}
+            <Form action="" className="mt-6 flex gap-4 justify-center items-center">
+                <InputSelect
+                    label="Ordenar"
+                    name="sort"
+                    values={[
+                        ["nombre", sort == 'nombre'],
+                        ["empresa", sort == 'empresa'],
+                        ["cargo", sort == 'cargo'],
+                    ]}
+                />
+                <InputSelect
+                    label="Dirección"
+                    name="direction"
+                    values={[
+                        ["asc", direction == "asc"],
+                        ["desc", direction == "desc"]
+                    ]}
+                />
+                <Submit>Consultar</Submit>
+            </Form>
 
             <div className="p-4 md:p-8 mx-auto  max-w-300 overflow-auto border border-slate-300 shadow-2xl">
 
                 <Modal trigger={<ButtonCreate />}>
                     <h2 className="text-xl font-bold mb-4 text-green-400">Nuevo Empleado</h2>
 
+                    {/* <FormEmpleado action={createEmpleado} /> */}
                     <FormEmpleado action={createEmpleado} />
                 </Modal>
 

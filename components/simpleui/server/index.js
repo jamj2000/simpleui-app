@@ -11,7 +11,6 @@ export { InputText } from './InputText'
 export { InputNumber } from './InputNumber'
 export { InputGroup } from './InputGroup'
 export { InputCheck } from './InputCheck'
-export { Select } from './Select'
 export { Tooltip } from './Tooltip'
 export { Popover } from './Popover'
 export { Dropdown } from './Dropdown'
@@ -25,6 +24,8 @@ export { CrossIcon } from './Icons'
 export { CreateIcon } from './Icons'
 export { UpdateIcon } from './Icons'
 export { DeleteIcon } from './Icons'
+export { InputSelect2 } from '../server/InputSelect2'
+
 
 
 

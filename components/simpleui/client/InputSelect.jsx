@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const classInput = `disabled:text-zinc-400 placeholder-zinc-400
@@ -19,19 +19,35 @@ const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1
 
 export const InputSelect = ({ label = "", name, values, disabled, multiple, className = "" }) => {
 
-    const inicial = multiple
-        ? values.filter(([, checked]) => checked).map(([value]) => value)
-        : values.findLast(([, checked]) => checked)?.[0] ?? "";
+    const getSelected = () =>
+        multiple
+            ? values.filter(([, checked]) => checked).map(([v]) => v)
+            : values.findLast(([, checked]) => checked)?.[0] ?? "";
 
-    const [selected, setSelected] = useState(inicial);
+    const [selected, setSelected] = useState(getSelected);
+
+    useEffect(() => {
+        setSelected(getSelected());
+    }, [values, multiple])
+
+
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        setSelected(
+            multiple
+                ? values.filter(([, checked]) => checked).map(([v]) => v)
+                : values.findLast(([, checked]) => checked)?.[0] ?? values[0][0]
+        );
+    }, [values, multiple]);
+
 
 
     const Head = ({ value, disabled }) => (
         <>
             <input
                 type="text"
-                defaultValue={value}
+                value={value}
                 readOnly
                 disabled={disabled}
                 className={`peer ${classInput}`}
@@ -83,7 +99,6 @@ export const InputSelect = ({ label = "", name, values, disabled, multiple, clas
 
     return (
         <div className={`group relative ${className}`}>
-
 
             <div tabIndex={0} role="button"
                 onClick={() => setOpen(o => !o)}

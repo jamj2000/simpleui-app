@@ -18,7 +18,7 @@ export const InputGroup = ({
     values,
     disabled,
     icon,
-    radio
+    multiple
 }) => (
     <fieldset className={classGroup} key={values.toString()}>
         <legend className={`${classLabel} ${disabled ? "text-zinc-400" : ""}`}>{label}</legend>
@@ -26,11 +26,10 @@ export const InputGroup = ({
         <div className="columns-md @md:columns-2 @2xl:columns-3">
             {values?.map(([value, isChecked]) => (
                 <InputCheck
-                    radio={radio}
+                    multiple={multiple}
                     key={value}
                     name={name}
-                    value={value}
-                    defaultChecked={isChecked}
+                    value={[value, isChecked]}
                     disabled={disabled}
                     icon={icon}
                 />

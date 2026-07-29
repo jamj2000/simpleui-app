@@ -25,14 +25,14 @@ const classLabel = `absolute left-3.75 top-1/2 -translate-y-1/2
                     `
 
 
-export const InputText = ({ label, name, defaultValue, disabled, ...props }) => (
+export const InputText = ({ label, name, value, disabled, ...props }) => (
     <div className="relative">
         <input
             type="text"
             id={name}
             name={name}
             placeholder=""
-            defaultValue={defaultValue}
+            defaultValue={value}
             disabled={disabled}
             className={classInput}
             {...props}

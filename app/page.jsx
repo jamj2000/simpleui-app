@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, InputCheck, HeartIcon, CrossIcon, InputGroup, Button, InputNumber, Select, InputSelect } from "@/components/simpleui";
+import { Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, HeartIcon, CrossIcon, InputGroup, InputNumber, InputSelect, DragAndDrop } from "@/components/simpleui";
 
 
 
@@ -9,68 +9,6 @@ export default function Page() {
 
   return (
     <div className="p-4 md:p-8">
-
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputSelect </h2>
-
-      <InputSelect
-        label="Vivienda"
-        name="vivienda"
-        values={[
-          ["casa", true],
-          ["piso", false],
-          ["chalet", false],
-          ["apartamento", true]
-        ]}
-        // multiple
-        className="w-50"
-      />
-
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputText </h2>
-
-      <InputText
-        label="Introduce tu nombre"
-        name="nombre"
-        defaultValue={"hola"}
-        disabled
-      />
-
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputNumber </h2>
-
-      <InputNumber
-        label="Introduce tu edad"
-        name="edad"
-      />
-
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup (radio) </h2>
-
-      <InputGroup
-        radio
-        label="Nivel"
-        name="nivel"
-        values={[
-          ["amateur", false],
-          ["junior", false],
-          ["senior", true],
-          ["veterano", false]
-        ]}
-        icon={<CrossIcon />}
-      />
-
-
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup (checkbox)</h2>
-
-      <InputGroup
-        label="Habilidades"
-        name="habilidades"
-        values={[
-          ["leer", true],
-          ["deporte", false],
-          ["cine", true],
-          ["playa", true]
-        ]}
-        icon={<HeartIcon />}
-      />
-
 
 
       <h1 className="text-4xl text-indigo-800 dark:text-indigo-300">Componentes SSR</h1>
@@ -243,9 +181,58 @@ export default function Page() {
 
 
 
-      {/* <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Select</h2>
 
-      <Select
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputText </h2>
+
+      <InputText
+        label="Introduce tu nombre"
+        name="nombre"
+        value={"Jóse"}
+        disabled
+      />
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputNumber </h2>
+
+      <InputNumber
+        label="Introduce tu edad"
+        name="edad"
+        value={18}
+      />
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup </h2>
+
+      <InputGroup
+        label="Nivel"
+        name="nivel2"
+        values={[
+          ["amateur", false],
+          ["junior", false],
+          ["senior", true],
+          ["veterano", false]
+        ]}
+        icon={<CrossIcon />}
+      />
+
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputGroup (multiple)</h2>
+
+      <InputGroup
+        multiple
+        label="Habilidades"
+        name="habilidades2"
+        values={[
+          ["leer", true],
+          ["deporte", false],
+          ["cine", true],
+          ["playa", true]
+        ]}
+        icon={<HeartIcon />}
+      />
+
+
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputSelect </h2>
+
+      <InputSelect
         label="Nivel"
         name="nivel"
         values={[
@@ -254,12 +241,15 @@ export default function Page() {
           ["senior", true],
           ["veterano", false]
         ]}
+        className="w-100"
       />
 
-      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Select (multiple)</h2>
 
-      <Select
-        label="Habiliades"
+      <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">InputSelect (multiple) </h2>
+
+      <InputSelect
+        multiple
+        label="Habilidades"
         name="habilidades"
         values={[
           ["leer", true],
@@ -267,8 +257,10 @@ export default function Page() {
           ["cine", true],
           ["playa", true]
         ]}
-        multiple
-      /> */}
+        className="w-100"
+      />
+
+      <DragAndDrop />
 
 
       <Space height={50} />
