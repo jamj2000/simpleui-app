@@ -36,11 +36,12 @@ export const FormEmpleado = ({ action, data, disabled }) => {
                     name: "nivel",
                     label: "Nivel",
                     component: "InputSelect",
-                    values: [
-                        ["amateur", data?.nivel?.includes("amateur")],
-                        ["junior", data?.nivel?.includes("junior")],
-                        ["senior", data?.nivel?.includes("senior")],
-                        ["veterano", data?.nivel?.includes("veterano")]
+                    options: [
+                        // [label, name, checked]
+                        ["Amateur", "amateur", data?.nivel?.includes("amateur")],
+                        ["Junior", "junior", data?.nivel?.includes("junior")],
+                        ["Senior", "senior", data?.nivel?.includes("senior")],
+                        ["Veterano", "veterano", data?.nivel?.includes("veterano")]
                     ]
                 },
                 {
@@ -48,12 +49,13 @@ export const FormEmpleado = ({ action, data, disabled }) => {
                     label: "Habilidades",
                     component: "InputSelect",
                     multiple: true,
-                    values: [
-                        ["leer", data?.habilidades?.includes("leer")],
-                        ["cine", data?.habilidades?.includes("cine")],
-                        ["música", data?.habilidades?.includes("música")],
-                        ["deporte", data?.habilidades?.includes("deporte")]
-                    ]
+                    options: [
+                        // [label, name, checked]
+                        ["Lectura", "leer", data?.habilidades?.includes("leer")],
+                        ["Cine", "cine", data?.habilidades?.includes("cine")],
+                        ["Música", "musica", data?.habilidades?.includes("música")],
+                        ["Playa", "playa", data?.habilidades?.includes("deporte")]
+                    ],
                 },
             ]}
         />

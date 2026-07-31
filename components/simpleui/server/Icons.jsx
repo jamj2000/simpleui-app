@@ -17,7 +17,7 @@ const colorsChecked = {
 
 // ICONOS PARA INPUTS RADIO Y CHECKBOX
 
-export const CircleIcon = ({ color = "text-white", colorChecked = "blue" }) => (
+export const CircleIcon = ({ color = "text-white", colorChecked = "indigo" }) => (
     <svg
         height={24}
         width={24}

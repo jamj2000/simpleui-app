@@ -47,26 +47,27 @@ export default function Page() {
                         name: "perfil",
                         label: "Perfil laboral:",
                         component: "InputGroup",
-                        radio: true,
                         // disabled: true,
-                        values: [
-                            ["conserje", false],
-                            ["administrativo", true],
-                            ["profesor", true],
-                            ["alumno", false],
+                        options: [
+                            // [label, name, checked]
+                            ["Conserje", "conserje", false],
+                            ["Administrativo", "administrativo", true],
+                            ["Profesor", "profesor", true],
+                            ["Alumno", "alumno", false],
                         ]
                     },
                     {
                         name: "hobbies",
                         label: "Hobbies:",
                         component: "InputGroup",
-                        radio: false,
+                        multiple: true,
                         disabled: true,
-                        values: [
-                            ["leer", false],
-                            ["cine", true],
-                            ["musica", true],
-                            ["playa", false]
+                        options: [
+                            // [label, name, checked]
+                            ["Lectura", "leer", false],
+                            ["Cine", "cine", true],
+                            ["Música", "musica", true],
+                            ["Playa", "playa", false]
                         ]
                     },
 

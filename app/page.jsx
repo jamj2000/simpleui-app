@@ -187,7 +187,7 @@ export default function Page() {
       <InputText
         label="Introduce tu nombre"
         name="nombre"
-        value={"Jóse"}
+        value={"José"}
         disabled
       />
 
@@ -204,11 +204,12 @@ export default function Page() {
       <InputGroup
         label="Nivel"
         name="nivel2"
-        values={[
-          ["amateur", false],
-          ["junior", false],
-          ["senior", true],
-          ["veterano", false]
+        options={[
+          // [label, name, checked]
+          ["Amateur", "amateur", false],
+          ["Junior", "junior", false],
+          ["Senior", "senior", true],
+          ["Veterano", "veterano", false]
         ]}
         icon={<CrossIcon />}
       />
@@ -220,11 +221,12 @@ export default function Page() {
         multiple
         label="Habilidades"
         name="habilidades2"
-        values={[
-          ["leer", true],
-          ["deporte", false],
-          ["cine", true],
-          ["playa", true]
+        options={[
+          // [label, name, checked]
+          ["Lectura", "leer", true],
+          ["Actividad física", "deporte", false],
+          ["Cine", "cine", true],
+          ["Playa", "playa", true]
         ]}
         icon={<HeartIcon />}
       />
@@ -235,11 +237,12 @@ export default function Page() {
       <InputSelect
         label="Nivel"
         name="nivel"
-        values={[
-          ["amateur", false],
-          ["junior", false],
-          ["senior", true],
-          ["veterano", false]
+        options={[
+          // [label, name, checked]
+          ["Amateur", "amateur", false],
+          ["Junior", "junior", false],
+          ["Senior", "senior", true],
+          ["Veterano", "veterano", false]
         ]}
         className="w-100"
       />
@@ -251,11 +254,12 @@ export default function Page() {
         multiple
         label="Habilidades"
         name="habilidades"
-        values={[
-          ["leer", true],
-          ["deporte", false],
-          ["cine", true],
-          ["playa", true]
+        options={[
+          // [label, name, checked]
+          ["Lectura", "leer", true],
+          ["Actividad física", "deporte", false],
+          ["Cine", "cine", true],
+          ["Playa", "playa", true]
         ]}
         className="w-100"
       />

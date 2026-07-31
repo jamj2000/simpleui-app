@@ -6,7 +6,6 @@ import { InputText } from "../server/InputText";
 import { InputNumber } from "../server/InputNumber";
 import { Submit } from "../server/Submit";
 import { Badge } from "../server/Badge";
-import { InputSelect } from "../client/InputSelect";
 
 
 
@@ -35,7 +34,7 @@ export const FormRaw = ({
         <form ref={formRef} action={formAction} className={className}>
             <input type="hidden" name="id" defaultValue={data.id} />
 
-            {/* <InputText
+            <InputText
                 label="Nombre"
                 name="nombre"
                 defaultValue={state?.values?.nombre ?? data.nombre}
@@ -49,30 +48,7 @@ export const FormRaw = ({
                 defaultValue={state?.values?.edad ?? data.edad}
                 disabled={disabled}
             />
-            {state?.errors?.edad && <Badge type="error"> {state.errors.edad} </Badge>} */}
-
-            <InputText name="nombre" label="Nombre" />
-            <InputText name="empresa" label="Empresa" />
-            <InputText name="cargo" label="Cargo" />
-
-            <InputSelect name="nivel" label="Nivel"
-                values={[
-                    ["amateur", data?.nivel?.includes("amateur")],
-                    ["junior", data?.nivel?.includes("junior")],
-                    ["senior", data?.nivel?.includes("senior")],
-                    ["veterano", data?.nivel?.includes("veterano")]
-                ]}
-            />
-
-            <InputSelect name="habilidades" label="Habilidades"
-                multiple={true}
-                values={[
-                    ["leer", data?.habilidades?.includes("leer")],
-                    ["cine", data?.habilidades?.includes("cine")],
-                    ["música", data?.habilidades?.includes("música")],
-                    ["deporte", data?.habilidades?.includes("deporte")]
-                ]}
-            />
+            {state?.errors?.edad && <Badge type="error"> {state.errors.edad} </Badge>}
 
             <Submit disabled={isPending}>
                 {isPending ? "Guardando..." : "Guardar"}

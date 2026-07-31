@@ -19,18 +19,18 @@ export default async function Page({ searchParams }) {
                 <InputSelect
                     label="Ordenar"
                     name="sort"
-                    values={[
-                        ["nombre", sort == 'nombre'],
-                        ["empresa", sort == 'empresa'],
-                        ["cargo", sort == 'cargo'],
+                    options={[
+                        ["Nombre", 'nombre', sort == 'nombre'],
+                        ["Empresa", 'empresa', sort == 'empresa'],
+                        ["Cargo", 'cargo', sort == 'cargo'],
                     ]}
                 />
                 <InputSelect
                     label="Dirección"
                     name="direction"
-                    values={[
-                        ["asc", direction == "asc"],
-                        ["desc", direction == "desc"]
+                    options={[
+                        ["Ascendente", "asc", direction == "asc"],
+                        ["Descendente", "desc", direction == "desc"]
                     ]}
                 />
                 <Submit>Consultar</Submit>

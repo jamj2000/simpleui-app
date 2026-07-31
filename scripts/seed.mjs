@@ -45,10 +45,12 @@ db.exec(`
         empresa TEXT NOT NULL,
         cargo TEXT NOT NULL,
         nivel TEXT NOT NULL,
-        habilidades TEXT CHECK(json_valid(habilidades) OR habilidades IS NULL),
-        updated_at TEXT NOT NULL DEFAULT current_timestamp
+        habilidades TEXT CHECK(json_valid(habilidades) OR habilidades IS NULL)
     );
 `);
+
+//         updated_at TEXT NOT NULL DEFAULT current_timestamp
+
 
 // 3. Sentencia preparada
 const insertEmpleado = db.prepare(`
@@ -61,14 +63,11 @@ const listaEmpleados = empleados
 
 // 5. Insertar pasando getEsKey(emp.nombre)
 
-// insertEmpleado.run({ nombre: 'Álvaro', nombre_sort: getEsKey('Álvaro'), empresa: 'Acme', cargo: 'Dev' }); // Pruebas
-
 for (const empleado of listaEmpleados) {
     insertEmpleado.run({
         ...empleado,
         nombre_sort: getEsKey(empleado.nombre), // Se calcula aquí en JS
         habilidades: JSON.stringify(empleado.habilidades),
-        // updated_at: Date.now()
     });
 }
 
