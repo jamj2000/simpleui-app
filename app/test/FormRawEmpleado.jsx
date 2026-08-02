@@ -15,7 +15,6 @@ export const FormRawEmpleado = ({
 }) => {
     const [state, formAction, isPending] = useActionState(action, {});
     const formRef = useRef(null);
-    const router = useRouter()
 
     useEffect(() => {
         if (!state) return;
@@ -36,59 +35,68 @@ export const FormRawEmpleado = ({
             <input type="hidden" name="id" defaultValue={data.id} />
 
 
-            {/* <InputText
-                label="Nombre"
+            <InputText
                 name="nombre"
-                defaultValue={state?.values?.nombre ?? data.nombre}
+                label="Nombre"
+                value={state?.values?.nombre ?? data?.nombre}
                 disabled={disabled}
             />
-            {state?.errors?.nombre && <Badge type="error"> {state.errors.nombre} </Badge>}
-
-            <InputNumber
-                label="Edad"
-                name="edad"
-                defaultValue={state?.values?.edad ?? data.edad}
-                disabled={disabled}
-            />
-            {state?.errors?.edad && <Badge type="error"> {state.errors.edad} </Badge>} */}
-
-            <InputText name="nombre" label="Nombre" value={state?.values?.nombre ?? data?.nombre} disabled={disabled} />
             {state?.errors?.nombre && <Badge type="error">{state.errors.nombre}</Badge>}
 
-            <InputText name="empresa" label="Empresa" value={data?.empresa} disabled={disabled} />
+
+            <InputText
+                name="empresa"
+                label="Empresa"
+                value={data?.empresa}
+                disabled={disabled}
+            />
             {state?.errors?.empresa && <Badge type="error">{state?.values?.empresa ?? state.errors.empresa}</Badge>}
 
-            <InputText name="cargo" label="Cargo" value={data?.cargo} disabled={disabled} />
+
+            <InputText
+                name="cargo"
+                label="Cargo"
+                value={data?.cargo}
+                disabled={disabled}
+            />
             {state?.errors?.curso && <Badge type="error">{state?.values?.empresa ?? state.errors.curso}</Badge>}
 
-            {/* <InputGroup name="nivel" label="Nivel" disabled={disabled}
-                values={[
-                    ["amateur", data?.nivel?.includes("amateur")],
-                    ["junior", data?.nivel?.includes("junior")],
-                    ["senior", data?.nivel?.includes("senior")],
-                    ["veterano", data?.nivel?.includes("veterano")]
+
+            {/* <InputGroup
+                name="nivel"
+                label="Nivel"
+                disabled={disabled}
+                options={[
+                    ["Amateur", "amateur", data?.nivel?.includes("amateur")],
+                    ["Junior", "junior", data?.nivel?.includes("junior")],
+                    ["Senior", "senior", data?.nivel?.includes("senior")],
+                    ["Veterano", "veterano", data?.nivel?.includes("veterano")]
                 ]}
-            /> */}
+            /> 
+            {state?.errors?.curso && <Badge type="error">{state?.values?.empresa ?? state.errors.curso}</Badge>}
+            */}
 
             <Space height={40} />
+
             <InputSelect name="nivel" label="Nivel"
-                values={[
-                    ["amateur", data?.nivel?.includes("amateur")],
-                    ["junior", data?.nivel?.includes("junior")],
-                    ["senior", data?.nivel?.includes("senior")],
-                    ["veterano", data?.nivel?.includes("veterano")]
+                options={[
+                    ["Amateur", "amateur", data?.nivel?.includes("amateur")],
+                    ["Junior", "junior", data?.nivel?.includes("junior")],
+                    ["Senior", "senior", data?.nivel?.includes("senior")],
+                    ["Veterano", "veterano", data?.nivel?.includes("veterano")]
                 ]}
             />
             {state?.errors?.nivel && <Badge type="error">{state.errors.nivel}</Badge>}
+
             <Space height={40} />
 
             <InputSelect name="habilidades" label="Habilidades" disabled={disabled}
                 multiple={true}
-                values={[
-                    ["leer", data?.habilidades?.includes("leer")],
-                    ["cine", data?.habilidades?.includes("cine")],
-                    ["música", data?.habilidades?.includes("música")],
-                    ["deporte", data?.habilidades?.includes("deporte")]
+                options={[
+                    ["Lectura", "leer", data?.habilidades?.includes("leer")],
+                    ["Cine", "cine", data?.habilidades?.includes("cine")],
+                    ["Música", "música", data?.habilidades?.includes("música")],
+                    ["Deporte", "deporte", data?.habilidades?.includes("deporte")]
                 ]}
             />
             {state?.errors?.habilidades && <Badge type="error">{state.errors.habilidades}</Badge>}

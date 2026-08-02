@@ -4,6 +4,7 @@ import { MainMenu, MenuLink } from "@/components/simpleui";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import { ThemeToggle } from "@/components/simpleui";
+import { Suspense } from "react";
 
 
 const geistSans = Geist({
@@ -33,9 +34,11 @@ export default function RootLayout({ children }) {
           <nav className="flex justify-end py-4">
             <ThemeToggle />
             <MainMenu>
-              <MenuLink href="/">Inicio</MenuLink>
-              <MenuLink href="/interactive">Interactive</MenuLink>
-              <MenuLink href="/test">Test</MenuLink>
+              <Suspense fallback="...">
+                <MenuLink href="/">Inicio</MenuLink>
+                <MenuLink href="/interactive">Interactive</MenuLink>
+                <MenuLink href="/test">Test</MenuLink>
+              </Suspense>
             </MainMenu>
           </nav>
 
