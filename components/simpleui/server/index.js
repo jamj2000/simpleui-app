@@ -1,7 +1,5 @@
 export { Alert } from './Alert'
 export { Badge } from './Badge'
-export { List } from './List'
-export { List2 } from './List2'
 export { Card } from './Card'
 export { Card2 } from './Card2'
 export { Button } from './Button'
@@ -30,6 +28,8 @@ export { CrossIcon } from './Icons'
 export { CreateIcon } from './Icons'
 export { UpdateIcon } from './Icons'
 export { DeleteIcon } from './Icons'
+export { ViewIcon } from './Icons'
+
 
 
 

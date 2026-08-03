@@ -1,18 +1,21 @@
-// import { Card } from "."
+'use client'
 
-export const List2 = ({ data = [], renderCard }) => {
+export const List = ({ data = [], fields = [], card }) => {
 
+    const Card = card
 
     // console.log("list data", data)
 
     return <>
-        {/* {data.map(item =>
+        {data.map(item =>
             <Card
                 key={item.id}
                 item={item}
                 fields={fields}
             />
-        )} */}
-        {data.map(renderCard)}
+        )}
     </>
 }
+
+
+

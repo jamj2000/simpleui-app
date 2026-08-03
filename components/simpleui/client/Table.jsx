@@ -1,11 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button, DeleteIcon, UpdateIcon } from "@/components/simpleui";
-// import { Modal } from "@/components/simpleui";
-// import { deleteEmpleado, updateEmpleado } from "@/lib/actions";
-// import { FormEmpleado } from "./FormEmpleado";
 import Link from "next/link";
+
 
 
 const classTD = "px-2"
@@ -16,8 +13,8 @@ export function Table({
     columns = [],
     sort = "nombre",
     direction = "asc",
-    className = "",
-    // actions,
+    width = 300,
+    actions,
     children,
     renderRow
 }) {
@@ -64,8 +61,9 @@ export function Table({
     if (!data) return <p>Cargando datos...</p>;
 
     return (
-        <div className="my-4 container mx-auto w-fit  overflow-hidden overflow-x-auto border border-slate-300 shadow-2xl">
-            <table className={`w-300 ${className}`}>
+        <div className="my-4 container mx-auto w-fit overflow-hidden overflow-x-auto shadow-lg">
+            {children}
+            <table style={{ width: width * 4 }} className="border border-slate-300">
                 <thead>
                     <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200 ">
                         <th></th>
@@ -75,11 +73,12 @@ export function Table({
                                 {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
                             </th>
                         ))}
+                        {actions && <th className="w-30">Acciones</th>}
                     </tr>
+
                 </thead>
                 <tbody>
                     {orderedData.map(
-                        // renderRow
                         (row, i) => (
                             <tr key={row.id} className="odd:bg-slate-100 dark:odd:bg-slate-700 h-12">
 
@@ -87,9 +86,18 @@ export function Table({
 
                                 {columns.map(({ name: colName }) => (
                                     <td key={row.id + colName + row[colName]} className={`${classTD}`}>
-                                        <Link href={`/test/${row.id}`}>{row[colName]}</Link>
+                                        {row[colName]}
                                     </td>
                                 ))}
+                                {actions &&
+                                    <td>
+                                        {actions.map((Action, index) => (
+                                            <Action
+                                                key={index}
+                                                data={row}
+                                            />
+                                        ))}
+                                    </td>}
                             </tr>
                         )
                     )}
