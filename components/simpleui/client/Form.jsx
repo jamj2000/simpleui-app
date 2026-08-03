@@ -84,7 +84,8 @@ export const Form = ({
 
         if (state.message && state.type) {
             toast[state.type](state.message);
-            if (state.type == "success") formRef.current?.closest("dialog")?.close();
+            if (state.type == "success" || state.type == "info")
+                formRef.current?.closest("dialog")?.close();
         }
 
     }, [state]);
