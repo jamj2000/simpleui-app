@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, HeartIcon, CrossIcon, InputGroup, InputNumber, InputSelect, DragAndDrop } from "@/components/simpleui";
+import { Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText, HeartIcon, CrossIcon, InputGroup, InputNumber, InputSelect, DragAndDrop, Button, Form } from "@/components/simpleui";
 
 
 
@@ -264,11 +264,13 @@ export default function Page() {
         className="w-100"
       />
 
+
+
       <DragAndDrop />
 
 
       <Space height={50} />
-    </div>
+    </div >
   )
 }
 

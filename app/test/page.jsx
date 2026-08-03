@@ -2,7 +2,7 @@ import { getEmpleados } from "@/lib/data";
 import { Suspense } from "react";
 import FilterForm from 'next/form'
 import { CreateEmpleado, UpdateEmpleado, DeleteEmpleado, ViewEmpleado } from "./Actions";
-import { InputSelect, Pagination, Submit, Table } from "@/components/simpleui";
+import { InputSelect, List, Pagination, Submit, Table } from "@/components/simpleui";
 
 
 
@@ -10,7 +10,7 @@ export default function Page({ searchParams }) {
 
     return (
         <div className="flex flex-col">
-            <h1 className="text-4xl text-center inline">Lista de empleados</h1>
+            <h1 className="text-4xl text-center inline">Empleados</h1>
 
 
             <Suspense fallback="...">
@@ -20,6 +20,8 @@ export default function Page({ searchParams }) {
             <Suspense fallback="Cargando datos...">
                 <LoadData searchParams={searchParams} />
             </Suspense>
+
+
             <Footer />
         </div >
     )
@@ -83,10 +85,36 @@ async function LoadData({ searchParams }) {
                     DeleteEmpleado,
                 ]}
             >
+                <h2 className="text-2xl text-center inline">Tabla</h2>
                 <div className="container mx-auto w-300 flex justify-end">
                     <CreateEmpleado />
                 </div>
             </Table >
+
+
+            <List
+                data={empleados.data}
+                columns={[
+                    { name: "nombre", label: "Nombre" },
+                    { name: "empresa", label: "Empresa" },
+                    { name: "cargo", label: "Cargo" },
+                ]}
+                sort={sort}
+                direction={direction}
+                // width={300}
+                actions={[
+                    ViewEmpleado,
+                    UpdateEmpleado,
+                    DeleteEmpleado,
+                ]}
+            >
+                <h2 className="text-2xl text-center inline">Lista</h2>
+                <div className="container mx-auto w-300 flex justify-end">
+                    <CreateEmpleado />
+                </div>
+            </List >
+
+
         </div >
     )
 }

@@ -2,6 +2,7 @@
 
 import { Button, Form } from "@/components/simpleui"
 import Link from "next/link"
+import { toast } from "sonner"
 
 
 
@@ -31,7 +32,10 @@ export default function Page() {
             <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Form</h2>
 
             <Form
-                action={async () => { await new Promise(resolve => setTimeout(resolve, 2000)) }}
+                action={async () => {
+                    await new Promise(resolve => setTimeout(resolve, 1000))
+                    toast.info("Acción desactivada.")
+                }}
                 data={{ nombre: "Ana", empresa: "Junta Andalucía" }}
                 className="border border-slate-100 shadow-lg rounded-md p-8 md:w-3/4 mx-auto"
                 fields={[
