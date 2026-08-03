@@ -27,12 +27,10 @@ export default function Page({ searchParams }) {
             </Suspense>
 
 
-            <div className="p-4 md:p-8 mx-auto  max-w-300 overflow-auto border border-slate-300 shadow-2xl">
 
-                <Suspense fallback="Cargando datos...">
-                    <Tabla searchParams={searchParams} />
-                </Suspense>
-            </div>
+            <Suspense fallback="Cargando datos...">
+                <Tabla searchParams={searchParams} />
+            </Suspense>
             <Footer />
         </div >
     )
@@ -174,7 +172,7 @@ async function Tabla({ searchParams }) {
                 columns={columns}
                 sort={sort}
                 direction={direction}
-                className="mt-10 border border-slate-200"
+                className=""
             // renderRow={(item, i) =>
             //     <TableRow
             //         key={item.id}

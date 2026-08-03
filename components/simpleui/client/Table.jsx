@@ -64,36 +64,38 @@ export function Table({
     if (!data) return <p>Cargando datos...</p>;
 
     return (
-        <table className={`min-w-200 w-full ${className}`}>
-            <thead>
-                <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200">
-                    <th></th>
-                    {columns.map(({ name, label }) => (
-                        <th key={name} onClick={() => ordenar(name)} className={`${classTD} cursor-pointer`}>
-                            {label}
-                            {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
-                        </th>
-                    ))}
-                </tr>
-            </thead>
-            <tbody>
-                {orderedData.map(
-                    // renderRow
-                    (row, i) => (
-                        <tr key={row.id} className="odd:bg-slate-100 dark:odd:bg-slate-700 h-12">
+        <div className="my-4 container mx-auto w-fit  overflow-hidden overflow-x-auto border border-slate-300 shadow-2xl">
+            <table className={`w-300 ${className}`}>
+                <thead>
+                    <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200 ">
+                        <th></th>
+                        {columns.map(({ name, label }) => (
+                            <th key={name} onClick={() => ordenar(name)} className={`${classTD} cursor-pointer`}>
+                                {label}
+                                {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
+                            </th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {orderedData.map(
+                        // renderRow
+                        (row, i) => (
+                            <tr key={row.id} className="odd:bg-slate-100 dark:odd:bg-slate-700 h-12">
 
-                            <td className={`${classTD} text-slate-400 text-right pr-4`}>{i + 1}</td>
+                                <td className={`${classTD} text-slate-400 text-right pr-4`}>{i + 1}</td>
 
-                            {columns.map(({ name: colName }) => (
-                                <td key={row.id + colName + row[colName]} className={`${classTD}`}>
-                                    <Link href={`/test/${row.id}`}>{row[colName]}</Link>
-                                </td>
-                            ))}
-                        </tr>
-                    )
-                )}
-            </tbody>
-        </table>
+                                {columns.map(({ name: colName }) => (
+                                    <td key={row.id + colName + row[colName]} className={`${classTD}`}>
+                                        <Link href={`/test/${row.id}`}>{row[colName]}</Link>
+                                    </td>
+                                ))}
+                            </tr>
+                        )
+                    )}
+                </tbody>
+            </table>
+        </div>
     );
 }
 
