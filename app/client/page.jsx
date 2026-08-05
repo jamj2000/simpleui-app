@@ -13,10 +13,12 @@ import { toast } from "sonner"
 
 
 export default function Page() {
+
     return (
-        <div className="p-4 md:p-8">
+        <div>
             <h1 className="text-4xl text-indigo-800 dark:text-indigo-300">Componentes interactivos</h1>
-            <Link href={'/'} className="font-bold text-red-700 dark:text-red-300">Componentes SSR</Link>
+            Componentes para ser usados desde páginas o componentes cliente.
+            {/* <Link href={'/'} className="font-bold text-red-700 dark:text-red-300">Componentes SSR</Link> */}
 
 
             <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Button</h2>

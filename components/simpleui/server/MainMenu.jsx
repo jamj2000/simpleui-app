@@ -6,7 +6,7 @@ const menuClasses = `${colorBase} z-20 not-lg:mt-2 not-lg:py-5 px-8 py-1 peer-no
 
 
 export const MainMenu = ({ children }) => (
-    <div className="relative flex flex-col items-end">
+    <div className="relative flex flex-col items-end ">
         <MenuButton className="inline" />
 
         <div className={menuClasses}>

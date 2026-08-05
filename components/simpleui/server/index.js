@@ -29,6 +29,7 @@ export { CreateIcon } from './Icons'
 export { UpdateIcon } from './Icons'
 export { DeleteIcon } from './Icons'
 export { ViewIcon } from './Icons'
+export { Footer } from './Footer'
 
 
 

@@ -9,6 +9,34 @@
   --foreground: #171717;
 }
 
+/* styles.css — sugar-high token colors */
+
+/* Light (default) */
+:root {
+  --sh-class: #8d85ff;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-string: #00a99a;
+  --sh-keyword: #f47067;
+  --sh-comment: #a19595;
+  --sh-jsxliterals: #bf7db6;
+  --sh-entity: #6eafad;
+  --sh-property: #4e8fdf;
+}
+
+/* Dark — e.g. <html data-theme="dark"> */
+:root[class~='dark'] {
+  --sh-class: #7eb5ff;
+  --sh-identifier: #d4d4d4;
+  --sh-sign: #8b949e;
+  --sh-string: #88bbb6;
+  --sh-keyword: #ffada8;
+  --sh-comment: #8b8b8b;
+  --sh-jsxliterals: #d2a8ff;
+  --sh-entity: #56d4dd;
+  --sh-property: #79c0ff;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

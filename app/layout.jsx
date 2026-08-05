@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { MainMenu, MenuLink } from "@/components/simpleui";
+import { Footer, MainMenu, MenuLink } from "@/components/simpleui";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import { ThemeToggle } from "@/components/simpleui";
@@ -26,30 +26,34 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scrollbar-gutter-stable`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-screen grid grid-cols-1 grid-rows-[auto_1fr_auto]">
 
         {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} enableColorScheme>
 
-          <nav className="flex justify-end py-4">
+          <nav className="z-50 px-2 w-full flex justify-end py-4 fixed top-0 bg-neutral-500/50  backdrop-blur-sm">
             <ThemeToggle />
             <MainMenu>
               <Suspense fallback="...">
                 <MenuLink href="/">Inicio</MenuLink>
-                <MenuLink href="/interactive">Interactive</MenuLink>
+                <MenuLink href="/server">Servidor</MenuLink>
+                <MenuLink href="/client">Cliente</MenuLink>
                 <MenuLink href="/test">Test</MenuLink>
               </Suspense>
             </MainMenu>
           </nav>
 
+
+          <main className="p-4 md:p-8 pb-10 md:pb-30 mt-12">
+            {children}
+          </main>
+
           <a href="https://github.com/jamj2000/simpleui-app" className="z-50">
             <GithubIcon />
           </a>
 
-
-
-          {children}
           <Toaster position="top-center" richColors />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

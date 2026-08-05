@@ -1,0 +1,694 @@
+import { Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputGroup, InputNumber, InputSelect, DragAndDrop, Button, Form, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon, } from "@/components/simpleui";
+
+import Link from 'next/link'
+import Prop from '@/components/Prop'
+import { Suspense } from "react";
+import { CreateEmpleado, DeleteEmpleado, UpdateEmpleado, ViewEmpleado } from "./Actions";
+import { LoadData } from "./LoadData"
+import { getEmpleados } from "@/lib/data";
+
+
+# Componentes SSR
+
+Componentes que pueden usarse directamente.
+
+## Alert
+
+> Mensajes cortos de distinto tipo.  
+
+
+<Alert>
+<strong>¡Información!</strong> Este es un mensaje informativo.
+</Alert>
+
+<Alert type="success">
+<strong>¡Éxito!</strong><span>Este es un mensaje de éxito.</span>
+</Alert>
+
+<Alert type="warning">
+<strong>¡Aviso!</strong> Este es un mensaje de aviso.
+</Alert>
+
+<Alert type="error">
+<strong>¡Error!</strong> Este es un mensaje de error.
+</Alert>
+
+### Código de ejemplo
+
+```js
+<Alert type="info">
+  <strong>¡Información!</strong><span>Este es un mensaje informativo.</span>
+</Alert>
+```
+
+### Propiedades
+
+<Prop name="type" value="info" values={["info", "success", "warning", "error"]} />
+
+## Alert small
+
+> Mensajes cortos de distinto tipo en formato pequeño. 
+
+<Alert small>
+<strong>¡Información!</strong> Este es un mensaje informativo.
+</Alert>
+
+<Alert type="success" small>
+<strong>¡Éxito!</strong> Este es un mensaje de éxito.
+</Alert>
+
+<Alert type="warning" small>
+<strong>¡Aviso!</strong> Este es un mensaje de aviso.
+</Alert>
+
+<Alert type="error" small>
+<strong>¡Error!</strong> Este es un mensaje de error.
+</Alert>
+
+### Código de ejemplo
+
+```js
+<Alert type="info" small>
+  <strong>¡Información!</strong><span>Este es un mensaje informativo.</span>
+</Alert>
+```
+
+### Propiedades
+
+<Prop name="type" value="info" values={["info", "success", "warning", "error"]} />
+<Prop name="small" />
+
+## Badge
+
+> Insignias de distinto tipo. 
+
+<Badge type="info">Información</Badge>
+<Badge type="success">Éxito</Badge>
+<Badge type="warning">Aviso</Badge>
+<Badge type="error">Error</Badge>
+
+### Código de ejemplo
+
+```js
+<Badge type="info">
+  Información
+</Badge>
+```
+
+### Propiedades
+
+<Prop name="type" value="info" values={["info", "success", "warning", "error"]} />
+
+
+## Space
+
+> Espacio vertical en blanco con alto indicado en píxeles.  
+
+<Space height={40} />
+
+### Código de ejemplo
+
+```js
+<Space height={40} />
+```
+
+### Propiedades
+
+<Prop name="height" value="10" values={["cualquier valor mayor que 0"]} />
+
+
+## Separator
+
+> Línea de separación horizontal o vertical. La línea vertical sólo es de utilidad entre elementos mostrados en línea.
+
+<Separator />
+
+<div className="flex gap-4 ">
+  <div>Hola</div>
+  <Separator type="vertical" />
+  <div>Mundo </div>
+</div>
+
+### Código de ejemplo
+
+```js
+<Separator />
+
+<div className="flex gap-4 ">
+  <div>Hola</div>
+  <Separator type="vertical" />
+  <div>Mundo </div>
+</div>
+```
+
+### Propiedades
+
+<Prop name="type" value="horizontal" values={["horizontal", "vertical"]} />
+
+
+## Tooltip
+
+> Pequeño cuadro informativo que aparece cuando el usuario pasa el cursor por encima.
+
+<Tooltip title="Esto es un tooltip">
+  <div className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+    Al pasar el ratón por encima de este párrafo se mostrará un pequeño mensaje de ayuda o tooltip. 
+  </div>
+</Tooltip>
+
+### Código de ejemplo
+
+```js
+<Tooltip title="Esto es un tooltip">
+  <div className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+    Al pasar el ratón por encima de este párrafo se mostrará un pequeño mensaje de ayuda o tooltip. 
+  </div>
+</Tooltip>
+```
+
+### Propiedades
+
+<Prop name="title" values={["cualquier texto o componente"]} />
+
+
+## Popover
+
+> Cuadro que aparece cuando el usuario pasa el cursor por encima del **title**. Suele poseer un contenido más amplio e incluso elementos interactivo.
+
+
+<Popover title="Popover" className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+  <div className="flex flex-col gap-1">
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Dashboard</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Autores</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Libros</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Prestamos</Link>
+  </div>
+</Popover>
+
+### Código de ejemplo
+
+```js
+<Popover title="Popover" className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+  <div className="flex flex-col gap-1">
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Dashboard</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Autores</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Libros</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Prestamos</Link>
+  </div>
+</Popover>
+```
+
+
+### Propiedades
+
+<Prop name="title" values={["cualquier texto o componente"]} />
+
+
+## Dropdown
+
+> Cuadro desplegable que aparece cuando el usuario hace click en el **title**. El cuadro suele contener algún tipo de menú. Al pulsar en cualquier otro lugar de la página, el menu se repliega.
+
+
+<Dropdown title="Dropdown" className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+  <div className="flex flex-col gap-2">
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Dashboard</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Autores</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Libros</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Prestamos</Link>
+  </div>
+</Dropdown>
+
+### Código de ejemplo
+
+```js
+<Dropdown title="Dropdown" className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+  <div className="flex flex-col gap-2">
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Dashboard</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Autores</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Libros</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Prestamos</Link>
+  </div>
+</Dropdown>
+```
+
+### Propiedades
+
+<Prop name="title" values={["cualquier texto o componente"]} />
+
+
+## Dropdown2
+
+> Cuadro desplegable que aparece cuando el usuario hace click en el **title**. El cuadro suele contener algún tipo de menú. Al pulsar en el mismo sitio, el menu se repliega.
+
+<Dropdown2 title="Dropdown2" className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+  <div className="flex flex-col gap-2">
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Dashboard</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Autores</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Libros</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Prestamos</Link>
+  </div>
+</Dropdown2>
+
+
+### Código de ejemplo
+
+```js
+<Dropdown2 title="Dropdown2" className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+  <div className="flex flex-col gap-2">
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Dashboard</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Autores</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Libros</Link>
+    <Link href="#" className="hover:opacity-60 active:opacity-40">Prestamos</Link>
+  </div>
+</Dropdown2>
+```
+
+### Propiedades
+
+<Prop name="title" values={["cualquier texto o componente"]} />
+
+
+## Modal
+
+> Diálogo modal que aparece al hacer click en el **trigger** y se muestra centrado en pantalla. Para cerrar se puede hacer clic fuera del diálogo o pulsar la tecla Esc.
+
+<Modal trigger={
+  <div className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+   Abrir Modal
+  </div>
+}>
+  <div className="p-8">
+    <p className="text-blue-500 font-bold">Esto es un diálogo modal.</p>
+    <div className="">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam, nostrum dignissimos illum, ratione molestiae aut, esse a porro debitis quia eius modi nulla consequuntur! Iusto nulla eaque quis libero ducimus!
+      Sint corrupti soluta, doloremque beatae vero facilis praesentium, perferendis officiis nam enim ratione exercitationem dolore aliquid adipisci veniam quos error obcaecati! Quis voluptatum aut alias ad placeat aliquid nihil obcaecati.
+      Iste repellat culpa eligendi dolorem deleniti officiis ex magni, placeat magnam numquam nobis eveniet beatae. Debitis labore voluptate at, sint consequuntur minus ipsum optio vero quibusdam quam fugit ullam. Nostrum?
+      Nam obcaecati error id, facilis ipsum, cupiditate omnis deserunt saepe aliquam maiores in perspiciatis consequatur consequuntur iure excepturi rerum provident. Cupiditate quis impedit atque, aspernatur alias itaque. Sint, cupiditate ipsa!
+      Adipisci vel ad quos temporibus dicta quidem doloremque sed deleniti eos! Quis aspernatur veniam dolor, nulla blanditiis totam molestias perspiciatis nostrum laudantium corrupti, aliquam dolore? Ab amet officiis eligendi autem.
+    </div>
+  </div>
+</Modal>
+
+### Código de ejemplo
+
+```js
+<Modal trigger={
+  <div className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+   Abrir Modal
+  </div>
+}>
+  <div className="p-8">
+    <p className="text-blue-500 font-bold">Esto es un diálogo modal.</p>
+    <div className="text-wrap">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam, nostrum dignissimos illum, ratione molestiae aut, esse a porro debitis quia eius modi nulla consequuntur! Iusto nulla eaque quis libero ducimus!
+      Sint corrupti soluta, doloremque beatae vero facilis praesentium, perferendis officiis nam enim ratione exercitationem dolore aliquid adipisci veniam quos error obcaecati! Quis voluptatum aut alias ad placeat aliquid nihil obcaecati.
+      Iste repellat culpa eligendi dolorem deleniti officiis ex magni, placeat magnam numquam nobis eveniet beatae. Debitis labore voluptate at, sint consequuntur minus ipsum optio vero quibusdam quam fugit ullam. Nostrum?
+      Nam obcaecati error id, facilis ipsum, cupiditate omnis deserunt saepe aliquam maiores in perspiciatis consequatur consequuntur iure excepturi rerum provident. Cupiditate quis impedit atque, aspernatur alias itaque. Sint, cupiditate ipsa!
+      Adipisci vel ad quos temporibus dicta quidem doloremque sed deleniti eos! Quis aspernatur veniam dolor, nulla blanditiis totam molestias perspiciatis nostrum laudantium corrupti, aliquam dolore? Ab amet officiis eligendi autem.
+    </div>
+  </div>
+</Modal>
+```
+
+### Propiedades
+
+<Prop name="trigger" values={["cualquier texto o componente"]} />
+
+
+
+## Skeleton
+
+> Estructura de ejemplo para su uso como fallback del Suspense de React. 
+
+<Skeleton />
+
+### Código fuente
+
+```js
+<Skeleton />
+```
+
+### Propiedades
+
+Ninguna. Deberás hacer un copia del componente y editar a tu gusto.
+
+
+
+## Spinner
+
+> Icono animado para su uso como fallback del Suspense de React. 
+
+<div className="flex items-center gap-2">
+  <Spinner type={0} size={12} color="text-orange-500 dark:text-orange-600" />
+  <Spinner type={1} size={8} color="text-blue-600 dark:text-blue-300" />
+  <Spinner type={2} size={9} />
+  <Spinner type={3} size={11} />
+  <Spinner type={4} size={11} color="text-blue-500 dark:text-blue-400" />
+  <Spinner type={5} size={7} color="text-slate-500 dark:text-slate-400" />
+  <Spinner type={6} size={9} color="text-zinc-500 dark:text-zinc-400" />
+  <Spinner type={7} size={9} />
+</div>
+
+### Código de ejemplo
+
+```js
+<div className="flex items-center gap-2">
+  <Spinner type={0} size={12} color="text-orange-500 dark:text-orange-600" />
+  <Spinner type={1} size={8} color="text-blue-600 dark:text-blue-300" />
+  <Spinner type={2} size={9} />
+  <Spinner type={3} size={11} />
+  <Spinner type={4} size={11} color="text-blue-500 dark:text-blue-400" />
+  <Spinner type={5} size={7} color="text-slate-500 dark:text-slate-400" />
+  <Spinner type={6} size={9} color="text-zinc-500 dark:text-zinc-400" />
+  <Spinner type={7} size={9} />
+</div>
+```
+
+### Propiedades
+
+<Prop name="type" value="0" values={["valores de 0 a 7"]} />
+<Prop name="size" value="10" values={["cualquier valor mayor que 0"]} />
+<Prop name="color" value="text-black dark:text-white" values={["cualquier clase tailwindcss para text"]} />
+
+
+### Bonus
+
+Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aquí para demostrar lo fácil que es crear nuestros propios spinners.
+
+<div className="flex items-center gap-2">
+  <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
+  <span className="text-5xl text-slate-200 animate-spin">#</span>
+  <span className="text-4xl animate-pulse">🔥</span>
+  <div className="inline-block text-5xl animate-bounce">🦘</div>
+  <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
+</div>
+
+### Código de ejemplo
+
+```js
+<div className="flex items-center gap-2">
+  <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
+  <span className="text-5xl text-slate-200 animate-spin">#</span>
+  <span className="text-4xl animate-pulse">🔥</span>
+  <div className="inline-block text-5xl animate-bounce">🦘</div>
+  <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
+</div>
+```
+
+## Icons
+
+> Algunos iconos para su uso con InputCheck e InputGroup. Probablemente no necesites hacer uso de ellos de forma directa.  
+
+<div className="flex items-center gap-2">
+  <CircleIcon color="fill-violet-400" />
+  <SquareIcon color="fill-blue-400" />
+  <HexagonIcon color="fill-teal-400" />
+  <CrossIcon color="fill-lime-400" />
+  <StarIcon color="fill-yellow-400" />
+  <HeartIcon color="fill-red-400" />
+</div>
+
+### Código fuente
+
+```js
+<div className="flex items-center gap-2">
+  <CircleIcon color="fill-violet-400" />
+  <SquareIcon color="fill-blue-400" />
+  <HexagonIcon color="fill-teal-400" />
+  <CrossIcon color="fill-lime-400" />
+  <StarIcon color="fill-yellow-400" />
+  <HeartIcon color="fill-red-400" />
+</div>
+```
+
+### Propiedades
+
+<Prop name="color" value="fill-white" values={["color de relleno de tailwindcss"]} />
+
+
+## InputText
+
+> Input de tipo texto. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
+
+<InputText
+  label="Introduce tu nombre"
+  name="nombre"
+  value={"José"}
+/>
+
+
+### Código fuente
+
+```js
+<InputText
+  label="Introduce tu nombre"
+  name="nombre"
+  value={"José"}
+/>
+```
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="value" values={["valor por defecto"]} />
+
+## InputNumber
+
+> Input de tipo número. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
+
+
+<InputNumber
+  label="Introduce tu edad"
+  name="edad"
+  value={18} 
+/>
+
+### Código fuente
+
+```js
+<InputNumber
+  label="Introduce tu edad"
+  name="edad"
+  value={18} 
+/>
+```
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="value" values={["valor por defecto"]} />
+
+
+## InputGroup
+
+> Grupo de inputs de tipo radio. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
+
+<InputGroup
+  label="Nivel"
+  name="nivel"
+  options={[
+    // [label, name, checked]
+    ["Amateur", "amateur", false],
+    ["Junior", "junior", false],
+    ["Senior", "senior", true],
+    ["Veterano", "veterano", false]
+  ]}
+  icon={<CrossIcon />}
+/>
+
+### Código fuente
+
+```js
+<InputGroup
+  label="Nivel"
+  name="nivel"
+  options={[
+    // [label, name, checked]
+    ["Amateur", "amateur", false],
+    ["Junior", "junior", false],
+    ["Senior", "senior", true],
+    ["Veterano", "veterano", false]
+  ]}
+  icon={<CrossIcon />}
+/>
+```
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="options" values={["formato que se muestra en el código"]} />
+<Prop name="icon" value={"check circular"} values={["consultar Icons"]} />
+
+## InputGroup multiple
+
+> Grupo de inputs de tipo checkbox. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
+
+<InputGroup
+  multiple
+  label="Habilidades"
+  name="habilidades"
+  options={[
+    // [label, name, checked]
+    ["Lectura", "leer", true],
+    ["Actividad física", "deporte", false],
+    ["Cine", "cine", true],
+    ["Playa", "playa", true]
+  ]}
+  icon={<HeartIcon />}
+/>
+
+### Código fuente
+
+```js
+<InputGroup
+  multiple
+  label="Habilidades"
+  name="habilidades"
+  options={[
+    // [label, name, checked]
+    ["Lectura", "leer", true],
+    ["Actividad física", "deporte", false],
+    ["Cine", "cine", true],
+    ["Playa", "playa", true]
+  ]}
+  icon={<HeartIcon />}
+/>
+```
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="options" values={["formato que se muestra en el código"]} />
+<Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
+
+## InputSelect
+
+> Select. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
+
+<InputSelect
+  label="Nivel"
+  name="nivel2"
+  options={[
+    // [label, name, checked]
+    ["Amateur", "amateur", false],
+    ["Junior", "junior", false],
+    ["Senior", "senior", true],
+    ["Veterano", "veterano", false]
+  ]}
+  className="w-100"
+/>
+
+### Código fuente
+
+```js
+<InputSelect
+  label="Nivel"
+  name="nivel2"
+  options={[
+    // [label, name, checked]
+    ["Amateur", "amateur", false],
+    ["Junior", "junior", false],
+    ["Senior", "senior", true],
+    ["Veterano", "veterano", false]
+  ]}
+  className="w-100"
+/>
+```
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="options" values={["formato que se muestra en el código"]} />
+<Prop name="icon" value={"check circular"} values={["consultar Icons"]} />
+
+
+## InputSelect multiple
+
+> Select múltiple. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
+
+<InputSelect
+  multiple
+  label="Habilidades"
+  name="habilidades2"
+  options={[
+    // [label, name, checked]
+    ["Lectura", "leer", true],
+    ["Actividad física", "deporte", false],
+    ["Cine", "cine", true],
+    ["Playa", "playa", true]
+  ]}
+  className="w-100"
+/>
+
+### Código fuente
+
+```js
+<InputSelect
+  multiple
+  label="Habilidades"
+  name="habilidades2"
+  options={[
+    // [label, name, checked]
+    ["Lectura", "leer", true],
+    ["Actividad física", "deporte", false],
+    ["Cine", "cine", true],
+    ["Playa", "playa", true]
+  ]}
+  className="w-100"
+/>
+```
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="options" values={["formato que se muestra en el código"]} />
+<Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
+
+
+## DragAndDrop
+
+> Componente con varias columnas donde arrastrar y soltar notas. Proporciona un tablero similar a Kanban.
+
+<DragAndDrop />
+
+
+### Código de ejemplo
+
+```js
+const initColumns = {
+    todo: {
+        titulo: 'To Do',
+        items: [
+            { id: '1', titulo: 'Diseñar base de datos', badge: 'Urgente', color: 'bg-red-100' },
+            { id: '2', titulo: 'Crear componentes', badge: 'Urgente', color: 'bg-red-100' }
+        ]
+    },
+    inProgress: {
+        titulo: 'In Progress',
+        items: [
+            { id: '3', titulo: 'Configurar enrutador', badge: 'Normal', color: 'bg-amber-100' }
+        ]
+    },
+    done: {
+        titulo: 'Done',
+        items: [
+            { id: '4', titulo: 'Instalar dependencias', badge: 'Baja', color: 'bg-lime-100' }
+        ]
+    }
+}
+
+<DragAndDrop cols={initColumns} />
+
+```
+
+### Propiedades
+
+<Prop name="cols" value="el mostrado en pantalla" values={["un objeto similar al mostrado anteriormente, acepta distinto número de columnas"]} />
+
+

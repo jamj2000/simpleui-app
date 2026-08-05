@@ -10,7 +10,7 @@ export default function Page({ searchParams }) {
 
     return (
         <div className="flex flex-col">
-            <h1 className="text-4xl text-center inline">Empleados</h1>
+            <h1 className="text-4xl text-indigo-800 dark:text-indigo-300">Testing Table & List</h1>
 
 
             <Suspense fallback="...">
@@ -21,8 +21,6 @@ export default function Page({ searchParams }) {
                 <LoadData searchParams={searchParams} />
             </Suspense>
 
-
-            <Footer />
         </div >
     )
 }
@@ -69,6 +67,7 @@ async function LoadData({ searchParams }) {
 
             <Pagination pages={+empleados.pages} page={+empleados.page} limit={+empleados.limit} />
 
+            <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Table</h2>
             <Table
                 data={empleados.data}
                 columns={[
@@ -78,20 +77,21 @@ async function LoadData({ searchParams }) {
                 ]}
                 sort={sort}
                 direction={direction}
-                // width={300}
+                width={300}
                 actions={[
                     ViewEmpleado,
                     UpdateEmpleado,
                     DeleteEmpleado,
                 ]}
             >
-                <h2 className="text-2xl text-center inline">Tabla</h2>
-                <div className="container mx-auto w-300 flex justify-end">
+                <div className="flex justify-between">
+                    <h2 className="text-2xl text-center inline">Empleados</h2>
                     <CreateEmpleado />
                 </div>
             </Table >
 
 
+            <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">List</h2>
             <List
                 data={empleados.data}
                 columns={[
@@ -108,8 +108,7 @@ async function LoadData({ searchParams }) {
                     DeleteEmpleado,
                 ]}
             >
-                <h2 className="text-2xl text-center inline">Lista</h2>
-                <div className="container mx-auto w-300 flex justify-end">
+                <div className="flex justify-end">
                     <CreateEmpleado />
                 </div>
             </List >
@@ -159,17 +158,3 @@ async function Lista() {
 
 
 
-const Footer = async () => {
-    'use cache'
-
-    return (
-        <div className="text-center py-8">{
-            new Date().toLocaleDateString('es-ES', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            })}
-        </div>
-    )
-}
