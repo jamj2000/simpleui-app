@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
           </nav>
 
 
-          <main className="p-4 md:p-8 pb-10 md:pb-30 mt-12">
+          <main className="p-4 md:p-8 pb-10 md:pb-30 mt-16">
             {children}
           </main>
 

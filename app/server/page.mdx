@@ -1,4 +1,4 @@
-import { Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputGroup, InputNumber, InputSelect, DragAndDrop, Button, Form, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon, } from "@/components/simpleui";
+import { Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate,   InputGroup, InputSelect, DragAndDrop, Button, Form, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon, } from "@/components/simpleui";
 
 import Link from 'next/link'
 import Prop from '@/components/Prop'
@@ -11,6 +11,7 @@ import { getEmpleados } from "@/lib/data";
 # Componentes SSR
 
 Componentes que pueden usarse directamente.
+
 
 ## Alert
 
@@ -481,6 +482,77 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="value" values={["valor por defecto"]} />
 
 
+
+## InputRange
+
+> Input de tipo rango. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
+
+
+<InputRange
+  label="Volumen"
+  name="volume"
+  value={50}
+  min={0}
+  max={100}
+  step={1}
+/>
+
+
+### Código fuente
+
+```js
+<InputRange
+  label="Volumen"
+  name="volume"
+  value={50}
+  min={0}
+  max={100}
+  step={1}
+/>
+```
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="value" values={["valor por defecto"]} />
+<Prop name="min" values={["valor mínimo"]} />
+<Prop name="max" values={["valor máximo"]} />
+<Prop name="step" values={["incremento de valor"]} />
+
+## InputDate
+
+> Input de varios tipos de tiempo. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
+
+
+<InputDate 
+  type="datetime-local" 
+  label="Evento musical" 
+  name="evento" 
+/>
+
+### Código fuente
+
+```js
+<InputDate 
+  type="datetime-local" 
+  label="Evento musical" 
+  name="evento" 
+/>
+```
+
+### Propiedades
+
+<Prop name="type" values={["date", "time", "datetime-local", "month", "week"]} />
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="value" values={["valor por defecto"]} />
+<Prop name="min" values={["valor mínimo"]} />
+<Prop name="max" values={["valor máximo"]} />
+<Prop name="step" values={["incremento de valor"]} />
+
+
+
 ## InputGroup
 
 > Grupo de inputs de tipo radio. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
@@ -579,7 +651,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
     ["Senior", "senior", true],
     ["Veterano", "veterano", false]
   ]}
-  className="w-100"
+  className="w-80"
 />
 
 ### Código fuente
@@ -595,7 +667,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
     ["Senior", "senior", true],
     ["Veterano", "veterano", false]
   ]}
-  className="w-100"
+  className="w-80"
 />
 ```
 
@@ -622,7 +694,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
     ["Cine", "cine", true],
     ["Playa", "playa", true]
   ]}
-  className="w-100"
+  className="w-80"
 />
 
 ### Código fuente
@@ -639,7 +711,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
     ["Cine", "cine", true],
     ["Playa", "playa", true]
   ]}
-  className="w-100"
+  className="w-80"
 />
 ```
 
