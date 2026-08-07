@@ -1,7 +1,4 @@
-import { Code } from 'bright';
 import Link from 'next/link';
-
-import Codigo from './components/Codigo';
 import { highlight } from 'sugar-high';
 
 
@@ -16,10 +13,10 @@ const components = {
         <h3 className="text-xl mb-4 mt-8 text-indigo-800 dark:text-indigo-300"  {...props} />
     ),
     ol: (props) => (
-        <ol className="text-gray-800 dark:text-zinc-300 list-decimal list-inside" {...props} />
+        <ol className="list-decimal list-inside" {...props} />
     ),
     ul: (props) => (
-        <ul className="text-gray-800 dark:text-zinc-300 list-disc list-inside" {...props} />
+        <ul className="list-disc list-inside" {...props} />
     ),
     li: (props) => (
         <li className="pl-1" {...props} />

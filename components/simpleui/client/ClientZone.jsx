@@ -1,8 +1,10 @@
 'use client'
 
 import { toast } from "sonner"
-import { Form, Table } from "."
-import { Button, Submit } from "../server"
+import { Form } from "./Form"
+import { Table } from "./Table"
+import { Button } from "../server/Button"
+import { Submit } from "../server/Submit"
 
 const components = [
     Button,

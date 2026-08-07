@@ -13,7 +13,7 @@ const classLabel = `absolute left-3.75 top-0 -translate-y-1/2
                     px-2 rounded-full
                     `
 
-const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1).toLowerCase()
+// const capitalize = (texto) => texto && texto.at(0).toUpperCase() + texto.slice(1).toLowerCase()
 
 
 
@@ -58,7 +58,7 @@ export const InputSelect = ({ label = "", name, options, disabled, multiple, cla
                 disabled={disabled}
                 className={`peer ${classInput}`}
             />
-            <span className={`peer-disabled:text-zinc-400 ${classLabel}`}>{multiple ? "Seleccione opciones" : labelSelect}</span>
+            <span className={`peer-disabled:text-zinc-400 ${classLabel}`}>{labelSelect}</span>
         </>
 
     )

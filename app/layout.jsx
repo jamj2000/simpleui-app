@@ -33,13 +33,18 @@ export default function RootLayout({ children }) {
 
           <nav className="z-50 px-2 w-full flex justify-end py-4 fixed top-0 bg-neutral-500/50  backdrop-blur-sm">
             <ThemeToggle />
+
+
             <MainMenu>
               <Suspense fallback="...">
                 <MenuLink href="/"><HomeIcon /></MenuLink>
                 <MenuLink href="/componentes">Componentes</MenuLink>
                 <MenuLink href="/test">Test</MenuLink>
               </Suspense>
+
             </MainMenu>
+
+
           </nav>
 
 
@@ -55,7 +60,7 @@ export default function RootLayout({ children }) {
           <Footer />
         </ThemeProvider>
       </body>
-    </html>
+    </html >
   );
 }
 

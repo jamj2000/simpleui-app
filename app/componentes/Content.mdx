@@ -18,11 +18,12 @@ import { getEmpleados } from "@/lib/data";
   trigger={<h2 className="text-2xl text-blue-500 dark:text-blue-300 cursor-pointer">Índice</h2>}
    position="right" 
    duration={700}
+
 >
   <h2 className="text-lg text-blue-500 dark:text-blue-300">
     <Link href="/componentes#indice">Índice</Link>
   </h2>
-  <div className="flex flex-col">
+  <div className="flex flex-col text-sm md:text-base">
     <Link href="/componentes#alert">Alert</Link>  
     <Link href="/componentes#alertsmall">Alert small</Link>  
     <Link href="/componentes#badge">Badge</Link>  
@@ -50,6 +51,7 @@ import { getEmpleados } from "@/lib/data";
     <Link href="/componentes#submit">Submit</Link>  
     <Link href="/componentes#form">Form</Link>  
     <Link href="/componentes#draganddrop">DragAndDrop</Link>  
+    <Link href="/componentes#drawer">Drawer</Link>  
   </div>
 </Drawer>
 
@@ -150,18 +152,21 @@ import { getEmpleados } from "@/lib/data";
 <a name="button"/>
 ## Button
 
-<Alert small type="error">
+<Alert small type="warning">
   Este componente debe importarse dentro de una página o componente con 'use client'
+  - Motivo: hace uso de función evento onClick
 </Alert>
 
 > Botón para ser utilizado en el lado cliente. 
 
 <ClientZone component="Button" />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
-<Button onClick={() => alert("Mensaje de alerta")}>Botón</Button>
+<Button onClick={() => alert("Mensaje de alerta")}>
+  Botón
+</Button>
 ```
 
 ### Propiedades
@@ -401,7 +406,7 @@ import { getEmpleados } from "@/lib/data";
 
 <Skeleton />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <Skeleton />
@@ -488,7 +493,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   <HeartIcon color="fill-red-400" />
 </div>
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <div className="flex items-center gap-2">
@@ -518,7 +523,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 />
 
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputText
@@ -547,7 +552,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   value={18} 
 />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputNumber
@@ -580,7 +585,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 />
 
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputRange
@@ -616,7 +621,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   name="evento" 
 />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputDate 
@@ -650,7 +655,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   icon={<CrossIcon />}
 />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputCheck
@@ -678,19 +683,19 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <InputCheck
   multiple
   label="Lectura"
-  name="habilidades"
+  name="gustos"
   value="leer"
   checked={true}
   icon={<HeartIcon />}
 />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputCheck
   multiple
   label="Lectura"
-  name="habilidades"
+  name="gustos"
   value="leer"
   checked={true}
   icon={<HeartIcon />}
@@ -712,8 +717,8 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 > Grupo de inputs de tipo radio. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
 
 <InputGroup
-  label="Nivel"
-  name="nivel"
+  label="Categoria"
+  name="categoria"
   options={[
     // [label, name, checked]
     ["Amateur", "amateur", false],
@@ -724,12 +729,12 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   icon={<CrossIcon />}
 />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputGroup
-  label="Nivel"
-  name="nivel"
+  label="Categoria"
+  name="categoria"
   options={[
     // [label, name, checked]
     ["Amateur", "amateur", false],
@@ -756,8 +761,8 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <InputGroup
   multiple
-  label="Habilidades"
-  name="habilidades"
+  label="Aficiones"
+  name="aficiones"
   options={[
     // [label, name, checked]
     ["Lectura", "leer", true],
@@ -768,13 +773,13 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   icon={<HeartIcon />}
 />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputGroup
   multiple
-  label="Habilidades"
-  name="habilidades"
+  label="Aficiones"
+  name="aficiones"
   options={[
     // [label, name, checked]
     ["Lectura", "leer", true],
@@ -801,8 +806,8 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 > Select. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
 
 <InputSelect
-  label="Nivel"
-  name="nivel2"
+  label="Categoría"
+  name="categoria2"
   options={[
     // [label, name, checked]
     ["Amateur", "amateur", false],
@@ -813,12 +818,12 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   className="w-80"
 />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputSelect
-  label="Nivel"
-  name="nivel2"
+  label="Categoría"
+  name="categoria2"
   options={[
     // [label, name, checked]
     ["Amateur", "amateur", false],
@@ -846,8 +851,8 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <InputSelect
   multiple
-  label="Habilidades"
-  name="habilidades2"
+  label="Aficiones"
+  name="aficiones2"
   options={[
     // [label, name, checked]
     ["Lectura", "leer", true],
@@ -858,13 +863,13 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   className="w-80"
 />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
 <InputSelect
   multiple
-  label="Habilidades"
-  name="habilidades2"
+  label="Aficiones"
+  name="aficiones2"
   options={[
     // [label, name, checked]
     ["Lectura", "leer", true],
@@ -891,10 +896,12 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <ClientZone component="Submit" />
 
-### Código fuente
+### Código de ejemplo
 
 ```js
-<Submit formAction={async () => {}}>Submit</Submit>
+<Submit formAction={async () => {}}>
+  Submit
+</Submit>
 ```
 
 ### Propiedades
@@ -909,8 +916,9 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <a name="form"/>
 ## Form
-<Alert small type="error">
+<Alert small type="warning">
   Este componente debe importarse dentro de una página o componente con 'use client'
+  - Motivo: hace uso de función toast
 </Alert>
 > Formulario de recogida de datos.
 
@@ -1024,7 +1032,44 @@ const initColumns = {
 <Prop name="cols" value="el mostrado en pantalla" values={["un objeto similar al mostrado anteriormente, acepta distinto número de columnas"]} />
 
 
+<a name="drawer"/>
+## Drawer
 
+<Drawer 
+  trigger={<p className="text-red-400 dark:text-blue-300 cursor-pointer">Abrir Drawer</p>}
+   position="left" 
+   duration={700}
+   area="w-20 md:w-40"
+>
+  <p>Uno</p>
+  <p>Dos</p>
+  <p>Tres</p>
+</Drawer>
 
+### Código de ejemplo
 
+```js
+<Drawer 
+  trigger={<p className="text-red-400 dark:text-blue-300 cursor-pointer">Abrir Drawer</p>}
+   position="right"    
+   duration={700}
+   area="w-20 md:w-40"
+>
+  <p>Uno</p>
+  <p>Dos</p>
+  <p>Tres</p>
+</Drawer>
+```
 
+### Propiedades
+
+<Prop name="position" value="left" values={["left", "right", "top", "down"]} />
+<Prop name="duraction" value="300" values={["cualquier valor mayor que cero en ms"]} />
+<Prop name="area" value="w-40 md:w-80" values={["clases de tailwindcss"]} />
+
+<Alert>
+  Para mayor flexibilidad se usan clases tailwindcss para definir el <strong>área</strong>.   
+  De esta manera podemos definir el ancho (<strong>w-</strong>) y el alto (<strong>h-</strong>) para diferentes tamaños de pantalla (<strong>sm:</strong>, <strong>md:</strong>, ...)
+  - Por defecto, para left y right el valor por defecto es <strong>w-40 md:w-80</strong>.
+  - Por defecto, para top y bottom el valor por defecto es <strong>h-1/3 sm:h-80</strong>. 
+</Alert>

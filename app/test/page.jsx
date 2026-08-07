@@ -2,7 +2,7 @@ import { getEmpleados } from "@/lib/data";
 import { Suspense } from "react";
 import FilterForm from 'next/form'
 import { CreateEmpleado, UpdateEmpleado, DeleteEmpleado, ViewEmpleado } from "./Actions";
-import { InputSelect, List, Pagination, Submit, Table } from "@/components/simpleui";
+import { InputHidden, InputSelect, List, Pagination, Submit, Table } from "@/components/simpleui";
 
 
 
@@ -11,11 +11,6 @@ export default function Page({ searchParams }) {
     return (
         <div className="flex flex-col">
             <h1 className="text-4xl text-indigo-800 dark:text-indigo-300">Testing Table & List</h1>
-
-
-            <Suspense fallback="...">
-                <Formulario searchParams={searchParams} />
-            </Suspense>
 
             <Suspense fallback="Cargando datos...">
                 <LoadData searchParams={searchParams} />
@@ -27,10 +22,19 @@ export default function Page({ searchParams }) {
 
 
 
-async function Formulario({ searchParams }) {
+
+
+
+async function LoadData({ searchParams }) {
+
     const { sort, direction, page, limit } = await searchParams;
-    return (
+    const empleados = await getEmpleados({ sort, direction, page, limit })
+
+
+    const Filtro = () => (
         <FilterForm action="" className="my-3 flex gap-4 justify-center items-center">
+            <InputHidden name="page" value={page || 1} />
+            <InputHidden name="limit" value={limit || 10} />
             <InputSelect
                 label="Ordenar"
                 name="sort"
@@ -52,20 +56,24 @@ async function Formulario({ searchParams }) {
         </FilterForm>
 
     )
-}
 
 
 
-async function LoadData({ searchParams }) {
-    'use cache'
-    const { sort, direction, page, limit } = await searchParams;
-    const empleados = await getEmpleados({ sort, direction, page, limit })
+
 
 
     return (
         <div className="flex flex-col">
 
-            <Pagination pages={+empleados.pages} page={+empleados.page} limit={+empleados.limit} />
+            <Filtro />
+
+            <Pagination
+                pages={+empleados.pages}
+                page={+empleados.page}
+                limit={+empleados.limit}
+                sort={empleados.sort}
+                direction={empleados.direction}
+            />
 
             <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Table</h2>
             <Table

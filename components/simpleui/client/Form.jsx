@@ -14,7 +14,7 @@ import { Badge } from "../server/Badge";
 import { Alert } from "../server/Alert";
 import { InputHidden } from "../server/InputHidden";
 import { InputSelect } from "./InputSelect";
-import { InputImage } from ".";
+import { InputImage } from "./InputImage";
 
 
 

@@ -39,15 +39,14 @@ const ChevronRightIcon = () => (
 
 
 
-export function Pagination({ pages, page, limit }) {
-
+export function Pagination({ pages, page, limit, sort, direction }) {
 
     return (
         <div className="w-fit self-center p-2 flex justify-center gap-2 shadow-md rounded-md bg-slate-100 dark:bg-slate-700">
 
             {page > 1
                 ? (
-                    <Link href={`?page=${page - 1}&limit=${limit}`}
+                    <Link href={`?page=${page - 1}&limit=${limit}&sort=${sort}&direction=${direction}`}
                         className="p-2 rounded-md grid place-content-center hover:bg-slate-500 hover:text-slate-100 bg-slate-200 dark:bg-slate-800"
                     >
                         <ChevronLeftIcon />
@@ -61,14 +60,14 @@ export function Pagination({ pages, page, limit }) {
 
             <div className="max-w-60 flex items-center overflow-hidden overflow-x-auto scrollbar-thin scrollbar-thumb-slate-100 dark:scrollbar-thumb-slate-700 hover:scrollbar-thumb-slate-500">
                 {Array.from({ length: pages }, (_, i) => i + 1).map((numPage) => (
-                    <PageNumber key={numPage} numPage={numPage} limit={limit} selected={numPage == page} />
+                    <PageNumber key={numPage} numPage={numPage} limit={limit} selected={numPage == page} sort={sort} direction={direction} />
                 ))}
             </div>
 
 
             {page < pages
                 ? (
-                    <Link href={`?page=${page + 1}&limit=${limit}`}
+                    <Link href={`?page=${page + 1}&limit=${limit}&sort=${sort}&direction=${direction}`}
                         className="p-2 rounded-md grid place-content-center hover:bg-slate-500 hover:text-slate-100 bg-slate-200 dark:bg-slate-800"
                     >
                         <ChevronRightIcon />
@@ -84,7 +83,7 @@ export function Pagination({ pages, page, limit }) {
 
 
 
-const PageNumber = ({ numPage = 1, limit, selected }) => {
+const PageNumber = ({ selected, numPage = 1, limit, sort, direction }) => {
     const ref = useRef(null);
 
     useEffect(() => {
@@ -100,7 +99,7 @@ const PageNumber = ({ numPage = 1, limit, selected }) => {
     return (
         <Link
             ref={ref}
-            href={`?page=${numPage}&limit=${limit}`}
+            href={`?page=${numPage}&limit=${limit}&sort=${sort}&direction=${direction}`}
             className={`p-2 rounded-md hover:bg-slate-500 hover:text-slate-100 ${selected ? "bg-black text-white" : ""}`}
         >
             {numPage}

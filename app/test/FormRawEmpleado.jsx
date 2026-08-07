@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
-import { InputText, InputSelect, Submit, Badge, InputGroup, InputSelect2, Space } from "@/components/simpleui";
+import { InputText, InputSelect, Submit, Badge, InputGroup, Space } from "@/components/simpleui";
 import { useRouter } from "next/navigation";
 
 
