@@ -1,7 +1,6 @@
 'use client'
 
 import { Button, Form } from "@/components/simpleui"
-import Link from "next/link"
 import { toast } from "sonner"
 
 
@@ -42,6 +41,11 @@ export default function Page() {
                 className="border border-slate-100 shadow-lg rounded-md p-8 md:w-3/4 mx-auto"
                 fields={[
                     {
+                        name: "image",
+                        component: "InputImage",
+                        className: "self-end"
+                    },
+                    {
                         name: "nombre",
                         label: "Introduzca nombre:",
                     },
@@ -77,6 +81,12 @@ export default function Page() {
                             ["Playa", "playa", false]
                         ]
                     },
+                    {
+                        labels: ["Guardar datos", "Guardando datos ..."],
+                        component: "Submit",
+                        color: "green",
+                        round: "none"
+                    }
 
                 ]}
             />

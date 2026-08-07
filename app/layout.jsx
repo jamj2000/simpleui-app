@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Footer, MainMenu, MenuLink } from "@/components/simpleui";
+import { Footer, HomeIcon, MainMenu, MenuLink } from "@/components/simpleui";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import { ThemeToggle } from "@/components/simpleui";
@@ -35,9 +35,8 @@ export default function RootLayout({ children }) {
             <ThemeToggle />
             <MainMenu>
               <Suspense fallback="...">
-                <MenuLink href="/">Inicio</MenuLink>
-                <MenuLink href="/server">Servidor</MenuLink>
-                <MenuLink href="/client">Cliente</MenuLink>
+                <MenuLink href="/"><HomeIcon /></MenuLink>
+                <MenuLink href="/componentes">Componentes</MenuLink>
                 <MenuLink href="/test">Test</MenuLink>
               </Suspense>
             </MainMenu>

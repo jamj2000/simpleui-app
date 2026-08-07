@@ -1,4 +1,4 @@
-import { Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate,   InputGroup, InputSelect, DragAndDrop, Button, Form, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon, } from "@/components/simpleui";
+import { ClientZone, Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate,   InputGroup, InputSelect, DragAndDrop, Button, Form, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon, } from "@/components/simpleui";
 
 import Link from 'next/link'
 import Prop from '@/components/Prop'
@@ -8,11 +8,51 @@ import { LoadData } from "./LoadData"
 import { getEmpleados } from "@/lib/data";
 
 
-# Componentes SSR
-
-Componentes que pueden usarse directamente.
 
 
+
+# Lista de Componentes
+<a name="indice" />
+##
+<Drawer 
+  trigger={<h2 className="text-2xl text-blue-500 dark:text-blue-300 cursor-pointer">Índice</h2>}
+   position="right" 
+   duration={700}
+>
+  <h2 className="text-lg text-blue-500 dark:text-blue-300">
+    <Link href="/componentes#indice">Índice</Link>
+  </h2>
+  <div className="flex flex-col">
+    <Link href="/componentes#alert">Alert</Link>  
+    <Link href="/componentes#alertsmall">Alert small</Link>  
+    <Link href="/componentes#badge">Badge</Link>  
+    <Link href="/componentes#button">Button</Link>  
+    <Link href="/componentes#space">Space</Link>  
+    <Link href="/componentes#separator">Separator</Link>  
+    <Link href="/componentes#tooltip">Tooltip</Link>  
+    <Link href="/componentes#popover">Popover</Link>  
+    <Link href="/componentes#dropdown">Dropdown</Link>  
+    <Link href="/componentes#dropdown2">Dropdown2</Link>    
+    <Link href="/componentes#modal">Modal</Link>    
+    <Link href="/componentes#skeleton">Skeleton</Link>    
+    <Link href="/componentes#spinner">Spinner</Link>    
+    <Link href="/componentes#iconos">Icons</Link>  
+    <Link href="/componentes#inputtext">Inputtext</Link>  
+    <Link href="/componentes#inputnumber">Inputnumber</Link>  
+    <Link href="/componentes#inputrange">Inputrange</Link>              
+    <Link href="/componentes#inputdate">Inputdate</Link>  
+    <Link href="/componentes#inputgroup">Inputgroup</Link>  
+    <Link href="/componentes#inputgroupmultiple">Inputgroupmultiple</Link>  
+    <Link href="/componentes#inputselect">Inputselect</Link>  
+    <Link href="/componentes#inputselectmultiple">Inputselectmultiple</Link>  
+    <Link href="/componentes#submit">Submit</Link>  
+    <Link href="/componentes#form">Form</Link>  
+    <Link href="/componentes#draganddrop">DragAndDrop</Link>  
+  </div>
+</Drawer>
+
+
+<a name="alert"/>
 ## Alert
 
 > Mensajes cortos de distinto tipo.  
@@ -46,6 +86,8 @@ Componentes que pueden usarse directamente.
 
 <Prop name="type" value="info" values={["info", "success", "warning", "error"]} />
 
+
+<a name="alertsmall"/>
 ## Alert small
 
 > Mensajes cortos de distinto tipo en formato pequeño. 
@@ -54,22 +96,22 @@ Componentes que pueden usarse directamente.
 <strong>¡Información!</strong> Este es un mensaje informativo.
 </Alert>
 
-<Alert type="success" small>
+<Alert small type="success">
 <strong>¡Éxito!</strong> Este es un mensaje de éxito.
 </Alert>
 
-<Alert type="warning" small>
+<Alert small type="warning">
 <strong>¡Aviso!</strong> Este es un mensaje de aviso.
 </Alert>
 
-<Alert type="error" small>
+<Alert small type="error">
 <strong>¡Error!</strong> Este es un mensaje de error.
 </Alert>
 
 ### Código de ejemplo
 
 ```js
-<Alert type="info" small>
+<Alert small type="info">
   <strong>¡Información!</strong><span>Este es un mensaje informativo.</span>
 </Alert>
 ```
@@ -79,6 +121,8 @@ Componentes que pueden usarse directamente.
 <Prop name="type" value="info" values={["info", "success", "warning", "error"]} />
 <Prop name="small" />
 
+
+<a name="badge"/>
 ## Badge
 
 > Insignias de distinto tipo. 
@@ -101,6 +145,32 @@ Componentes que pueden usarse directamente.
 <Prop name="type" value="info" values={["info", "success", "warning", "error"]} />
 
 
+<a name="button"/>
+## Button
+
+<Alert small type="error">
+  Este componente debe importarse dentro de una página o componente con 'use client'
+</Alert>
+
+> Botón para ser utilizado en el lado cliente. 
+
+<ClientZone component="Button" />
+
+### Código fuente
+
+```js
+<Button onClick={() => alert("Mensaje de alerta")}>Botón</Button>
+```
+
+### Propiedades
+
+<Prop name="onClick" values={["función a ejectar"]}/>
+<Prop name="color" value="current" values={["current", "white", "black", "slate", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
+<Prop name="size" value="lg" values={["xs", "sm", "md", "lg", "xl", "2xl", "3xl"]} />
+<Prop name="round" value="full" values={["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"]}/>
+
+
+<a name="space"/>
 ## Space
 
 > Espacio vertical en blanco con alto indicado en píxeles.  
@@ -118,6 +188,7 @@ Componentes que pueden usarse directamente.
 <Prop name="height" value="10" values={["cualquier valor mayor que 0"]} />
 
 
+<a name="separator"/>
 ## Separator
 
 > Línea de separación horizontal o vertical. La línea vertical sólo es de utilidad entre elementos mostrados en línea.
@@ -147,6 +218,7 @@ Componentes que pueden usarse directamente.
 <Prop name="type" value="horizontal" values={["horizontal", "vertical"]} />
 
 
+<a name="tooltip"/>
 ## Tooltip
 
 > Pequeño cuadro informativo que aparece cuando el usuario pasa el cursor por encima.
@@ -172,6 +244,7 @@ Componentes que pueden usarse directamente.
 <Prop name="title" values={["cualquier texto o componente"]} />
 
 
+<a name="popover"/>
 ## Popover
 
 > Cuadro que aparece cuando el usuario pasa el cursor por encima del **title**. Suele poseer un contenido más amplio e incluso elementos interactivo.
@@ -205,6 +278,7 @@ Componentes que pueden usarse directamente.
 <Prop name="title" values={["cualquier texto o componente"]} />
 
 
+<a name="dropdown"/>
 ## Dropdown
 
 > Cuadro desplegable que aparece cuando el usuario hace click en el **title**. El cuadro suele contener algún tipo de menú. Al pulsar en cualquier otro lugar de la página, el menu se repliega.
@@ -237,6 +311,7 @@ Componentes que pueden usarse directamente.
 <Prop name="title" values={["cualquier texto o componente"]} />
 
 
+<a name="dropdown2"/>
 ## Dropdown2
 
 > Cuadro desplegable que aparece cuando el usuario hace click en el **title**. El cuadro suele contener algún tipo de menú. Al pulsar en el mismo sitio, el menu se repliega.
@@ -269,6 +344,7 @@ Componentes que pueden usarse directamente.
 <Prop name="title" values={["cualquier texto o componente"]} />
 
 
+<a name="modal"/>
 ## Modal
 
 > Diálogo modal que aparece al hacer click en el **trigger** y se muestra centrado en pantalla. Para cerrar se puede hacer clic fuera del diálogo o pulsar la tecla Esc.
@@ -316,7 +392,7 @@ Componentes que pueden usarse directamente.
 <Prop name="trigger" values={["cualquier texto o componente"]} />
 
 
-
+<a name="skeleton"/>
 ## Skeleton
 
 > Estructura de ejemplo para su uso como fallback del Suspense de React. 
@@ -334,7 +410,7 @@ Componentes que pueden usarse directamente.
 Ninguna. Deberás hacer un copia del componente y editar a tu gusto.
 
 
-
+<a name="spinner"/>
 ## Spinner
 
 > Icono animado para su uso como fallback del Suspense de React. 
@@ -396,6 +472,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 </div>
 ```
 
+<a name="iconos"/>
 ## Icons
 
 > Algunos iconos para su uso con InputCheck e InputGroup. Probablemente no necesites hacer uso de ellos de forma directa.  
@@ -427,6 +504,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="color" value="fill-white" values={["color de relleno de tailwindcss"]} />
 
 
+<a name="inputtext"/>
 ## InputText
 
 > Input de tipo texto. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
@@ -454,6 +532,8 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="name" values={["nombre del input"]} />
 <Prop name="value" values={["valor por defecto"]} />
 
+
+<a name="inputnumber"/>
 ## InputNumber
 
 > Input de tipo número. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
@@ -482,7 +562,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="value" values={["valor por defecto"]} />
 
 
-
+<a name="inputrange"/>
 ## InputRange
 
 > Input de tipo rango. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
@@ -520,6 +600,9 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="max" values={["valor máximo"]} />
 <Prop name="step" values={["incremento de valor"]} />
 
+
+
+<a name="inputdate"/>
 ## InputDate
 
 > Input de varios tipos de tiempo. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
@@ -552,7 +635,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="step" values={["incremento de valor"]} />
 
 
-
+<a name="inputgroup"/>
 ## InputGroup
 
 > Grupo de inputs de tipo radio. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
@@ -594,6 +677,8 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="options" values={["formato que se muestra en el código"]} />
 <Prop name="icon" value={"check circular"} values={["consultar Icons"]} />
 
+
+<a name="inputgroupmultiple"/>
 ## InputGroup multiple
 
 > Grupo de inputs de tipo checkbox. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
@@ -637,6 +722,8 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="options" values={["formato que se muestra en el código"]} />
 <Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
 
+
+<a name="inputselect"/>
 ## InputSelect
 
 > Select. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
@@ -679,6 +766,8 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="icon" value={"check circular"} values={["consultar Icons"]} />
 
 
+
+<a name="inputselectmultiple"/>
 ## InputSelect multiple
 
 > Select múltiple. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
@@ -723,6 +812,105 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
 
 
+
+<a name="submit"/>
+## Submit
+> Botón para enviar datos de un formulario. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form. Consultar Form.
+
+<ClientZone component="Submit" />
+
+### Código fuente
+
+```js
+<Submit formAction={async () => {}}>Submit</Submit>
+```
+
+### Propiedades
+
+<Prop name="labels" values={["array con 2 valores, por ej: ['Enviar datos', 'Procesando datos ...']"]} />
+<Prop name="formAction" values={["acción de servidor a ejectar"]}/>
+<Prop name="color" value="current" values={["current", "white", "black", "slate", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
+<Prop name="size" value="lg" values={["xs", "sm", "md", "lg", "xl", "2xl", "3xl"]} />
+<Prop name="round" value="full" values={["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"]}/>
+
+
+
+<a name="form"/>
+## Form
+<Alert small type="error">
+  Este componente debe importarse dentro de una página o componente con 'use client'
+</Alert>
+> Formulario de recogida de datos.
+
+<ClientZone component="Form" />
+
+### Código de ejemplo
+
+```js
+<Form
+  action={async () => {
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      toast.info("Acción desactivada.")
+  }}
+  data={{ nombre: "Ana", empresa: "Junta Andalucía" }}
+  className="border border-slate-100 shadow-lg rounded-md p-8 md:w-3/4 mx-auto"
+  fields={[
+          {
+              name: "image",
+              component: "InputImage",
+              className: "self-end"
+          },
+          {
+              name: "nombre",
+              label: "Introduzca nombre:",
+          },
+          {
+              name: "empresa",
+              label: "Introduzca empresa:",
+          },
+          {
+              name: "perfil",
+              label: "Perfil laboral:",
+              component: "InputGroup",
+              options: [
+                  // [label, name, checked]
+                  ["Conserje", "conserje", false],
+                  ["Administrativo", "administrativo", true],
+                  ["Profesor", "profesor", true],
+                  ["Alumno", "alumno", false],
+              ]
+          },
+          {
+              name: "hobbies",
+              label: "Hobbies:",
+              component: "InputGroup",
+              multiple: true,
+              options: [
+                  // [label, name, checked]
+                  ["Lectura", "leer", false],
+                  ["Cine", "cine", true],
+                  ["Música", "musica", true],
+                  ["Playa", "playa", false]
+              ]
+          },
+          {
+              labels: ["Guardar datos", "Guardando datos ..."],
+              component: "Submit",
+              // color: "green",
+              // round: "none"
+          }
+          ]}
+  />
+```
+
+### Propiedades
+
+<Prop name="data" values={["objeto con datos de relleno del formulario"]} />
+<Prop name="action" values={["acción a ejecutar en el servidor"]} />
+<Prop name="fields" values={["campos del formulario"]} />
+
+
+<a name="draganddrop"/>
 ## DragAndDrop
 
 > Componente con varias columnas donde arrastrar y soltar notas. Proporciona un tablero similar a Kanban.
@@ -762,5 +950,9 @@ const initColumns = {
 ### Propiedades
 
 <Prop name="cols" value="el mostrado en pantalla" values={["un objeto similar al mostrado anteriormente, acepta distinto número de columnas"]} />
+
+
+
+
 
 
