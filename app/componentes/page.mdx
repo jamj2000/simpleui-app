@@ -1,4 +1,4 @@
-import { ClientZone, Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate,   InputGroup, InputSelect, DragAndDrop, Button, Form, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon, } from "@/components/simpleui";
+import { ClientZone, Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate,  InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon, } from "@/components/simpleui";
 
 import Link from 'next/link'
 import Prop from '@/components/Prop'
@@ -37,14 +37,16 @@ import { getEmpleados } from "@/lib/data";
     <Link href="/componentes#skeleton">Skeleton</Link>    
     <Link href="/componentes#spinner">Spinner</Link>    
     <Link href="/componentes#iconos">Icons</Link>  
-    <Link href="/componentes#inputtext">Inputtext</Link>  
-    <Link href="/componentes#inputnumber">Inputnumber</Link>  
-    <Link href="/componentes#inputrange">Inputrange</Link>              
-    <Link href="/componentes#inputdate">Inputdate</Link>  
-    <Link href="/componentes#inputgroup">Inputgroup</Link>  
-    <Link href="/componentes#inputgroupmultiple">Inputgroupmultiple</Link>  
-    <Link href="/componentes#inputselect">Inputselect</Link>  
-    <Link href="/componentes#inputselectmultiple">Inputselectmultiple</Link>  
+    <Link href="/componentes#inputtext">InputText</Link>  
+    <Link href="/componentes#inputnumber">InputNumber</Link>  
+    <Link href="/componentes#inputrange">InputRange</Link>              
+    <Link href="/componentes#inputdate">InputDate</Link>  
+    <Link href="/componentes#inputcheck">InputCheck</Link>  
+    <Link href="/componentes#inputcheckmultiple">InputCheck multiple</Link>  
+    <Link href="/componentes#inputgroup">InputGroup</Link>  
+    <Link href="/componentes#inputgroupmultiple">InputGroup multiple</Link>  
+    <Link href="/componentes#inputselect">InputSelect</Link>  
+    <Link href="/componentes#inputselectmultiple">InputSelect multiple</Link>  
     <Link href="/componentes#submit">Submit</Link>  
     <Link href="/componentes#form">Form</Link>  
     <Link href="/componentes#draganddrop">DragAndDrop</Link>  
@@ -635,6 +637,75 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="step" values={["incremento de valor"]} />
 
 
+<a name="inputcheck"/>
+## InputCheck
+
+> Input de tipo radio. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente InputGroup.
+
+<InputCheck
+  label="Amateur"
+  name="nivel"
+  value="amateur"
+  checked={false}
+  icon={<CrossIcon />}
+/>
+
+### Código fuente
+
+```js
+<InputCheck
+  label="Amateur"
+  name="nivel"
+  value="amateur"
+  checked={false}
+  icon={<CrossIcon />}
+/>
+```
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="value" values={["valor por defecto"]} />
+<Prop name="icon" value={"check circular"} values={["consultar Icons"]} />
+
+
+<a name="inputcheckmultiple"/>
+## InputCheck multiple
+
+> Input de tipo checkbox. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente InputGroup.
+
+<InputCheck
+  multiple
+  label="Lectura"
+  name="habilidades"
+  value="leer"
+  checked={true}
+  icon={<HeartIcon />}
+/>
+
+### Código fuente
+
+```js
+<InputCheck
+  multiple
+  label="Lectura"
+  name="habilidades"
+  value="leer"
+  checked={true}
+  icon={<HeartIcon />}
+/>
+```
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="value" values={["valor por defecto"]} />
+<Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
+<Prop name="multiple" />
+
+
 <a name="inputgroup"/>
 ## InputGroup
 
@@ -721,6 +792,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="name" values={["nombre del input"]} />
 <Prop name="options" values={["formato que se muestra en el código"]} />
 <Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
+<Prop name="multiple" />
 
 
 <a name="inputselect"/>
@@ -810,7 +882,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="name" values={["nombre del input"]} />
 <Prop name="options" values={["formato que se muestra en el código"]} />
 <Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
-
+<Prop name="multiple" />
 
 
 <a name="submit"/>
