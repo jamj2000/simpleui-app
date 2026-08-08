@@ -1,41 +1,63 @@
-// MainMenu.jsx
-// 'use client'
+'use client';
 
-// import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from 'react';
+
 
 
 const colorBase = "bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700"
-const menuClasses = `${colorBase} z-20 not-lg:mt-2 not-lg:py-5 not-lg:items-center px-8 py-1 peer-not-checked:hidden lg:peer-not-checked:flex flex flex-col gap-2 lg:flex-row absolute lg:relative right-0 top-full lg:top-0 w-fit rounded-lg lg:border-none lg:shadow-none shadow-lg`
+const menuClasses = `${colorBase} z-20 not-md:mt-2 not-md:py-5 not-md:items-center px-8 py-1 flex flex-col gap-2 md:flex-row absolute md:relative right-0 top-full md:top-0 w-fit rounded-lg md:border-none md:shadow-none shadow-lg`
 
 
 
-export const MainMenu = ({ children }) => (
-    <div className="relative flex flex-col items-end ">
-        <MenuButton className="inline" />
 
-        <div className={menuClasses}>
-            {children}
-        </div>
-    </div>
-)
+export function MainMenu({ children }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const menuRef = useRef(null);
 
+    useEffect(() => {
+        if (!isOpen) return;
 
-const MenuButton = () => {
+        const handleClickOutside = (event) => {
+            if (
+                menuRef.current &&
+                !menuRef.current.contains(event.target)
+            ) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]);
+
     return (
-        <>
-            <input type="checkbox" id="openMenu" className='hidden peer' defaultChecked={true} />
+        <div ref={menuRef} className="relative">
+            <button
+                type="button"
+                onClick={() => setIsOpen((open) => !open)}
+                className={`${colorBase} ml-auto block p-2 text-2xl md:hidden rounded-full hover:outline hover:outline-slate-600`}
+                aria-expanded={isOpen}
+                aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+            >
+                {isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            </button>
 
-            <label htmlFor="openMenu" className={`${colorBase} hidden peer-checked:inline-flex lg:peer-checked:hidden p-2 rounded-full hover:outline hover:outline-slate-600`} >
-                <CloseIcon />
-            </label>
-
-            <label htmlFor="openMenu" className={`${colorBase} hidden peer-not-checked:inline-flex lg:peer-not-checked:hidden p-2 rounded-full hover:outline hover:outline-slate-600`}>
-                <HamburgerIcon />
-            </label>
-        </>
-    )
+            {/* Menú */}
+            <div
+                className={`${isOpen ? 'flex' : 'hidden'}
+          ${menuClasses}
+flex-col 
+md:flex md:flex-row md:items-center md:justify-end
+    `}
+            >
+                {children}
+            </div>
+        </div>
+    );
 }
-
 
 const HamburgerIcon = () => (
     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

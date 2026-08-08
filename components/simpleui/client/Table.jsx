@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 
 
@@ -13,7 +12,7 @@ export function Table({
     columns = [],
     sort = "nombre",
     direction = "asc",
-    width = 320,
+    width = 1200,
     actions,
     children,
 
@@ -63,11 +62,11 @@ export function Table({
     return (
         <div className="container mx-auto my-4 overflow-hidden overflow-x-auto">
 
-            <div style={{ width: width * 4 }} className="mx-auto" >
+            <div style={{ width: width }} className="mx-auto" >
                 {children}
             </div>
 
-            <table style={{ width: width * 4 }} className="mx-auto border border-slate-300">
+            <table style={{ width: width }} className="mx-auto border border-slate-300">
                 <thead>
                     <tr className="text-left h-12 text-slate-200 bg-slate-700 dark:text-slate-700 dark:bg-slate-200 ">
                         <th></th>

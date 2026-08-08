@@ -1,4 +1,4 @@
-import { ClientZone, Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate,  InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon, } from "@/components/simpleui";
+import { ClientZone, Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon, } from "@/components/simpleui";
 
 import Link from 'next/link'
 import Prop from '@/components/Prop'
@@ -42,6 +42,7 @@ import { getEmpleados } from "@/lib/data";
     <Link href="/componentes#inputnumber">InputNumber</Link>  
     <Link href="/componentes#inputrange">InputRange</Link>              
     <Link href="/componentes#inputdate">InputDate</Link>  
+    <Link href="/componentes#inputimage">InputImage</Link>  
     <Link href="/componentes#inputcheck">InputCheck</Link>  
     <Link href="/componentes#inputcheckmultiple">InputCheck multiple</Link>  
     <Link href="/componentes#inputgroup">InputGroup</Link>  
@@ -50,6 +51,7 @@ import { getEmpleados } from "@/lib/data";
     <Link href="/componentes#inputselectmultiple">InputSelect multiple</Link>  
     <Link href="/componentes#submit">Submit</Link>  
     <Link href="/componentes#form">Form</Link>  
+    <Link href="/componentes#table">Table</Link>  
     <Link href="/componentes#draganddrop">DragAndDrop</Link>  
     <Link href="/componentes#drawer">Drawer</Link>  
   </div>
@@ -402,7 +404,7 @@ import { getEmpleados } from "@/lib/data";
 <a name="skeleton"/>
 ## Skeleton
 
-> Estructura de ejemplo para su uso como fallback del Suspense de React. 
+> Estructura de ejemplo para su uso como fallback de Suspense. 
 
 <Skeleton />
 
@@ -420,7 +422,7 @@ Ninguna. Deberás hacer un copia del componente y editar a tu gusto.
 <a name="spinner"/>
 ## Spinner
 
-> Icono animado para su uso como fallback del Suspense de React. 
+> Icono animado para su uso como fallback de Suspense. 
 
 <div className="flex items-center gap-2">
   <Spinner type={0} size={12} color="text-orange-500 dark:text-orange-600" />
@@ -640,6 +642,44 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="min" values={["valor mínimo"]} />
 <Prop name="max" values={["valor máximo"]} />
 <Prop name="step" values={["incremento de valor"]} />
+
+
+
+<a name="inputimage" />
+## InputImage
+
+> Input de tipo file para imágenes. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form.
+
+
+<InputImage
+  label="Foto de empleado"
+  name="foto"
+  src="https://randomuser.me/api/portraits/men/85.jpg"
+  width={300}
+  height={300}
+/>
+
+
+### Código de ejemplo
+
+```js
+<InputImage
+  label="Foto de empleado"
+  name="foto"
+  src="https://randomuser.me/api/portraits/men/85.jpg"
+  width={300}
+  height={300}
+/>
+```
+
+### Propiedades
+
+<Prop name="label" value="Imagen" values={["cualquier texto a mostrar"]} />
+<Prop name="name" value="image" values={["nombre del input"]} />
+<Prop name="src" values={["url de la imagen"]} />
+<Prop name="width" value="320" values={["ancho en píxeles"]} />
+<Prop name="height" value="200" values={["alto en píxeles"]} />
+
 
 
 <a name="inputcheck"/>
@@ -988,6 +1028,86 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="data" values={["objeto con datos de relleno del formulario"]} />
 <Prop name="action" values={["acción a ejecutar en el servidor"]} />
 <Prop name="fields" values={["campos del formulario"]} />
+
+
+
+<a name="table"/>
+## Table
+
+<Table
+    data={[
+      {
+        id: 255,
+        nombre: 'Adán Guerrero Rentería',
+        empresa: 'Gil Zambrano y Baca Irizarry',
+        cargo: 'Administrador de Métricas Adelante',
+      },
+      {
+        id: 306,
+        nombre: 'Adriana Reyes Díaz',
+        empresa: 'Maya Montañez y Valentín Villarreal',
+        cargo: 'Productor de Grupo Gerente',
+      },
+      {
+        id: 101,
+        nombre: 'Agustín Aguilera Bernal',
+        empresa: 'Véliz Mendoza S.A.',
+        cargo: 'Oficial de Contabilidad Dinánmico',
+      }
+    ]}
+    columns={[
+        { name: "nombre", label: "Nombre" },
+        { name: "empresa", label: "Empresa" },
+        { name: "cargo", label: "Cargo" },
+    ]}
+    sort="cargo"
+    direction="asc"
+    width={1000}
+>
+  <div className="text-xl font-bold">Lista de empleados</div>
+</Table>
+
+
+### Código de ejemplo
+
+```js
+<Table
+    data={[
+      {
+        nombre: 'Adán Guerrero Rentería',
+        empresa: 'Gil Zambrano y Baca Irizarry',
+        cargo: 'Administrador de Métricas Adelante',
+      },
+      {
+        nombre: 'Adriana Reyes Díaz',
+        empresa: 'Maya Montañez y Valentín Villarreal',
+        cargo: 'Productor de Grupo Gerente',
+      },
+      {
+        nombre: 'Agustín Aguilera Bernal',
+        empresa: 'Véliz Mendoza S.A.',
+        cargo: 'Oficial de Contabilidad Dinánmico',
+      }
+    ]}
+    columns={[
+        { name: "nombre", label: "Nombre" },
+        { name: "empresa", label: "Empresa" },
+        { name: "cargo", label: "Cargo" },
+    ]}
+    sort="empresa"
+    direction="desc"
+    width={1000}
+/>
+```
+
+### Propiedades
+
+<Prop name="data" values={["una lista similar a la mostrado anteriormente"]} />
+<Prop name="columns" values={["una lista similar a la mostrada anteriormente"]} />
+<Prop name="sort" value="nombre" values={["columna de ordenación"]} />
+<Prop name="direction" value="asc" values={["asc", "desc"]} />
+<Prop name="width" value="1200" values={["ancho de la tabla medida en píxeles"]} />
+<Prop name="actions" values={["componentes para acciones de modificar, eliminar, ..."]} />
 
 
 <a name="draganddrop"/>
