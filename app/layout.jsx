@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import { Footer, HomeIcon, MainMenu, MenuLink } from "@/components/simpleui";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
@@ -16,7 +16,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = { title: "Simple UI App" };
+export const metadata = {
+  title: "Simple UI",
+  description: "Biblioteca de componentes para Next.js y TailwindCSS",
+  manifest: "/manifest.json"
+
+};
 
 export default function RootLayout({ children }) {
   return (

@@ -162,7 +162,10 @@ import { getEmpleados } from "@/lib/data";
 
 > Botón para ser utilizado en el lado cliente. 
 
-<ClientZone component="Button" />
+
+<Button onClick={() => alert("Mensaje de alerta")}>
+  Botón
+</Button>
 
 ### Código de ejemplo
 
@@ -496,7 +499,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <div className="flex items-center gap-2">
   <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
-  <span className="text-5xl text-slate-200 animate-spin">#</span>
+  <span className="text-5xl text-slate-400 animate-spin">#</span>
   <span className="text-4xl animate-pulse">🔥</span>
   <div className="inline-block text-5xl animate-bounce">🦘</div>
   <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
@@ -507,7 +510,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 ```js
 <div className="flex items-center gap-2">
   <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
-  <span className="text-5xl text-slate-200 animate-spin">#</span>
+  <span className="text-5xl text-slate-400 animate-spin">#</span>
   <span className="text-4xl animate-pulse">🔥</span>
   <div className="inline-block text-5xl animate-bounce">🦘</div>
   <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
@@ -564,7 +567,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <InputText
   label="Introduce tu nombre"
   name="nombre"
-  value={"José"}
+  value="José"
 />
 ```
 
@@ -967,7 +970,9 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 ## Submit
 > Botón para enviar datos de un formulario. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form. Consultar Form.
 
-<ClientZone component="Submit" />
+<Submit formAction={async () => {}}>
+  Submit
+</Submit>
 
 ### Código de ejemplo
 
@@ -995,7 +1000,62 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 </Alert>
 > Formulario de recogida de datos.
 
-<ClientZone component="Form" />
+
+<Form
+  action={async () => {
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      toast.info("Acción desactivada.")
+  }}
+  data={{ nombre: "Ana", empresa: "Junta Andalucía" }}
+  className="border border-slate-100 shadow-lg rounded-md p-8 md:w-3/4 mx-auto"
+  fields={[
+          {
+              name: "image",
+              component: "InputImage",
+              className: "self-end"
+          },
+          {
+              name: "nombre",
+              label: "Introduzca nombre:",
+          },
+          {
+              name: "empresa",
+              label: "Introduzca empresa:",
+          },
+          {
+              name: "perfil",
+              label: "Perfil laboral:",
+              component: "InputGroup",
+              options: [
+                  // [label, value, checked]
+                  ["Conserje", "conserje", false],
+                  ["Administrativo", "administrativo", true],
+                  ["Profesor", "profesor", true],
+                  ["Alumno", "alumno", false],
+              ]
+          },
+          {
+              name: "hobbies",
+              label: "Hobbies:",
+              component: "InputGroup",
+              multiple: true,
+              options: [
+                  // [label, value, checked]
+                  ["Lectura", "leer", false],
+                  ["Cine", "cine", true],
+                  ["Música", "musica", true],
+                  ["Playa", "playa", false]
+              ]
+          },
+          {
+              labels: ["Guardar datos", "Guardando datos ..."],
+              component: "Submit",
+              // color: "green",
+              // round: "none"
+          }
+          ]}
+  />
+
 
 ### Código de ejemplo
 
@@ -1195,8 +1255,8 @@ const initColumns = {
 ## Drawer
 
 <Drawer 
-  trigger={<p className="text-red-400 dark:text-blue-300 cursor-pointer">Abrir Drawer</p>}
-   position="left" 
+  trigger={<p className="text-red-500 dark:text-red-400 cursor-pointer">ABRIR DRAWER</p>}
+   position="left"    
    duration={700}
    area="w-20 md:w-40"
 >
@@ -1205,11 +1265,12 @@ const initColumns = {
   <p>Tres</p>
 </Drawer>
 
+
 ### Código de ejemplo
 
 ```js
 <Drawer 
-  trigger={<p className="text-red-400 dark:text-blue-300 cursor-pointer">Abrir Drawer</p>}
+  trigger={<p className="text-red-500 dark:text-red-400 cursor-pointer">ABRIR DRAWER</p>}
    position="right"    
    duration={700}
    area="w-20 md:w-40"

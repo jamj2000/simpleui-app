@@ -85,7 +85,7 @@ async function LoadData({ searchParams }) {
                 ]}
                 sort={sort}
                 direction={direction}
-                width={300}
+                width={1400}
                 actions={[
                     ViewEmpleado,
                     UpdateEmpleado,
