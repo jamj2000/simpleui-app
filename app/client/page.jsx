@@ -60,7 +60,7 @@ export default function Page() {
                         component: "InputGroup",
                         // disabled: true,
                         options: [
-                            // [label, name, checked]
+                            // [label, value, checked]
                             ["Conserje", "conserje", false],
                             ["Administrativo", "administrativo", true],
                             ["Profesor", "profesor", true],
@@ -74,7 +74,7 @@ export default function Page() {
                         multiple: true,
                         disabled: true,
                         options: [
-                            // [label, name, checked]
+                            // [label, value, checked]
                             ["Lectura", "leer", false],
                             ["Cine", "cine", true],
                             ["Música", "musica", true],

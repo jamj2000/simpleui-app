@@ -56,7 +56,7 @@ export function ClientZone({ component }) {
                         label: "Perfil laboral:",
                         component: "InputGroup",
                         options: [
-                            // [label, name, checked]
+                            // [label, value, checked]
                             ["Conserje", "conserje", false],
                             ["Administrativo", "administrativo", true],
                             ["Profesor", "profesor", true],
@@ -69,7 +69,7 @@ export function ClientZone({ component }) {
                         component: "InputGroup",
                         multiple: true,
                         options: [
-                            // [label, name, checked]
+                            // [label, value, checked]
                             ["Lectura", "leer", false],
                             ["Cine", "cine", true],
                             ["Música", "musica", true],

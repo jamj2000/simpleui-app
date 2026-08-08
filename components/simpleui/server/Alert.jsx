@@ -12,7 +12,7 @@ const styles = {
 export const Alert = ({ small = false, type = "info", children }) => {
     return (
         <div className={`${styles[type]} ${small ? "p-2 text-sm rounded-sm border border-current/40" : "p-4 rounded-xl border-l-4"}`}>
-            <div>{children}</div>
+            {children}
         </div>
     )
 }

@@ -27,7 +27,7 @@ const fields = (data) => [
         label: "Nivel",
         component: "InputSelect",
         options: [
-            // [label, name, checked]
+            // [label, value, checked]
             ["Amateur", "amateur", data?.nivel == 'amateur'],
             ["Junior", "junior", data?.nivel == 'junior'],
             ["Senior", "senior", data?.nivel == 'senior'],
@@ -40,7 +40,7 @@ const fields = (data) => [
         component: "InputSelect",
         multiple: true,
         options: [
-            // [label, name, checked]
+            // [label, value, checked]
             ["Lectura", "leer", data?.habilidades?.includes("leer")],
             ["Cine", "cine", data?.habilidades?.includes("cine")],
             ["Música", "musica", data?.habilidades?.includes("musica")],

@@ -253,7 +253,7 @@ export default async function Page({ searchParams }) {
     //     label="Nivel"
     //     name="nivel2"
     //     options={[
-    //       // [label, name, checked]
+    //       // [label, value, checked]
     //       ["Amateur", "amateur", false],
     //       ["Junior", "junior", false],
     //       ["Senior", "senior", true],
@@ -270,7 +270,7 @@ export default async function Page({ searchParams }) {
     //     label="Habilidades"
     //     name="habilidades2"
     //     options={[
-    //       // [label, name, checked]
+    //       // [label, value, checked]
     //       ["Lectura", "leer", true],
     //       ["Actividad física", "deporte", false],
     //       ["Cine", "cine", true],
@@ -286,7 +286,7 @@ export default async function Page({ searchParams }) {
     //     label="Nivel"
     //     name="nivel"
     //     options={[
-    //       // [label, name, checked]
+    //       // [label, value, checked]
     //       ["Amateur", "amateur", false],
     //       ["Junior", "junior", false],
     //       ["Senior", "senior", true],
@@ -303,7 +303,7 @@ export default async function Page({ searchParams }) {
     //     label="Habilidades"
     //     name="habilidades"
     //     options={[
-    //       // [label, name, checked]
+    //       // [label, value, checked]
     //       ["Lectura", "leer", true],
     //       ["Actividad física", "deporte", false],
     //       ["Cine", "cine", true],
