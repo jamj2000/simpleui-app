@@ -3,5 +3,12 @@
 import Content from './Content.mdx'
 
 export default function Page() {
-    return <Content />
+    return (
+
+
+        <Content />
+
+
+    )
 }
+

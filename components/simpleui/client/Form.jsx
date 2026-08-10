@@ -52,8 +52,8 @@ const fields = [
         component: "InputText"
     },
     {
-        name: "habilidades",
-        label: "Habilidades",
+        name: "aficiones",
+        label: "Aficiones",
         component: "InputGroup",
         radio: false,
         options: [

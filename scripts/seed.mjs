@@ -14,7 +14,7 @@ export function crearEmpleadoAleatorio() {
         empresa: faker.company.name(),
         cargo: faker.person.jobTitle(),
         nivel: faker.helpers.arrayElement(['amateur', 'junior', 'senior', 'veterano']),
-        habilidades: faker.helpers.arrayElements(['leer', 'deporte', 'cine', 'playa'], { min: 1, max: 4 })
+        aficiones: faker.helpers.arrayElements(['leer', 'deporte', 'cine', 'playa'], { min: 1, max: 4 })
     }
 }
 
@@ -45,7 +45,7 @@ db.exec(`
         empresa TEXT NOT NULL,
         cargo TEXT NOT NULL,
         nivel TEXT NOT NULL,
-        habilidades TEXT CHECK(json_valid(habilidades) OR habilidades IS NULL)
+        aficiones TEXT CHECK(json_valid(aficiones) OR aficiones IS NULL)
     );
 `);
 
@@ -54,8 +54,8 @@ db.exec(`
 
 // 3. Sentencia preparada
 const insertEmpleado = db.prepare(`
-    INSERT INTO empleados (nombre, nombre_sort, empresa, cargo, nivel, habilidades)
-    VALUES (@nombre, @nombre_sort, @empresa, @cargo, @nivel, @habilidades)
+    INSERT INTO empleados (nombre, nombre_sort, empresa, cargo, nivel, aficiones)
+    VALUES (@nombre, @nombre_sort, @empresa, @cargo, @nivel, @aficiones)
 `);
 
 // 4. Datos de prueba
@@ -67,7 +67,7 @@ for (const empleado of listaEmpleados) {
     insertEmpleado.run({
         ...empleado,
         nombre_sort: getEsKey(empleado.nombre), // Se calcula aquí en JS
-        habilidades: JSON.stringify(empleado.habilidades),
+        aficiones: JSON.stringify(empleado.aficiones),
     });
 }
 

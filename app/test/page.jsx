@@ -32,7 +32,7 @@ async function LoadData({ searchParams }) {
 
 
     const Filtro = () => (
-        <FilterForm action="" className="my-3 flex gap-4 justify-center items-center">
+        <FilterForm action="" className="my-3 flex flex-col md:flex-row gap-4 justify-center items-center">
             <InputHidden name="page" value={page || 1} />
             <InputHidden name="limit" value={limit || 10} />
             <InputSelect
@@ -52,7 +52,7 @@ async function LoadData({ searchParams }) {
                     ["Descendente", "desc", direction == "desc"]
                 ]}
             />
-            <Submit>Consultar</Submit>
+            <Submit className="px-8">Consultar</Submit>
         </FilterForm>
 
     )

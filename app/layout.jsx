@@ -35,15 +35,20 @@ export default function RootLayout({ children }) {
         {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} enableColorScheme>
 
-          <nav className="z-50 px-2 w-full flex gap-2 items-center justify-end py-4 fixed top-0 bg-neutral-500/50  backdrop-blur-sm">
-            <ThemeToggle />
+          <nav className="z-50 px-2 w-full flex gap-2 items-center justify-between py-4 fixed top-0 bg-neutral-500/50  backdrop-blur-sm">
+            <div className="bg-white dark:bg-black rounded-full">
+              <MenuLink href="/" classHover="hover:bg-indigo-400/70" classCheck="bg-indigo-400">
+                <HomeIcon /><span className="hidden md:block">Simple UI</span>
+              </MenuLink>
+            </div>
 
-
-            <MainMenu>
-              <MenuLink href="/"><HomeIcon /></MenuLink>
-              <MenuLink href="/componentes">Componentes</MenuLink>
-              <MenuLink href="/test">Test</MenuLink>
-            </MainMenu>
+            <div className="flex gap-2 items-center">
+              <ThemeToggle />
+              <MainMenu>
+                <MenuLink href="/componentes">Componentes</MenuLink>
+                <MenuLink href="/test">Test</MenuLink>
+              </MainMenu>
+            </div>
 
 
           </nav>

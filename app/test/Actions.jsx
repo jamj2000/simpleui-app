@@ -35,51 +35,51 @@ const fields = (data) => [
         ]
     },
     {
-        name: "habilidades",
-        label: "Habilidades",
+        name: "aficiones",
+        label: "Aficiones",
         component: "InputSelect",
         multiple: true,
         options: [
             // [label, value, checked]
-            ["Lectura", "leer", data?.habilidades?.includes("leer")],
-            ["Cine", "cine", data?.habilidades?.includes("cine")],
-            ["Música", "musica", data?.habilidades?.includes("musica")],
-            ["Playa", "playa", data?.habilidades?.includes("playa")]
+            ["Lectura", "leer", data?.aficiones?.includes("leer")],
+            ["Cine", "cine", data?.aficiones?.includes("cine")],
+            ["Música", "musica", data?.aficiones?.includes("musica")],
+            ["Playa", "playa", data?.aficiones?.includes("playa")]
         ],
     },
 ]
 
 
-const ButtonCreate = () => (
+const CreateButton = () => (
     <Button color="green">
-        <CreateIcon className={"size-4 text-white"} />
+        <CreateIcon className={"size-4 md:size-6"} />
     </Button>
 )
 
 
-const ButtonUpdate = () => (
+const UpdateButton = () => (
     <Button color="amber">
-        <UpdateIcon className={"size-4 text-white"} />
+        <UpdateIcon className={"size-4 md:size-6"} />
     </Button>
 )
 
-const ButtonDelete = () => (
+const DeleteButton = () => (
     <Button color="red">
-        <DeleteIcon className={"size-4 text-white"} />
+        <DeleteIcon className={"size-4 md:size-6"} />
     </Button>
 )
 
 
-const ButtonView = () => (
+const ViewButton = () => (
     <Button color="blue">
-        <ViewIcon className={"size-4 text-white"} />
+        <ViewIcon className={"size-4 md:size-6"} />
     </Button>
 )
 
 
 
 export const CreateEmpleado = () => (
-    <Modal trigger={<ButtonCreate />} className="my-1">
+    <Modal trigger={<CreateButton />} className="my-1">
         <h2 className="text-xl font-bold mb-4 text-green-400">Nuevo Empleado</h2>
 
         <Form
@@ -92,7 +92,7 @@ export const CreateEmpleado = () => (
 
 
 export const UpdateEmpleado = ({ data = {} }) => (
-    <Modal trigger={<ButtonUpdate />}>
+    <Modal trigger={<UpdateButton />}>
         <h2 className="text-xl font-bold mb-4 text-amber-400">Modificar Empleado</h2>
 
         <Form
@@ -108,7 +108,7 @@ export const UpdateEmpleado = ({ data = {} }) => (
 
 
 export const DeleteEmpleado = ({ data = {} }) => (
-    <Modal trigger={<ButtonDelete />}>
+    <Modal trigger={<DeleteButton />}>
         <h2 className="text-xl font-bold mb-4 text-red-400">Eliminar Empleado</h2>
 
         <Form
@@ -122,7 +122,7 @@ export const DeleteEmpleado = ({ data = {} }) => (
 
 
 export const ViewEmpleado = ({ data = {} }) => (
-    <Modal trigger={<ButtonView />}>
+    <Modal trigger={<ViewButton />}>
         <h2 className="text-xl font-bold mb-4 text-blue-400">Ver Empleado</h2>
 
         <Form

@@ -90,16 +90,16 @@ export const FormRawEmpleado = ({
 
             <Space height={40} />
 
-            <InputSelect name="habilidades" label="Habilidades" disabled={disabled}
+            <InputSelect name="aficiones" label="Aficiones" disabled={disabled}
                 multiple={true}
                 options={[
-                    ["Lectura", "leer", data?.habilidades?.includes("leer")],
-                    ["Cine", "cine", data?.habilidades?.includes("cine")],
-                    ["Música", "música", data?.habilidades?.includes("música")],
-                    ["Deporte", "deporte", data?.habilidades?.includes("deporte")]
+                    ["Lectura", "leer", data?.aficiones?.includes("leer")],
+                    ["Cine", "cine", data?.aficiones?.includes("cine")],
+                    ["Música", "música", data?.aficiones?.includes("música")],
+                    ["Deporte", "deporte", data?.aficiones?.includes("deporte")]
                 ]}
             />
-            {state?.errors?.habilidades && <Badge type="error">{state.errors.habilidades}</Badge>}
+            {state?.errors?.aficiones && <Badge type="error">{state.errors.aficiones}</Badge>}
 
 
             <Submit disabled={isPending}>

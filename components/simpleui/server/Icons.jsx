@@ -142,12 +142,12 @@ export const CrossIcon = ({ color = "text-white", colorChecked = "green" }) => (
 
 // ICONO HOME
 
-export const HomeIcon = ({ className }) => (
+export const HomeIcon = ({ className = "" }) => (
     <svg
         width={24}
         height={24}
         viewBox="0 0 24 24"
-        className={className}
+        className={`inline-block shrink-0 ${className}`}
         fill="none"
     >
         <path

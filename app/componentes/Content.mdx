@@ -1,4 +1,4 @@
-import { ClientZone, Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
+import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
 
 import Link from 'next/link'
 import Prop from '@/components/Prop'
@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import { CreateEmpleado, DeleteEmpleado, UpdateEmpleado, ViewEmpleado } from "./Actions";
 import { LoadData } from "./LoadData"
 import { getEmpleados } from "@/lib/data";
-
+import { toast } from "sonner"
 
 
 
@@ -34,8 +34,10 @@ import { getEmpleados } from "@/lib/data";
     <Link href="/componentes#popover">Popover</Link>  
     <Link href="/componentes#dropdown">Dropdown</Link>  
     <Link href="/componentes#dropdown2">Dropdown2</Link>    
-    <Link href="/componentes#mainmenu">MainMenu</Link>   
+    <Link href="/componentes#drawer">Drawer</Link>  
     <Link href="/componentes#modal">Modal</Link>    
+    <Link href="/componentes#menulink">MenuLink</Link>  
+    <Link href="/componentes#mainmenu">MainMenu</Link>  
     <Link href="/componentes#skeleton">Skeleton</Link>    
     <Link href="/componentes#spinner">Spinner</Link>    
     <Link href="/componentes#iconos">Icons</Link>  
@@ -54,7 +56,7 @@ import { getEmpleados } from "@/lib/data";
     <Link href="/componentes#form">Form</Link>  
     <Link href="/componentes#table">Table</Link>  
     <Link href="/componentes#draganddrop">DragAndDrop</Link>  
-    <Link href="/componentes#drawer">Drawer</Link>  
+
   </div>
 </Drawer>
 
@@ -163,22 +165,37 @@ import { getEmpleados } from "@/lib/data";
 > Botón para ser utilizado en el lado cliente. 
 
 
-<Button onClick={() => alert("Mensaje de alerta")}>
-  Botón
+<Button 
+  className="px-12"
+  onClick={() => alert("Mensaje del navegador")}
+>
+  Púlsame
+</Button>
+
+<Button 
+  color="blue"
+  className="px-12"
+  onClick={() => alert("Mensaje del navegador")}
+>
+  Púlsame
 </Button>
 
 ### Código de ejemplo
 
 ```js
-<Button onClick={() => alert("Mensaje de alerta")}>
-  Botón
+<Button 
+  color="blue"
+  className="px-12"
+  onClick={() => alert("Mensaje del navegador")}
+>
+  Púlsame
 </Button>
 ```
 
 ### Propiedades
 
 <Prop name="onClick" values={["función a ejectar"]}/>
-<Prop name="color" value="current" values={["current", "white", "black", "slate", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
+<Prop name="color" value="current" values={["current", "white", "black", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
 <Prop name="size" value="lg" values={["xs", "sm", "md", "lg", "xl", "2xl", "3xl"]} />
 <Prop name="round" value="full" values={["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"]}/>
 
@@ -357,35 +374,55 @@ import { getEmpleados } from "@/lib/data";
 <Prop name="title" values={["cualquier texto o componente"]} />
 
 
-<a name="mainmenu"/>
-## MainMenu
+<a name="drawer"/>
+## Drawer
 
-> Cuadro desplegable destinado a menú principal. 
-
-
-<MainMenu position="left">
-  <MenuLink href="/"><HomeIcon /></MenuLink>
-  <MenuLink href="/componentes">Componentes</MenuLink>
-  <MenuLink href="/test">Test</MenuLink>
-</MainMenu>
+<Drawer 
+  trigger={
+    <div className="inline-block bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+      Abrir Drawer
+    </div>
+  }
+  position="left"    
+  duration={700}
+  area="w-20 md:w-40"
+>
+  <p>Uno</p>
+  <p>Dos</p>
+  <p>Tres</p>
+</Drawer>
 
 
 ### Código de ejemplo
 
 ```js
-<MainMenu position="left">
-  <MenuLink href="/"><HomeIcon /></MenuLink>
-  <MenuLink href="/componentes">Componentes</MenuLink>
-  <MenuLink href="/test">Test</MenuLink>
-</MainMenu>
+<Drawer 
+  trigger={
+    <div className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
+      Abrir Drawer
+    </div>
+  }
+   position="right"    
+   duration={700}
+   area="w-20 md:w-40"
+>
+  <p>Uno</p>
+  <p>Dos</p>
+  <p>Tres</p>
+</Drawer>
 ```
 
 ### Propiedades
 
-<Prop name="position" value="right" values={["left", "right"]} />
+<Prop name="position" value="left" values={["left", "right", "top", "down"]} />
+<Prop name="duraction" value="300" values={["cualquier valor mayor que cero en ms"]} />
+<Prop name="area" value="w-40 md:w-80" values={["clases de tailwindcss"]} />
 
 <Alert>
-  La propiedad <strong>position</strong> determina la posición del menú desplegable respecto al icono en dispositivos móviles.
+  Para mayor flexibilidad se usan clases tailwindcss para definir el <strong>área</strong>.   
+  De esta manera podemos definir el ancho (<strong>w-</strong>) y el alto (<strong>h-</strong>) para diferentes tamaños de pantalla (<strong>sm:</strong>, <strong>md:</strong>, ...)
+  - Por defecto, para left y right el valor es <strong>w-40 md:w-80</strong>.
+  - Por defecto, para top y bottom el valor es <strong>h-1/3 sm:h-80</strong>. 
 </Alert>
 
 
@@ -435,6 +472,76 @@ import { getEmpleados } from "@/lib/data";
 ### Propiedades
 
 <Prop name="trigger" values={["cualquier texto o componente"]} />
+
+
+<a name="menulink"/>
+## MenuLink
+
+> Enlace que muestra la ruta activa. 
+
+
+
+<MenuLink href="/"><HomeIcon />Simple UI</MenuLink>
+<MenuLink href="/componentes">Componentes</MenuLink>
+<MenuLink href="/test">Test</MenuLink>
+
+
+
+### Código de ejemplo
+
+```js
+<MenuLink href="/"><HomeIcon /></MenuLink>
+<MenuLink href="/componentes">Componentes</MenuLink>
+<MenuLink href="/test">Test</MenuLink>
+```
+
+### Propiedades
+
+<Prop name="href"  values={["url del enlace"]} />
+<Prop name="className" value="px-4 py-2 rounded-full" values={["clases tailwindcss deseadas"]} /> 
+<Prop name="classCheck" value="bg-slate-700 text-white" values={["clases tailwindcss deseadas enlace marcado"]} />
+<Prop name="classHover" value="hover:bg-slate-600 hover:text-white" values={["clases tailwindcss deseadas para hover"]} />
+<Prop name="classActive" value="active:bg-amber-700" values={["clases tailwindcss deseadas para active"]} />
+
+
+
+
+<Alert>
+  La propiedad <strong>position</strong> determina la posición del menú desplegable respecto al icono en dispositivos móviles.
+</Alert>
+
+
+
+<a name="mainmenu"/>
+## MainMenu
+
+> Menú desplegable en pantalla de móvil. 
+
+
+<MainMenu position="left">
+  <MenuLink href="/"><HomeIcon /></MenuLink>
+  <MenuLink href="/componentes">Componentes</MenuLink>
+  <MenuLink href="/test">Test</MenuLink>
+</MainMenu>
+
+
+### Código de ejemplo
+
+```js
+<MainMenu position="left">
+  <MenuLink href="/"><HomeIcon /></MenuLink>
+  <MenuLink href="/componentes">Componentes</MenuLink>
+  <MenuLink href="/test">Test</MenuLink>
+</MainMenu>
+```
+
+### Propiedades
+
+<Prop name="position" value="right" values={["left", "right"]} />
+
+<Alert>
+  La propiedad <strong>position</strong> determina la posición del menú desplegable respecto al icono en dispositivos móviles.
+</Alert>
 
 
 <a name="skeleton"/>
@@ -501,7 +608,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
   <span className="text-5xl text-slate-400 animate-spin">#</span>
   <span className="text-4xl animate-pulse">🔥</span>
-  <div className="inline-block text-5xl animate-bounce">🦘</div>
+  <span className="inline-block text-5xl animate-bounce">🦘</span>
   <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
 </div>
 
@@ -512,7 +619,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
   <span className="text-5xl text-slate-400 animate-spin">#</span>
   <span className="text-4xl animate-pulse">🔥</span>
-  <div className="inline-block text-5xl animate-bounce">🦘</div>
+  <span className="inline-block text-5xl animate-bounce">🦘</span>
   <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
 </div>
 ```
@@ -794,7 +901,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <InputGroup
   label="Categoria"
-  name="categoria"
+  name="categoria"  
   options={[
     // [label, value, checked]
     ["Amateur", "amateur", false],
@@ -970,15 +1077,23 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 ## Submit
 > Botón para enviar datos de un formulario. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form. Consultar Form.
 
-<Submit formAction={async () => {}}>
-  Submit
+<Submit
+  color="red"
+  className="px-12"
+  formAction={async () => {}}
+>
+  Eliminar
 </Submit>
 
 ### Código de ejemplo
 
 ```js
-<Submit formAction={async () => {}}>
-  Submit
+<Submit
+  color="red"
+  className="px-12"
+  formAction={async () => {}}
+>
+  Eliminar
 </Submit>
 ```
 
@@ -986,7 +1101,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <Prop name="labels" values={["array con 2 valores, por ej: ['Enviar datos', 'Procesando datos ...']"]} />
 <Prop name="formAction" values={["acción de servidor a ejectar"]}/>
-<Prop name="color" value="current" values={["current", "white", "black", "slate", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
+<Prop name="color" value="current" values={["current", "white", "black", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
 <Prop name="size" value="lg" values={["xs", "sm", "md", "lg", "xl", "2xl", "3xl"]} />
 <Prop name="round" value="full" values={["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"]}/>
 
@@ -1201,7 +1316,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 ### Propiedades
 
-<Prop name="data" values={["una lista similar a la mostrado anteriormente"]} />
+<Prop name="data" values={["una lista similar a la mostrada anteriormente"]} />
 <Prop name="columns" values={["una lista similar a la mostrada anteriormente"]} />
 <Prop name="sort" values={["columna de ordenación"]} />
 <Prop name="direction" value="asc" values={["asc", "desc"]} />
@@ -1248,48 +1363,5 @@ const initColumns = {
 
 ### Propiedades
 
-<Prop name="cols" value="el mostrado en pantalla" values={["un objeto similar al mostrado anteriormente, acepta distinto número de columnas"]} />
+<Prop name="columns" value="el mostrado en pantalla" values={["un objeto similar al mostrado anteriormente, acepta distinto número de columnas"]} />
 
-
-<a name="drawer"/>
-## Drawer
-
-<Drawer 
-  trigger={<p className="text-red-500 dark:text-red-400 cursor-pointer">ABRIR DRAWER</p>}
-   position="left"    
-   duration={700}
-   area="w-20 md:w-40"
->
-  <p>Uno</p>
-  <p>Dos</p>
-  <p>Tres</p>
-</Drawer>
-
-
-### Código de ejemplo
-
-```js
-<Drawer 
-  trigger={<p className="text-red-500 dark:text-red-400 cursor-pointer">ABRIR DRAWER</p>}
-   position="right"    
-   duration={700}
-   area="w-20 md:w-40"
->
-  <p>Uno</p>
-  <p>Dos</p>
-  <p>Tres</p>
-</Drawer>
-```
-
-### Propiedades
-
-<Prop name="position" value="left" values={["left", "right", "top", "down"]} />
-<Prop name="duraction" value="300" values={["cualquier valor mayor que cero en ms"]} />
-<Prop name="area" value="w-40 md:w-80" values={["clases de tailwindcss"]} />
-
-<Alert>
-  Para mayor flexibilidad se usan clases tailwindcss para definir el <strong>área</strong>.   
-  De esta manera podemos definir el ancho (<strong>w-</strong>) y el alto (<strong>h-</strong>) para diferentes tamaños de pantalla (<strong>sm:</strong>, <strong>md:</strong>, ...)
-  - Por defecto, para left y right el valor es <strong>w-40 md:w-80</strong>.
-  - Por defecto, para top y bottom el valor es <strong>h-1/3 sm:h-80</strong>. 
-</Alert>

@@ -1,6 +1,6 @@
 import { List, Pagination, Table } from "@/components/simpleui";
 import { getEmpleados } from "@/lib/data";
-import { CreateEmpleado, DeleteEmpleado, UpdateEmpleado, ViewEmpleado } from "../Actions";
+import { CreateEmpleado, DeleteEmpleado, UpdateEmpleado, ViewEmpleado } from "./Actions";
 
 export async function LoadData({ searchParams }) {
 

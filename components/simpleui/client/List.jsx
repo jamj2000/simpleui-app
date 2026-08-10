@@ -86,7 +86,7 @@ export function List({
 
 
                             <div className="flex items-center gap-2">
-                                <p className="text-stone-500">{item.habilidades.join(', ')}</p>
+                                <p className="text-stone-500">{item.aficiones.join(', ')}</p>
                             </div>
 
                         </div>
