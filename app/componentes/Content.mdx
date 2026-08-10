@@ -1316,12 +1316,19 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 ### Propiedades
 
+<Prop name="prefix" values={["url de prefijo para los elementos"]} />
 <Prop name="data" values={["una lista similar a la mostrada anteriormente"]} />
 <Prop name="columns" values={["una lista similar a la mostrada anteriormente"]} />
 <Prop name="sort" values={["columna de ordenación"]} />
 <Prop name="direction" value="asc" values={["asc", "desc"]} />
 <Prop name="width" value="1200" values={["ancho de la tabla medida en píxeles"]} />
 <Prop name="actions" values={["componentes para acciones de modificar, eliminar, ..."]} />
+
+<Alert>
+  La propiedad <strong>prefix</strong> es opcional.   
+  En caso de existir permite que al hacer click en una fila se muestre la página asociada con información más detallada. Es responsabilidad del programador el desarrollo de esta página.  
+  Por ejemplo, si la página que contiene información detallada de un empleado es <span>/empleados/[id]</span>, entonces prefix será /empleados (sin barra final).
+</Alert>
 
 
 <a name="draganddrop"/>

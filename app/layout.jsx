@@ -49,8 +49,6 @@ export default function RootLayout({ children }) {
                 <MenuLink href="/test">Test</MenuLink>
               </MainMenu>
             </div>
-
-
           </nav>
 
 
