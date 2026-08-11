@@ -1,4 +1,4 @@
-import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, List, Card, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
+import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Tooltip, Popover, Separator, Skeleton, Space, Spinner, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, List, Card, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
 import { CardEmpleado } from '../test/CardEmpleado'
 
 import Link from 'next/link'
@@ -254,13 +254,15 @@ import { toast } from "sonner"
 <a name="tooltip"/>
 ## Tooltip
 
-> Pequeño cuadro informativo que aparece cuando el usuario pasa el cursor por encima.
+> Pequeño cuadro informativo que aparece cuando el usuario pasa el cursor por encima.  
+
 
 <Tooltip title="Esto es un tooltip">
   <div className="bg-blue-100 dark:bg-blue-500 px-4 py-2 border border-slate-300 dark:border-slate-600">
     Al pasar el ratón por encima de este párrafo se mostrará un pequeño mensaje de ayuda o tooltip. 
   </div>
 </Tooltip>
+
 
 ### Código de ejemplo
 
@@ -800,7 +802,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <InputImage
   label="Foto de empleado"
   name="foto"
-  src="https://randomuser.me/api/portraits/men/85.jpg"
+  value="https://randomuser.me/api/portraits/men/85.jpg"
   width={300}
   height={300}
 />
@@ -812,7 +814,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <InputImage
   label="Foto de empleado"
   name="foto"
-  src="https://randomuser.me/api/portraits/men/85.jpg"
+  value="https://randomuser.me/api/portraits/men/85.jpg"
   width={300}
   height={300}
 />
@@ -822,7 +824,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <Prop name="label" value="Imagen" values={["cualquier texto a mostrar"]} />
 <Prop name="name" value="image" values={["nombre del input"]} />
-<Prop name="src" values={["url de la imagen"]} />
+<Prop name="value" values={["url de la imagen"]} />
 <Prop name="width" value="320" values={["ancho en píxeles"]} />
 <Prop name="height" value="200" values={["alto en píxeles"]} />
 
@@ -1108,6 +1110,9 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="size" value="lg" values={["xs", "sm", "md", "lg", "xl", "2xl", "3xl"]} />
 <Prop name="round" value="full" values={["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"]}/>
 
+<Alert>
+  El componente Submit no tiene sentido fuera de Form. 
+</Alert>
 
 
 <a name="form"/>
@@ -1130,7 +1135,9 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
           {
               name: "image",
               component: "InputImage",
-              className: "self-end"
+              className: "self-end",
+              width: 240,
+              height: 240,
           },
           {
               name: "nombre",
@@ -1168,7 +1175,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
           {
               labels: ["Guardar datos", "Guardando datos ..."],
               component: "Submit",
-              // color: "green",
+              color: "blue",
               // round: "none"
           }
           ]}
@@ -1189,7 +1196,9 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
           {
               name: "image",
               component: "InputImage",
-              className: "self-end"
+              className: "self-end",
+              width: 240,
+              height: 240,
           },
           {
               name: "nombre",
@@ -1227,7 +1236,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
           {
               labels: ["Guardar datos", "Guardando datos ..."],
               component: "Submit",
-              // color: "green",
+              color: "blue",
               // round: "none"
           }
           ]}

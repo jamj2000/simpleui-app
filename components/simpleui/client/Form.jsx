@@ -52,8 +52,8 @@ const fields = [
         component: "InputText"
     },
     {
-        name: "aficiones",
-        label: "Aficiones",
+        name: "habilidades",
+        label: "Habilidades",
         component: "InputGroup",
         radio: false,
         options: [
@@ -120,7 +120,7 @@ export const Form = ({
                         <ComponenteUI
                             label={input.label}
                             name={input.name}
-                            defaultValue={valorDefault}
+                            value={valorDefault}
                             disabled={disabled || input.disabled}
                             {...input} // Pasa cualquier otro campo
                         />

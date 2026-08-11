@@ -1,9 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
-import { Footer, HomeIcon, MainMenu, MenuLink } from "@/components/simpleui";
+import { HomeIcon, MainMenu, MenuLink } from "@/components/simpleui";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import { ThemeToggle } from "@/components/simpleui";
+import { Footer } from "@/components/Footer";
 
 
 const geistSans = Geist({
