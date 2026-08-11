@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import FilterForm from 'next/form'
 import { CreateEmpleado, UpdateEmpleado, DeleteEmpleado, ViewEmpleado } from "./Actions";
 import { InputHidden, InputSelect, List, Pagination, Submit, Table } from "@/components/simpleui";
+import { CardEmpleado } from "./CardEmpleado";
 
 
 
@@ -92,7 +93,7 @@ async function LoadData({ searchParams }) {
                     DeleteEmpleado,
                 ]}
             >
-                <div className="flex justify-between">
+                <div className="flex items-center justify-between">
                     <h2 className="text-2xl text-center inline">Empleados</h2>
                     <CreateEmpleado />
                 </div>
@@ -101,6 +102,7 @@ async function LoadData({ searchParams }) {
 
             <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">List</h2>
             <List
+                card={CardEmpleado}
                 data={empleados.data}
                 columns={[
                     { name: "nombre", label: "Nombre" },
@@ -109,14 +111,14 @@ async function LoadData({ searchParams }) {
                 ]}
                 sort={sort}
                 direction={direction}
-                // width={300}
                 actions={[
                     ViewEmpleado,
                     UpdateEmpleado,
                     DeleteEmpleado,
                 ]}
             >
-                <div className="flex justify-end">
+                <div className="flex items-center justify-between w-full">
+                    <h2 className="text-2xl text-center inline">Empleados</h2>
                     <CreateEmpleado />
                 </div>
             </List >
@@ -126,42 +128,6 @@ async function LoadData({ searchParams }) {
     )
 }
 
-
-async function Lista() {
-    return (
-        <>
-
-            {/* <List data={empleados.data} card={Card} fields={[
-                { name: "nombre", label: "Nombre", className: "text-2xl font-bold" },
-                { name: "empresa", label: "Empresa", className: "text-xl font-semibold" },
-                { name: "cargo", label: "Cargo", className: "text-xl font-semibold" },
-            ]} /> */}
-
-            {/* <List2
-                data={empleados.data}
-                renderCard={(item) =>
-                    <Card
-                        key={item.id}
-                        item={item}
-                        fields={[
-                            { name: "nombre", label: "Nombre", className: "text-2xl font-bold" },
-                            { name: "empresa", label: "Empresa", className: "text-xl font-semibold" },
-                            { name: "cargo", label: "Cargo", className: "text-xl font-semibold" },
-                        ]}
-                    >
-                        <Modal trigger={<ButtonUpdate />} >
-
-                            <h2 className="text-xl font-bold mb-4 text-blue-400">Editar Empleado</h2>
-                            <FormEmpleado data={item} action={updateEmpleado} />
-
-                        </Modal>
-                    </Card>
-                }
-            /> */}
-        </>
-
-    )
-}
 
 
 

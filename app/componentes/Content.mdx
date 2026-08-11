@@ -1,7 +1,8 @@
-import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
+import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Popover, Separator, Skeleton, Space, Spinner, Tooltip, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, List, Card, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
+import { CardEmpleado } from '../test/CardEmpleado'
 
 import Link from 'next/link'
-import Prop from '@/components/Prop'
+import Prop from './Prop'
 import { Suspense } from "react";
 import { CreateEmpleado, DeleteEmpleado, UpdateEmpleado, ViewEmpleado } from "./Actions";
 import { LoadData } from "./LoadData"
@@ -55,6 +56,8 @@ import { toast } from "sonner"
     <Link href="/componentes#submit">Submit</Link>  
     <Link href="/componentes#form">Form</Link>  
     <Link href="/componentes#table">Table</Link>  
+    <Link href="/componentes#list">List</Link>  
+    <Link href="/componentes#card">Card</Link>  
     <Link href="/componentes#draganddrop">DragAndDrop</Link>  
 
   </div>
@@ -1242,7 +1245,10 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <a name="table"/>
 ## Table
 
+> Tabla tradicional organizada en filas y columnas.
+
 <Table
+    width={1000}
     data={[
       {
         id: 255,
@@ -1263,6 +1269,11 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
         cargo: 'Oficial de Contabilidad Dinánmico',
       }
     ]}
+    actions={[
+      ViewEmpleado,
+      UpdateEmpleado,
+      DeleteEmpleado,
+    ]} 
     columns={[
         { name: "nombre", label: "Nombre" },
         { name: "empresa", label: "Empresa" },
@@ -1270,7 +1281,6 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
     ]}
     sort="empresa"
     direction="desc"
-    width={1000}
 >
   <div className="text-xl font-bold">Lista de empleados</div>
 </Table>
@@ -1280,6 +1290,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 ```js
 <Table
+    width={1000}
     data={[
       {
         id: 255,
@@ -1300,6 +1311,11 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
         cargo: 'Oficial de Contabilidad Dinánmico',
       }
     ]}
+    actions={[
+      ViewEmpleado,
+      UpdateEmpleado,
+      DeleteEmpleado,
+    ]} 
     columns={[
         { name: "nombre", label: "Nombre" },
         { name: "empresa", label: "Empresa" },
@@ -1307,7 +1323,6 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
     ]}
     sort="empresa"
     direction="desc"
-    width={1000}
 >
   <div className="text-xl font-bold">Lista de empleados</div>
 </Table>
@@ -1317,18 +1332,233 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 ### Propiedades
 
 <Prop name="prefix" values={["url de prefijo para los elementos"]} />
+<Prop name="width" value="1200" values={["ancho de la tabla medida en píxeles"]} />
 <Prop name="data" values={["una lista similar a la mostrada anteriormente"]} />
+<Prop name="actions" values={["componentes para acciones de modificar, eliminar, ..."]} />
 <Prop name="columns" values={["una lista similar a la mostrada anteriormente"]} />
 <Prop name="sort" values={["columna de ordenación"]} />
 <Prop name="direction" value="asc" values={["asc", "desc"]} />
-<Prop name="width" value="1200" values={["ancho de la tabla medida en píxeles"]} />
-<Prop name="actions" values={["componentes para acciones de modificar, eliminar, ..."]} />
+
 
 <Alert>
   La propiedad <strong>prefix</strong> es opcional.   
   En caso de existir permite que al hacer click en una fila se muestre la página asociada con información más detallada. Es responsabilidad del programador el desarrollo de esta página.  
   Por ejemplo, si la página que contiene información detallada de un empleado es <span>/empleados/[id]</span>, entonces prefix será /empleados (sin barra final).
 </Alert>
+
+
+<a name="list"/>
+## List
+
+> Lista de elementos. Tradicionalmente cada elemento se representa mediante un Card.
+
+
+<List
+    card={CardEmpleado}
+    data={[
+      {
+        id: 255,
+        nombre: 'Adán Guerrero Rentería',
+        empresa: 'Gil Zambrano y Baca Irizarry',
+        cargo: 'Administrador de Métricas Adelante',
+        nivel: 'Junior',
+        aficiones: ['leer', 'cine']
+      },
+      {
+        id: 306,
+        nombre: 'Agustín Aguilera Bernal',
+        empresa: 'Maya Montañez y Valentín Villarreal',
+        cargo: 'Productor de Grupo Gerente',
+        nivel: 'Senior',
+        aficiones: ['música', 'cine']
+      },
+      {
+        id: 101,
+        nombre: 'Adriana Reyes Díaz',
+        empresa: 'Véliz Mendoza S.A.',
+        cargo: 'Oficial de Contabilidad Dinánmico',
+        nivel: 'Junior',
+        aficiones: ['baile', 'música']
+      }
+    ]}
+    actions={[
+      ViewEmpleado,
+      UpdateEmpleado,
+      DeleteEmpleado,
+    ]} 
+    columns={[
+        { name: "nombre", label: "Nombre" },
+        { name: "empresa", label: "Empresa" },
+        { name: "cargo", label: "Cargo" },
+    ]}
+    sort="empresa"
+    direction="desc"
+>
+  <div className="text-xl font-bold">Lista de empleados</div>
+</List>
+
+
+### Código de ejemplo
+
+```js
+<List
+    card={CardEmpleado}
+    data={[
+      {
+        id: 255,
+        nombre: 'Adán Guerrero Rentería',
+        empresa: 'Gil Zambrano y Baca Irizarry',
+        cargo: 'Administrador de Métricas Adelante',
+        nivel: 'Junior',
+        aficiones: ['leer', 'cine']
+      },
+      {
+        id: 306,
+        nombre: 'Agustín Aguilera Bernal',
+        empresa: 'Maya Montañez y Valentín Villarreal',
+        cargo: 'Productor de Grupo Gerente',
+        nivel: 'Senior',
+        aficiones: ['música', 'cine']
+      },
+      {
+        id: 101,
+        nombre: 'Adriana Reyes Díaz',
+        empresa: 'Véliz Mendoza S.A.',
+        cargo: 'Oficial de Contabilidad Dinánmico',
+        nivel: 'Junior',
+        aficiones: ['baile', 'música']
+      }
+    ]}
+    actions={[
+      ViewEmpleado,
+      UpdateEmpleado,
+      DeleteEmpleado,
+    ]} 
+    columns={[
+        { name: "nombre", label: "Nombre" },
+        { name: "empresa", label: "Empresa" },
+        { name: "cargo", label: "Cargo" },
+    ]}
+    sort="empresa"
+    direction="desc"
+>
+  <div className="text-xl font-bold">Lista de empleados</div>
+</List>
+```
+
+### Propiedades
+
+<Prop name="prefix" values={["url de prefijo para los elementos"]} />
+<Prop name="card" value="CardEmpty" values={["card a utilizar, consulta más abajo"]} />
+<Prop name="data" values={["una lista similar a la mostrada anteriormente"]} />
+<Prop name="actions" values={["componentes para acciones de modificar, eliminar, ..."]} />
+<Prop name="columns" values={["una lista similar a la mostrada anteriormente"]} />
+<Prop name="sort" values={["columna de ordenación"]} />
+<Prop name="direction" value="asc" values={["asc", "desc"]} />
+
+
+<Alert>
+  La propiedad <strong>prefix</strong> es opcional.   
+  En caso de existir permite que al hacer click en una fila se muestre la página asociada con información más detallada. Es responsabilidad del programador el desarrollo de esta página.  
+  Por ejemplo, si la página que contiene información detallada de un empleado es <span>/empleados/[id]</span>, entonces prefix será /empleados (sin barra final).
+</Alert>
+
+
+
+<a name="card"/>
+## Card
+
+> Card para mostrar información con formato de un objeto. Haz una copia de Card para adaptarlo al objeto que quieres visualizar.
+
+
+<CardEmpleado 
+  data={{
+        id: 255,
+        nombre: 'Adán Guerrero Rentería',
+        empresa: 'Gil Zambrano y Baca Irizarry',
+        cargo: 'Administrador de Métricas Adelante',
+        nivel: 'Junior',
+        aficiones: ['leer', 'cine']
+  }}  
+  actions ={[
+      ViewEmpleado,
+      UpdateEmpleado,
+      DeleteEmpleado,
+  ]} 
+/>
+
+
+### Código de ejemplo
+
+```js
+'use client'
+
+export const CardEmpleado = ({ data, actions }) => (
+    <div className="p-4 rounded-xl border border-gray-300 dark:border-gray-700 flex flex-col shadow-md shadow-gray-600">
+        <div className="flex-1 text-center md:text-left">
+            <h3 className="text-xl font-bold">{data.nombre}</h3>
+            <p className="text-stone-500 font-bold">{data.cargo}</p>
+            <p className="text-stone-500">{data.empresa}</p>
+        </div>
+
+        <div className="flex-1 text-center md:text-left">
+            <p className="text-md">{data.nivel}</p>
+        </div>
+
+        <div className="flex items-center gap-4">
+
+            <div className="flex items-center gap-2">
+                <p className="text-stone-500">{data.aficiones.join(', ')}</p>
+            </div>
+
+        </div>
+
+        {actions &&
+            <div className="flex gap-1 self-end" onClick={e => e.stopPropagation()}>
+                {actions.map((Action, index) => (
+                    <Action
+                        key={index}
+                        data={data}
+                    />
+                ))}
+            </div>
+        }
+    </div>
+)
+```
+
+```js
+const data = {
+        id: 255,
+        nombre: 'Adán Guerrero Rentería',
+        empresa: 'Gil Zambrano y Baca Irizarry',
+        cargo: 'Administrador de Métricas Adelante',
+        nivel: 'Junior',
+        aficiones: ['leer', 'cine']
+}
+
+const actions = [
+  ViewEmpleado,
+  UpdateEmpleado,
+  DeleteEmpleado,
+]
+
+
+<CardEmpleado data={data}  actions={actions} />
+```
+
+### Propiedades
+
+<Prop name="data" values={["una lista similar a la mostrada anteriormente"]} />
+<Prop name="actions" values={["componentes para acciones de modificar, eliminar, ..."]} />
+
+
+<Alert>
+  Este componente no suele usarse de forma directa.  
+  El componente Card de esta biblioteca debe servirte de plantilla para desarrollar los tuyos adaptados a la información que quieras mostrar.  
+  Una vez escrito tu propio Card, habitualmente se lo pasarás a List como propiedad card.
+</Alert>
+
 
 
 <a name="draganddrop"/>

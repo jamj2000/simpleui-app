@@ -37,8 +37,8 @@ export default function RootLayout({ children }) {
 
           <nav className="z-50 px-2 w-full flex gap-2 items-center justify-between py-4 fixed top-0 bg-neutral-500/50  backdrop-blur-sm">
             <div className="bg-white dark:bg-black rounded-full">
-              <MenuLink href="/" classHover="hover:bg-indigo-400/70" classCheck="bg-indigo-400">
-                <HomeIcon /><span className="hidden md:block">Simple UI</span>
+              <MenuLink href="/" >
+                <HomeIcon /><span className="hidden md:block font-bold">Simple UI</span>
               </MenuLink>
             </div>
 

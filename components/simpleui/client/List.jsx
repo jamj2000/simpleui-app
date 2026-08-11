@@ -1,21 +1,24 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 
 
-const classTD = "px-2"
-
-
 export function List({
+    prefix,
     data = [],
     columns = [],
-    sort = "nombre",
+    sort,
     direction = "asc",
-    width = 320,
     actions,
+    card,
     children,
 }) {
+    const Card = card ?? CardEmpty
+
+    const router = useRouter()
+
     const [orden, setOrden] = useState({
         columna: sort,
         direccion: direction,
@@ -27,6 +30,7 @@ export function List({
             direccion: direction,
         })
     }, [sort, direction])
+
 
     // Protección si la data aún no llega
     const originalData = data ?? [];
@@ -59,54 +63,54 @@ export function List({
     if (!data) return <p>Cargando datos...</p>;
 
     return (
-        <div className="">
-
-            {children}
-
+        <div className="container mx-auto my-4">
             <div>
-
-                {orderedData.map((item) => (
-                    <div key={item.id} className="not-md:rounded-lg not-md:shadow-md not-md:my-2 py-1 px-4 flex flex-col md:flex-row items-center gap-4 even:bg-indigo-100 odd:bg-slate-100">
-                        {/* <img
-                        src={item.foto || DEFAULT_PIZZA_IMAGE}
-                        alt={item.nombre}
-                        className="size-16 object-cover rounded-md"
-                    /> */}
-                        <div className="flex-1 text-center md:text-left">
-                            <h3 className="text-xl font-bold">{item.nombre}</h3>
-                            <p className="text-stone-800">{item.cargo}</p>
-                            <h3 className="text-stone-500">{item.empresa}</h3>
+                <div className="my-2 flex justify-end ">
+                    {sort &&
+                        <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-200 dark:bg-zinc-700 rounded-md">
+                            {columns.map(({ name, label }) => (
+                                <div key={name} onClick={() => ordenar(name)} className={`cursor-pointer`}>
+                                    {label}
+                                    {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
+                                </div>
+                            ))}
                         </div>
+                    }
+                </div>
 
-                        <div className="flex-1 text-center md:text-left">
-                            <p className="text-md">{item.nivel}</p>
+                <div className="w-full" >
+                    {children}
+                </div>
+
+                <div className='grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-10 items-stretch'>
+                    {orderedData.map((data) =>
+                        <div
+                            key={data.id}
+                            onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
+                            className={prefix ? "cursor-pointer" : ""}
+                        >
+                            <Card
+                                onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
+                                data={data}
+                                actions={actions}
+                            />
                         </div>
+                    )}
+                </div>
 
-                        <div className="flex items-center gap-4">
-
-
-                            <div className="flex items-center gap-2">
-                                <p className="text-stone-500">{item.aficiones.join(', ')}</p>
-                            </div>
-
-                        </div>
-
-                        {actions &&
-                            <div className="flex gap-1">
-                                {actions.map((Action, index) => (
-                                    <Action
-                                        key={index}
-                                        data={item}
-                                    />
-                                ))}
-                            </div>
-                        }
-                    </div>
-                ))}
             </div>
+
+
         </div >
     );
 }
 
+
+
+const CardEmpty = () => (
+    <div className="p-4 rounded-xl border border-gray-300 dark:border-gray-700 flex flex-col h-full shadow-md shadow-gray-600">
+        Coloca aquí el contenido del Card
+    </div>
+)
 
 
