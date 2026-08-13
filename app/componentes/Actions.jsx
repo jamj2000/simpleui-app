@@ -44,7 +44,9 @@ const fields = (data) => [
             ["Lectura", "leer", data?.aficiones?.includes("leer")],
             ["Cine", "cine", data?.aficiones?.includes("cine")],
             ["Música", "musica", data?.aficiones?.includes("musica")],
-            ["Playa", "playa", data?.aficiones?.includes("playa")]
+            ["Playa", "playa", data?.aficiones?.includes("playa")],
+            ["Baile", "baile", data?.aficiones?.includes("baile")],
+            ["Pintura", "pintura", data?.aficiones?.includes("pintura")],
         ],
     },
 ]
