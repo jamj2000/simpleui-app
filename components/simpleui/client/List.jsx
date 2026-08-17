@@ -65,22 +65,22 @@ export function List({
     return (
         <div className="container mx-auto my-4">
             <div>
-                <div className="my-2 flex justify-end ">
-                    {sort &&
-                        <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-200 dark:bg-zinc-700 rounded-md">
-                            {columns.map(({ name, label }) => (
-                                <div key={name} onClick={() => ordenar(name)} className={`cursor-pointer`}>
-                                    {label}
-                                    {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
-                                </div>
-                            ))}
-                        </div>
-                    }
-                </div>
 
                 <div className="w-full" >
                     {children}
                 </div>
+
+                <div className="my-2 flex justify-end ">
+                    <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-200 dark:bg-zinc-700 rounded-md">
+                        {columns.map(({ name, label }) => (
+                            <div key={name} onClick={() => ordenar(name)} className={`cursor-pointer`}>
+                                {label}
+                                {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
 
                 <div className='grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-10 items-stretch'>
                     {orderedData.map((data) =>
