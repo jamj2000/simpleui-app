@@ -16,12 +16,14 @@ export const CardEmpleado = ({ data = {}, actions }) => (
 
         <p className="text-stone-500">{data?.aficiones?.join(', ')}</p>
 
-        <Switch
-            labelOn="Activo"
-            labelOff="Inactivo"
-            value={data.activo}
-            onChange={(value) => toggleEmpleadoActivo(data.id, value)}
-        />
+        {process.env.NODE_ENV != 'production' &&
+            <Switch
+                labelOn="Activo"
+                labelOff="Inactivo"
+                value={data.activo}
+                onChange={(value) => toggleEmpleadoActivo(data.id, value)}
+            />
+        }
 
         {actions &&
             <div className="flex gap-1 self-end" onClick={e => e.stopPropagation()}>
