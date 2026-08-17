@@ -27,12 +27,14 @@ export const InfoEmpleado = ({ empleado }) => {
                 <p>{empleado.nivel}</p>
                 <p>{JSON.parse(empleado.aficiones).join(', ')}</p>
 
-                <Switch
-                    labelOn="Activo"
-                    labelOff="Inactivo"
-                    value={empleado.activo}
-                    onChange={(value) => toggleEmpleadoActivo(empleado.id, value)}
-                />
+                {process.env.NODE_ENV != 'production' &&
+                    <Switch
+                        labelOn="Activo"
+                        labelOff="Inactivo"
+                        value={empleado.activo}
+                        onChange={(value) => toggleEmpleadoActivo(empleado.id, value)}
+                    />
+                }
 
                 {/* {e?.nombre}
                 {e && JSON.parse(e?.aficiones).join(', ')}
