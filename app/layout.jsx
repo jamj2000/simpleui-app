@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import { ThemeToggle } from "@/components/simpleui";
 import { Footer } from "@/components/Footer";
+import { Suspense } from "react";
 
 
 const geistSans = Geist({
@@ -38,16 +39,20 @@ export default function RootLayout({ children }) {
 
           <nav className="z-50 px-2 w-full flex gap-2 items-center justify-between py-4 fixed top-0 bg-neutral-500/50  backdrop-blur-sm">
             <div className="bg-white dark:bg-black rounded-full">
-              <MenuLink href="/" >
-                <HomeIcon /><span className="hidden md:block font-bold">Simple UI</span>
-              </MenuLink>
+              <Suspense>
+                <MenuLink href="/" >
+                  <HomeIcon /><span className="hidden md:block font-bold">Simple UI</span>
+                </MenuLink>
+              </Suspense>
             </div>
 
             <div className="flex gap-2 items-center">
               <ThemeToggle />
               <MainMenu>
-                <MenuLink href="/componentes">Componentes</MenuLink>
-                <MenuLink href="/test">Test</MenuLink>
+                <Suspense>
+                  <MenuLink href="/componentes">Componentes</MenuLink>
+                  <MenuLink href="/test">Test</MenuLink>
+                </Suspense>
               </MainMenu>
             </div>
           </nav>

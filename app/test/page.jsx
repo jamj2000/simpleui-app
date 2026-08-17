@@ -31,6 +31,7 @@ async function LoadData({ searchParams }) {
     const { sort, direction, page, limit } = await searchParams;
     const empleados = await getEmpleados({ sort, direction, page, limit })
 
+    const lista = empleados?.data?.map(e => ({ ...e, activo: Boolean(e.activo) }))
 
     const Filtro = () => (
         <FilterForm action="" className="my-3 flex flex-col md:flex-row gap-4 justify-center items-center">
@@ -61,8 +62,6 @@ async function LoadData({ searchParams }) {
 
 
 
-
-
     return (
         <div className="flex flex-col">
 
@@ -76,10 +75,13 @@ async function LoadData({ searchParams }) {
                 direction={empleados.direction}
             />
 
+
             <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">Table</h2>
             <Table
-                data={empleados.data}
+                prefix={'/empleado'}
+                data={lista}
                 columns={[
+                    { name: "activo", label: "Activo" },
                     { name: "nombre", label: "Nombre" },
                     { name: "empresa", label: "Empresa" },
                     { name: "cargo", label: "Cargo" },
@@ -102,6 +104,7 @@ async function LoadData({ searchParams }) {
 
             <h2 className="text-3xl text-indigo-800 dark:text-indigo-300 my-5">List</h2>
             <List
+                prefix={'/empleado'}
                 card={CardEmpleado}
                 data={empleados.data}
                 columns={[

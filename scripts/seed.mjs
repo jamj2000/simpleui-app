@@ -1,42 +1,48 @@
 // seed.js
 import Database from "better-sqlite3";
-import { fakerES as faker } from '@faker-js/faker';
-
+import { fakerES as faker } from "@faker-js/faker";
 
 const db = new Database("./database.sqlite");
 
-
 // --------------- Datos aleatorios
+
 export function crearEmpleadoAleatorio() {
     return {
-        // id: faker.string.uuid(), // SQLite genera id con autoincremento
         nombre: faker.person.fullName(),
         empresa: faker.company.name(),
         cargo: faker.person.jobTitle(),
-        nivel: faker.helpers.arrayElement(['amateur', 'junior', 'senior', 'veterano']),
-        aficiones: faker.helpers.arrayElements(['leer', 'deporte', 'cine', 'playa'], { min: 1, max: 4 })
-    }
+        nivel: faker.helpers.arrayElement([
+            "amateur",
+            "junior",
+            "senior",
+            "veterano",
+        ]),
+        aficiones: faker.helpers.arrayElements(
+            ["leer", "deporte", "cine", "playa"],
+            { min: 1, max: 4 }
+        ),
+        activo: +faker.datatype.boolean(0.9)   // Probabilidad de true
+        // activo: faker.number.int({ min: 0, max: 1 }),
+    };
 }
 
 export const empleados = faker.helpers.multiple(crearEmpleadoAleatorio, {
     count: 500,
 });
 
-
-
 // --------------- Base de datos
 
-// 1. Función auxiliar en JS para limpiar tildes, la 'ñ' y mayúsculas
+// Limpia tildes y convierte a minúsculas
 function getEsKey(text) {
-    if (!text) return null;
     return text
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '') // Quita diacríticos (tildes)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
         .toLowerCase();
 }
 
-// 2. Recreamos la tabla (nombre_sort como TEXT normal)
+// Recreamos la tabla
 db.exec("DROP TABLE IF EXISTS empleados;");
+
 db.exec(`
     CREATE TABLE empleados (
         id INTEGER PRIMARY KEY,
@@ -45,33 +51,48 @@ db.exec(`
         empresa TEXT NOT NULL,
         cargo TEXT NOT NULL,
         nivel TEXT NOT NULL,
-        aficiones TEXT CHECK(json_valid(aficiones) OR aficiones IS NULL)
+        aficiones TEXT CHECK(json_valid(aficiones) OR aficiones IS NULL),
+        activo INTEGER NOT NULL DEFAULT 1 CHECK (activo IN (0, 1))
     );
 `);
 
-//         updated_at TEXT NOT NULL DEFAULT current_timestamp
+// --------------- Inserción
 
-
-// 3. Sentencia preparada
 const insertEmpleado = db.prepare(`
-    INSERT INTO empleados (nombre, nombre_sort, empresa, cargo, nivel, aficiones)
-    VALUES (@nombre, @nombre_sort, @empresa, @cargo, @nivel, @aficiones)
+    INSERT INTO empleados (
+        nombre,
+        nombre_sort,
+        empresa,
+        cargo,
+        nivel,
+        aficiones,
+        activo
+    )
+    VALUES (
+        @nombre,
+        @nombre_sort,
+        @empresa,
+        @cargo,
+        @nivel,
+        @aficiones,
+        @activo
+    )
 `);
 
-// 4. Datos de prueba
-const listaEmpleados = empleados
+const insertarEmpleados = db.transaction((empleados) => {
+    for (const empleado of empleados) {
+        insertEmpleado.run({
+            ...empleado,
+            nombre_sort: getEsKey(empleado.nombre),
+            aficiones: JSON.stringify(empleado.aficiones),
+        });
+    }
+});
 
-// 5. Insertar pasando getEsKey(emp.nombre)
+insertarEmpleados(empleados);
 
-for (const empleado of listaEmpleados) {
-    insertEmpleado.run({
-        ...empleado,
-        nombre_sort: getEsKey(empleado.nombre), // Se calcula aquí en JS
-        aficiones: JSON.stringify(empleado.aficiones),
-    });
-}
-
-// 6. Consultar ordenado (¡Súper rápido!)
+// --------------- Resultado
+// 
 // const resultados = db.prepare(`
 //     SELECT nombre, empresa 
 //     FROM empleados 
@@ -80,4 +101,8 @@ for (const empleado of listaEmpleados) {
 
 // console.log(resultados);
 
+
 console.log("✅ Empleados insertados:", empleados.length);
+
+db.close();
+

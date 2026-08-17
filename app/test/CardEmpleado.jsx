@@ -1,6 +1,9 @@
 'use client'
 
-export const CardEmpleado = ({ data, actions }) => (
+import { Switch } from "@/components/simpleui"
+import { toggleEmpleadoActivo } from "@/lib/actions"
+
+export const CardEmpleado = ({ data = {}, actions }) => (
     <div className="p-4 rounded-xl border border-gray-300 dark:border-gray-700 flex flex-col shadow-md shadow-gray-600">
 
         <h3 className="text-xl font-bold">{data.nombre}</h3>
@@ -11,7 +14,14 @@ export const CardEmpleado = ({ data, actions }) => (
 
         <p className="text-md">{data.nivel}</p>
 
-        <p className="text-stone-500">{data.aficiones.join(', ')}</p>
+        <p className="text-stone-500">{data?.aficiones?.join(', ')}</p>
+
+        <Switch
+            labelOn="Activo"
+            labelOff="Inactivo"
+            value={data.activo}
+            onChange={(value) => toggleEmpleadoActivo(data.id, value)}
+        />
 
         {actions &&
             <div className="flex gap-1 self-end" onClick={e => e.stopPropagation()}>

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
 
@@ -110,10 +109,15 @@ export function Table({
                                 <td className={`${classTD} text-slate-400 text-right pr-4`}>
                                     {i + 1}
                                 </td>
-
+                                {/* ⬜
+                                🟦
+                                ✅ */}
                                 {columns.map(({ name: colName }) => (
                                     <td key={row.id + colName + row[colName]} className={`${classTD}`}>
-                                        {row[colName]}
+                                        {typeof row[colName] != 'boolean'
+                                            ? row[colName]
+                                            : row[colName] ? "✅" : "⬜"
+                                        }
                                     </td>
                                 ))}
                                 {actions &&

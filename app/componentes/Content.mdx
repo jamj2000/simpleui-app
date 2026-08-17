@@ -1,4 +1,5 @@
-import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Tooltip, Popover, Separator, Skeleton, Space, Spinner, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, List, Card, List2, Card2, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
+import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Tooltip, Popover, Separator, Skeleton, Space, Spinner, Switch, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, List, Card, List2, Card2, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
+
 import { CardEmpleado } from '../test/CardEmpleado'
 import { CardEmpleado2 } from '../test/CardEmpleado2'
 
@@ -6,6 +7,7 @@ import Link from 'next/link'
 import Prop from './Prop'
 import { Suspense } from "react";
 import { CreateEmpleado, DeleteEmpleado, UpdateEmpleado, ViewEmpleado } from "./Actions";
+import { toggleEmpleadoActivo } from '@/lib/actions'
 import { getEmpleados } from "@/lib/data";
 import { toast } from "sonner"
 
@@ -41,6 +43,7 @@ import { toast } from "sonner"
     <Link href="/componentes#mainmenu">MainMenu</Link>  
     <Link href="/componentes#skeleton">Skeleton</Link>    
     <Link href="/componentes#spinner">Spinner</Link>    
+    <Link href="/componentes#switch">Switch</Link>  
     <Link href="/componentes#iconos">Icons</Link>  
     <Link href="/componentes#inputtext">InputText</Link>  
     <Link href="/componentes#inputnumber">InputNumber</Link>  
@@ -504,12 +507,10 @@ import { toast } from "sonner"
 ### Propiedades
 
 <Prop name="href"  values={["url del enlace"]} />
-<Prop name="className" value="px-4 py-2 rounded-md" values={["clases tailwindcss deseadas"]} /> 
+<Prop name="className" value="px-4 py-2 rounded-md dark:text-white" values={["clases tailwindcss deseadas"]} /> 
 <Prop name="classCheck" value="bg-slate-700 text-white" values={["clases tailwindcss deseadas enlace marcado"]} />
 <Prop name="classHover" value="hover:underline hover:underline-offset-8" values={["clases tailwindcss deseadas para hover"]} />
 <Prop name="classActive" value="active:decoration-2 active:decoration-blue-400" values={["clases tailwindcss deseadas para active"]} />
-
-
 
 
 
@@ -624,6 +625,31 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
   <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
 </div>
 ```
+
+
+
+<a name="switch"/>
+## Switch
+> Componente de lado cliente para ejecutar acción de servidor desde fuera de un formulario.
+
+<Switch
+    labelOn="Activo"
+    labelOff="Inactivo"
+
+/>
+
+### Código de ejemplo
+
+```js
+<Switch
+    labelOn="Activo"
+    labelOff="Inactivo"
+    value={empleado.activo}
+    onChange={(value) => toggleEmpleadoActivo(proveedor.id, value)}
+/>
+```
+
+
 
 <a name="iconos"/>
 ## Icons
