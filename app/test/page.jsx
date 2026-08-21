@@ -1,9 +1,9 @@
 import { getEmpleados } from "@/lib/data";
 import { Suspense } from "react";
-import FilterForm from 'next/form'
 import { CreateEmpleado, UpdateEmpleado, DeleteEmpleado, ViewEmpleado } from "./Actions";
 import { InputHidden, InputSelect, List, Pagination, Submit, Table } from "@/components/simpleui";
 import { CardEmpleado } from "./CardEmpleado";
+import Form from 'next/form'
 
 
 
@@ -33,46 +33,24 @@ async function LoadData({ searchParams }) {
 
     const lista = empleados?.data?.map(e => ({ ...e, activo: Boolean(e.activo) }))
 
-    const Filtro = () => (
-        <FilterForm action="" className="my-3 flex flex-col md:flex-row gap-4 justify-center items-center">
-            <InputHidden name="page" value={page || 1} />
-            <InputHidden name="limit" value={limit || 10} />
-            <InputSelect
-                label="Ordenar"
-                name="sort"
-                options={[
-                    ["Nombre", 'nombre', sort == 'nombre'],
-                    ["Empresa", 'empresa', sort == 'empresa'],
-                    ["Cargo", 'cargo', sort == 'cargo'],
-                ]}
-            />
-            <InputSelect
-                label="Dirección"
-                name="direction"
-                options={[
-                    ["Ascendente", "asc", direction == "asc"],
-                    ["Descendente", "desc", direction == "desc"]
-                ]}
-            />
-            <Submit className="px-8">Consultar</Submit>
-        </FilterForm>
-
-    )
-
-
 
 
     return (
         <div className="flex flex-col">
 
-            <Filtro />
+            <QueryForm
+                page={page}
+                limit={limit}
+                sort={sort}
+                direction={direction}
+            />
 
             <Pagination
                 pages={+empleados.pages}
-                page={+empleados.page}
-                limit={+empleados.limit}
-                sort={empleados.sort}
-                direction={empleados.direction}
+            // page={+empleados.page}
+            // limit={+empleados.limit}
+            // sort={sort}
+            // direction={direction}
             />
 
 
@@ -135,3 +113,28 @@ async function LoadData({ searchParams }) {
 
 
 
+const QueryForm = ({ page, limit, sort, direction }) => (
+    <Form action="" className="my-3 flex flex-col md:flex-row gap-4 justify-center items-center">
+        <InputHidden name="page" value={page || 1} />
+        <InputHidden name="limit" value={limit || 10} />
+        <InputSelect
+            label="Ordenar"
+            name="sort"
+            options={[
+                ["Nombre", 'nombre', sort == 'nombre'],
+                ["Empresa", 'empresa', sort == 'empresa'],
+                ["Cargo", 'cargo', sort == 'cargo'],
+            ]}
+        />
+        <InputSelect
+            label="Dirección"
+            name="direction"
+            options={[
+                ["Ascendente", "asc", direction == "asc"],
+                ["Descendente", "desc", direction == "desc"]
+            ]}
+        />
+        <Submit className="px-8">Consultar</Submit>
+    </Form>
+
+)
