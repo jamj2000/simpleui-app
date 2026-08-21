@@ -78,6 +78,7 @@ export function Drawer({
         <>
             {triggerElement}
 
+
             <div
                 style={{ transitionDuration: `${duration}ms` }}
                 className={`

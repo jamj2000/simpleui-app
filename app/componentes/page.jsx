@@ -3,6 +3,11 @@
 import Content from './Content.mdx'
 
 export default function Page() {
-    return <Content />
+    return (
+        <div className='container mx-auto'>
+
+            <Content />
+        </div>
+    )
 }
 

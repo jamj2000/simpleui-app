@@ -59,12 +59,9 @@ const components = {
     pre: CodeBlock,
     code: ({ children, ...props }) => {
         const codeHTML = highlight(children);
-        return (
-            // <div className='my-2 overflow-auto bg-slate-50 dark:bg-slate-950 p-4 rounded-md border border-slate-200 dark:border-slate-800'>
-            <code className='my-2 overflow-auto bg-slate-50 dark:bg-slate-950 p-4 rounded-md border border-slate-200 dark:border-slate-800'
-                dangerouslySetInnerHTML={{ __html: codeHTML }}   {...props} />
-            // </div>
-        )
+
+        return <code dangerouslySetInnerHTML={{ __html: codeHTML }}   {...props} />
+
 
     },
     Table: ({ data }) => (

@@ -2,7 +2,7 @@
 
 export const Footer = async () => {
     return (
-        <div className="text-center py-8">{
+        <div className="text-center py-2 bg-neutral-500/50">{
             new Date().toLocaleDateString('es-ES', {
                 weekday: 'long',
                 year: 'numeric',
