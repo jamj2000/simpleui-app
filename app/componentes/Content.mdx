@@ -19,7 +19,7 @@ import { toast } from "sonner"
 ##
 <Drawer 
   trigger={<h2 className="text-center text-2xl text-blue-500 dark:text-blue-300 cursor-pointer">Índice</h2>}
-   position="right" 
+   position="left" 
    duration={700}
 
 >
@@ -76,26 +76,31 @@ import { toast } from "sonner"
 
 
 <Alert>
-<strong>¡Información!</strong> Este es un mensaje informativo.
+  <span className="font-bold">¡Información! </span>
+  <span>Este es un mensaje informativo.</span>
 </Alert>
 
 <Alert type="success">
-<strong>¡Éxito!</strong><span>Este es un mensaje de éxito.</span>
+  <span className="font-bold">¡Éxito! </span>
+  <span>Este es un mensaje de éxito.</span>
 </Alert>
 
 <Alert type="warning">
-<strong>¡Aviso!</strong> Este es un mensaje de aviso.
+  <span className="font-bold">¡Aviso! </span> 
+  <span>Este es un mensaje de aviso.</span>
 </Alert>
 
 <Alert type="error">
-<strong>¡Error!</strong> Este es un mensaje de error.
+  <span className="font-bold">¡Error! </span> 
+  <span>Este es un mensaje de error.</span>
 </Alert>
 
 ### Código de ejemplo
 
 ```js
 <Alert type="info">
-  <strong>¡Información!</strong><span>Este es un mensaje informativo.</span>
+  <span className="font-bold">¡Información! </span>
+  <span>Este es un mensaje informativo.</span>
 </Alert>
 ```
 
@@ -110,26 +115,31 @@ import { toast } from "sonner"
 > Mensajes cortos de distinto tipo en formato pequeño. 
 
 <Alert small>
-<strong>¡Información!</strong> Este es un mensaje informativo.
+  <span className="font-bold">¡Información! </span> 
+  <span>Este es un mensaje informativo.</span>
 </Alert>
 
 <Alert small type="success">
-<strong>¡Éxito!</strong> Este es un mensaje de éxito.
+  <span className="font-bold">¡Éxito! </span> 
+  <span>Este es un mensaje de éxito.</span>
 </Alert>
 
 <Alert small type="warning">
-<strong>¡Aviso!</strong> Este es un mensaje de aviso.
+  <span className="font-bold">¡Aviso! </span> 
+  <span>Este es un mensaje de aviso.</span>
 </Alert>
 
 <Alert small type="error">
-<strong>¡Error!</strong> Este es un mensaje de error.
+  <span className="font-bold">¡Error! </span> 
+  <span>Este es un mensaje de error.</span>
 </Alert>
 
 ### Código de ejemplo
 
 ```js
 <Alert small type="info">
-  <strong>¡Información!</strong><span>Este es un mensaje informativo.</span>
+  <span className="font-bold">¡Información! </span>
+  <span>Este es un mensaje informativo.</span>
 </Alert>
 ```
 
@@ -393,7 +403,7 @@ import { toast } from "sonner"
       Abrir Drawer
     </div>
   }
-  position="left"    
+  position="right"    
   duration={700}
   area="w-20 md:w-40"
 >
