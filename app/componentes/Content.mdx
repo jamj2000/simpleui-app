@@ -1,12 +1,14 @@
-import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Tooltip, Popover, Separator, Skeleton, Space, Spinner, Switch, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, Form, Table, List, Card, List2, Card2, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
+import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Tooltip, Popover, Separator, Skeleton, Space, Spinner, Switch, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, InputArea, Form, Table, List, Card, List2, Card2, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
 
-import { CardEmpleado } from '../test/CardEmpleado'
-import { CardEmpleado2 } from '../test/CardEmpleado2'
+import { CardEmpleado } from '@/components/CardEmpleado'
+import { CardEmpleado2 } from '@/components/CardEmpleado2'
+import { CreateEmpleado, DeleteEmpleado, UpdateEmpleado, ViewEmpleado } from "@/components/Actions";
+import { Prop } from '@/components/Prop'
 
 import Link from 'next/link'
-import Prop from './Prop'
+
 import { Suspense } from "react";
-import { CreateEmpleado, DeleteEmpleado, UpdateEmpleado, ViewEmpleado } from "./Actions";
+
 import { toggleEmpleadoActivo } from '@/lib/actions'
 import { getEmpleados } from "@/lib/data";
 import { toast } from "sonner"
@@ -120,52 +122,6 @@ import { toast } from "sonner"
 <Prop name="type" value="info" values={["info", "success", "warning", "error"]} />
 
 
-<a name="button"/>
-## Button
-
-<Alert small type="warning">
-  Este componente debe importarse dentro de una página o componente con 'use client'
-  - Motivo: hace uso de función evento onClick
-</Alert>
-
-> Botón para ser utilizado en el lado cliente. 
-
-
-<Button 
-  className="px-12"
-  onClick={() => alert("Mensaje del navegador")}
->
-  Púlsame
-</Button>
-
-<Button 
-  color="blue"
-  className="px-12"
-  onClick={() => alert("Mensaje del navegador")}
->
-  Púlsame
-</Button>
-
-### Código de ejemplo
-
-```js
-<Button 
-  color="blue"
-  className="px-12"
-  onClick={() => alert("Mensaje del navegador")}
->
-  Púlsame
-</Button>
-```
-
-### Propiedades
-
-<Prop name="onClick" values={["función a ejectar"]}/>
-<Prop name="color" value="current" values={["current", "white", "black", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
-<Prop name="size" value="lg" values={["xs", "sm", "md", "lg", "xl", "2xl", "3xl"]} />
-<Prop name="round" value="full" values={["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"]}/>
-
-
 <a name="space"/>
 ## Space
 
@@ -212,6 +168,91 @@ import { toast } from "sonner"
 ### Propiedades
 
 <Prop name="type" value="horizontal" values={["horizontal", "vertical"]} />
+
+
+
+
+<a name="skeleton"/>
+## Skeleton
+
+> Estructura de ejemplo para su uso como fallback de Suspense. 
+
+<Skeleton />
+
+### Código de ejemplo
+
+```js
+<Skeleton />
+```
+
+### Propiedades
+
+Ninguna. Deberás hacer un copia del componente y editar a tu gusto.
+
+
+<a name="spinner"/>
+## Spinner
+
+> Icono animado para su uso como fallback de Suspense. 
+
+<div className="flex items-center gap-2">
+  <Spinner type={0} size={12} color="text-orange-500 dark:text-orange-600" />
+  <Spinner type={1} size={8} color="text-blue-600 dark:text-blue-300" />
+  <Spinner type={2} size={9} />
+  <Spinner type={3} size={11} />
+  <Spinner type={4} size={11} color="text-blue-500 dark:text-blue-400" />
+  <Spinner type={5} size={7} color="text-slate-500 dark:text-slate-400" />
+  <Spinner type={6} size={9} color="text-zinc-500 dark:text-zinc-400" />
+  <Spinner type={7} size={9} />
+</div>
+
+### Código de ejemplo
+
+```js
+<div className="flex items-center gap-2">
+  <Spinner type={0} size={12} color="text-orange-500 dark:text-orange-600" />
+  <Spinner type={1} size={8} color="text-blue-600 dark:text-blue-300" />
+  <Spinner type={2} size={9} />
+  <Spinner type={3} size={11} />
+  <Spinner type={4} size={11} color="text-blue-500 dark:text-blue-400" />
+  <Spinner type={5} size={7} color="text-slate-500 dark:text-slate-400" />
+  <Spinner type={6} size={9} color="text-zinc-500 dark:text-zinc-400" />
+  <Spinner type={7} size={9} />
+</div>
+```
+
+### Propiedades
+
+<Prop name="type" value="0" values={["valores de 0 a 7"]} />
+<Prop name="size" value="10" values={["cualquier valor mayor que 0"]} />
+<Prop name="color" value="text-black dark:text-white" values={["cualquier clase tailwindcss para text"]} />
+
+
+### Bonus
+
+Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aquí para demostrar lo fácil que es crear nuestros propios spinners.
+
+<div className="flex items-center gap-2">
+  <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
+  <span className="text-5xl text-slate-400 animate-spin">#</span>
+  <span className="text-4xl animate-pulse">🔥</span>
+  <span className="inline-block text-5xl animate-bounce">🦘</span>
+  <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
+</div>
+
+### Código de ejemplo
+
+```js
+<div className="flex items-center gap-2">
+  <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
+  <span className="text-5xl text-slate-400 animate-spin">#</span>
+  <span className="text-4xl animate-pulse">🔥</span>
+  <span className="inline-block text-5xl animate-bounce">🦘</span>
+  <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
+</div>
+```
+
+
 
 
 <a name="tooltip"/>
@@ -351,7 +392,7 @@ import { toast } from "sonner"
       Abrir Drawer
     </div>
   }
-  position="left"    
+  position="right"    
   duration={700}
   area="w-20 md:w-40"
 >
@@ -504,90 +545,60 @@ import { toast } from "sonner"
 </Alert>
 
 
-<a name="skeleton"/>
-## Skeleton
 
-> Estructura de ejemplo para su uso como fallback de Suspense. 
+<a name="button"/>
+## Button
 
-<Skeleton />
+<Alert small type="warning">
+  Este componente debe importarse dentro de una página o componente con 'use client'
+  - Motivo: hace uso de función evento onClick
+</Alert>
+
+> Botón para ser utilizado en el lado cliente. 
+
+
+<Button 
+  className="px-12"
+  onClick={() => alert("Mensaje del navegador")}
+>
+  Púlsame
+</Button>
+
+<Button 
+  color="blue"
+  className="px-12"
+  onClick={() => alert("Mensaje del navegador")}
+>
+  Púlsame
+</Button>
 
 ### Código de ejemplo
 
 ```js
-<Skeleton />
+<Button 
+  color="blue"
+  className="px-12"
+  onClick={() => alert("Mensaje del navegador")}
+>
+  Púlsame
+</Button>
 ```
 
 ### Propiedades
 
-Ninguna. Deberás hacer un copia del componente y editar a tu gusto.
-
-
-<a name="spinner"/>
-## Spinner
-
-> Icono animado para su uso como fallback de Suspense. 
-
-<div className="flex items-center gap-2">
-  <Spinner type={0} size={12} color="text-orange-500 dark:text-orange-600" />
-  <Spinner type={1} size={8} color="text-blue-600 dark:text-blue-300" />
-  <Spinner type={2} size={9} />
-  <Spinner type={3} size={11} />
-  <Spinner type={4} size={11} color="text-blue-500 dark:text-blue-400" />
-  <Spinner type={5} size={7} color="text-slate-500 dark:text-slate-400" />
-  <Spinner type={6} size={9} color="text-zinc-500 dark:text-zinc-400" />
-  <Spinner type={7} size={9} />
-</div>
-
-### Código de ejemplo
-
-```js
-<div className="flex items-center gap-2">
-  <Spinner type={0} size={12} color="text-orange-500 dark:text-orange-600" />
-  <Spinner type={1} size={8} color="text-blue-600 dark:text-blue-300" />
-  <Spinner type={2} size={9} />
-  <Spinner type={3} size={11} />
-  <Spinner type={4} size={11} color="text-blue-500 dark:text-blue-400" />
-  <Spinner type={5} size={7} color="text-slate-500 dark:text-slate-400" />
-  <Spinner type={6} size={9} color="text-zinc-500 dark:text-zinc-400" />
-  <Spinner type={7} size={9} />
-</div>
-```
-
-### Propiedades
-
-<Prop name="type" value="0" values={["valores de 0 a 7"]} />
-<Prop name="size" value="10" values={["cualquier valor mayor que 0"]} />
-<Prop name="color" value="text-black dark:text-white" values={["cualquier clase tailwindcss para text"]} />
-
-
-### Bonus
-
-Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aquí para demostrar lo fácil que es crear nuestros propios spinners.
-
-<div className="flex items-center gap-2">
-  <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
-  <span className="text-5xl text-slate-400 animate-spin">#</span>
-  <span className="text-4xl animate-pulse">🔥</span>
-  <span className="inline-block text-5xl animate-bounce">🦘</span>
-  <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
-</div>
-
-### Código de ejemplo
-
-```js
-<div className="flex items-center gap-2">
-  <div className="size-10 inline-block border-x-4 border-blue-600 dark:border-blue-500 rounded-full animate-spin" />
-  <span className="text-5xl text-slate-400 animate-spin">#</span>
-  <span className="text-4xl animate-pulse">🔥</span>
-  <span className="inline-block text-5xl animate-bounce">🦘</span>
-  <span className="inline-block text-lg text-red-500 animate-ping">❤️</span>
-</div>
-```
+<Prop name="onClick" values={["función a ejectar"]}/>
+<Prop name="color" value="current" values={["current", "white", "black", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
+<Prop name="size" value="lg" values={["xs", "sm", "md", "lg", "xl", "2xl", "3xl"]} />
+<Prop name="round" value="full" values={["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"]}/>
 
 
 
 <a name="switch"/>
 ## Switch
+<Alert small type="warning">
+  Este componente debe importarse dentro de una página o componente con 'use client'
+  - Motivo: hace uso de función evento onChange
+</Alert>
 > Componente de lado cliente para ejecutar acción de servidor desde fuera de un formulario.
 
 <Switch
@@ -603,42 +614,18 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
     labelOn="Activo"
     labelOff="Inactivo"
     value={empleado.activo}
-    onChange={(value) => toggleEmpleadoActivo(proveedor.id, value)}
+    onChange={(value) => toggleEmpleadoActivo(empleado.id, value)}
 />
-```
-
-
-
-<a name="iconos"/>
-## Icons
-
-> Algunos iconos para su uso con InputCheck e InputGroup. Probablemente no necesites hacer uso de ellos de forma directa.  
-
-<div className="flex items-center gap-2">
-  <CircleIcon color="fill-violet-400" />
-  <SquareIcon color="fill-blue-400" />
-  <HexagonIcon color="fill-teal-400" />
-  <CrossIcon color="fill-lime-400" />
-  <StarIcon color="fill-yellow-400" />
-  <HeartIcon color="fill-red-400" />
-</div>
-
-### Código de ejemplo
-
-```js
-<div className="flex items-center gap-2">
-  <CircleIcon color="fill-violet-400" />
-  <SquareIcon color="fill-blue-400" />
-  <HexagonIcon color="fill-teal-400" />
-  <CrossIcon color="fill-lime-400" />
-  <StarIcon color="fill-yellow-400" />
-  <HeartIcon color="fill-red-400" />
-</div>
 ```
 
 ### Propiedades
 
-<Prop name="color" value="fill-white" values={["color de relleno de tailwindcss"]} />
+<Prop name="value" value="false" values={["true", "false"]}/>
+<Prop name="onChange" values={["función a ejectar en el servidor"]}/>
+<Prop name="labelOn" values={["mensaje cuando valor es true"]} />
+<Prop name="labelOff" values={["mensaje cuando valor es false"]} />
+
+
 
 
 <a name="inputtext"/>
@@ -1056,6 +1043,37 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 <Prop name="options" values={["formato que se muestra en el código"]} />
 <Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
 <Prop name="multiple" />
+
+
+
+<a name="inputarea"/>
+## InputArea
+> Área de texto para datos de un formulario. La mayoría de las veces no necesitarás hacer uso de forma directa, sino a través del componente Form. Consultar Form.
+
+<InputArea
+  label="Introduce tu comentario"
+  name="nombre"
+  value="Mi comentario es ..."
+/>
+
+
+### Código de ejemplo
+
+```js
+<InputArea
+  label="Introduce tu comentario"
+  name="nombre"
+  value="Mi comentario es ..."
+/>
+```
+
+
+### Propiedades
+
+<Prop name="label" values={["cualquier texto a mostrar"]} />
+<Prop name="name" values={["nombre del input"]} />
+<Prop name="value" values={["valor por defecto"]} />
+
 
 
 <a name="submit"/>
@@ -1760,6 +1778,40 @@ const actions = [
   El componente Card2 de esta biblioteca debe servirte de plantilla para desarrollar los tuyos adaptados a la información que quieras mostrar.  
   Una vez escrito tu propio Card2, habitualmente se lo pasarás a List2 como propiedad card.
 </Alert>
+
+
+
+<a name="iconos"/>
+## Icons
+
+> Algunos iconos para su uso con InputCheck e InputGroup. Probablemente no necesites hacer uso de ellos de forma directa.  
+
+<div className="flex items-center gap-2">
+  <CircleIcon color="fill-violet-400" />
+  <SquareIcon color="fill-blue-400" />
+  <HexagonIcon color="fill-teal-400" />
+  <CrossIcon color="fill-lime-400" />
+  <StarIcon color="fill-yellow-400" />
+  <HeartIcon color="fill-red-400" />
+</div>
+
+### Código de ejemplo
+
+```js
+<div className="flex items-center gap-2">
+  <CircleIcon color="fill-violet-400" />
+  <SquareIcon color="fill-blue-400" />
+  <HexagonIcon color="fill-teal-400" />
+  <CrossIcon color="fill-lime-400" />
+  <StarIcon color="fill-yellow-400" />
+  <HeartIcon color="fill-red-400" />
+</div>
+```
+
+### Propiedades
+
+<Prop name="color" value="fill-white" values={["color de relleno de tailwindcss"]} />
+
 
 
 <a name="draganddrop"/>

@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} enableColorScheme>
 
           {/* NAV */}
-          <nav className="px-2 flex gap-2 items-center justify-between py-4 bg-neutral-500/50 backdrop-blur-sm">
+          <nav className="z-50 px-2 flex gap-2 items-center justify-between py-4 bg-neutral-500/50 backdrop-blur-sm">
 
             <div className="bg-white dark:bg-black rounded-full">
               <Suspense>

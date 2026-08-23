@@ -2,7 +2,7 @@ import { Suspense } from "react"
 import { getEmpleados, getEmpleado } from "@/lib/data";
 import { BackLink, LeftArrowIcon, Spinner } from "@/components/simpleui";
 import { notFound } from "next/navigation";
-import { InfoEmpleado } from "./InfoEmpleado";
+import { InfoEmpleado } from "@/components/InfoEmpleado";
 
 
 

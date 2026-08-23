@@ -1,8 +1,8 @@
 import { getEmpleados } from "@/lib/data";
 import { Suspense } from "react";
-import { CreateEmpleado, UpdateEmpleado, DeleteEmpleado, ViewEmpleado } from "./Actions";
+import { CreateEmpleado, UpdateEmpleado, DeleteEmpleado, ViewEmpleado } from "@/components/Actions";
 import { InputHidden, InputSelect, List, Pagination, Submit, Table } from "@/components/simpleui";
-import { CardEmpleado } from "./CardEmpleado";
+import { CardEmpleado } from "@/components/CardEmpleado";
 import Form from 'next/form'
 
 
@@ -10,7 +10,7 @@ import Form from 'next/form'
 export default function Page({ searchParams }) {
 
     return (
-        <div className="flex flex-col">
+        <div className='container mx-auto'>
             <h1 className="text-4xl text-indigo-800 dark:text-indigo-300">Testing Table & List</h1>
 
             <Suspense fallback="Cargando datos...">

@@ -1,6 +1,6 @@
 
 
-const Prop = ({ name, value, values }) => (
+export const Prop = ({ name, value, values }) => (
     <div className="mt-4">
         <span className="font-mono bg-slate-200 dark:bg-slate-700 rounded-md p-1 px-2">
             {name}
@@ -15,5 +15,3 @@ const Prop = ({ name, value, values }) => (
         </ul>
     </div>
 )
-
-export default Prop
