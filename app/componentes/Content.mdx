@@ -545,6 +545,81 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 </Alert>
 
 
+<a name="sidebar"/>
+## Sidebar
+
+> Barra lateral para mostrar información. Este componente se ha diseñado para ser usado dentro de un Layout. Consultar Layout.
+
+
+
+### Código de ejemplo
+
+```js
+<Sidebar permanent>
+ <div className="flex flex-col text-xs md:text-base md:pl-4">
+    <div className="font-bold mt-4"> MENSAJES y SEPARADORES </div>
+    <Link href="/componentes#alert" className="md:px-2 py-1 hover:bg-slate-200 dark:hover:bg-slate-900">Alert</Link>
+    <Link href="/componentes#alertsmall" className="md:px-2 py-1 hover:bg-slate-200 dark:hover:bg-slate-900">Alert small</Link>
+  </div>
+</Sidebar>
+```
+
+### Propiedades
+
+<Prop name="width" value="w-20 md:w-80" values={["clases tailwindcss para móvil y desktop (md)"]} />
+<Prop name="duration" value="300" values={["tiempo en milisegundos que tarda en abrirse y cerrarse la barra lateral"]} />
+<Prop name="permanent" value="false" values={["poner a true si deseas que la barra lateral sea permanente"]} />
+
+
+
+
+<a name="layout"/>
+## Layout
+
+> Layout global de la aplicación. Debe usarse sustituyendo a body de RootLayout. Gestiona el header, sidebar (left y right), contenido y footer. 
+
+
+### Código de ejemplo
+
+```js
+export default function RootLayout({ children }) {
+  return (
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+
+      <Layout
+        header={<Header />}
+        leftsidebar={<Sidebar> <ListaComponentes /> </Sidebar>}
+        footer={<Footer />}
+      >
+        {children}
+      </Layout>
+
+    </html >
+  )
+}
+```
+
+### Propiedades
+
+<Prop name="header" values={["componente que se muestra en la cabecera"]} />
+<Prop name="leftsidebar" values={["componente que se muestra en la barra lateral izquierda"]} />
+<Prop name="rightsidebar" values={["componente que se muestra en la barra lateral derecha"]} />
+<Prop name="footer" values={["componente que se muestra en el pie de página"]} />
+<Prop name="children" values={["contenido de la página"]} />
+
+
+<Alert>
+  Permite organizar las diferentes zonas de la aplicación (**header**, **leftsidebar**, **rightsidebar** y **footer**).  
+  Si no se desea utilizar una de las zonas, se puede pasar `null` como valor de la propiedad correspondiente o directamente no incluirla en el componente.  
+  El orden de las propiedades no importa. 
+</Alert>
+
+
+
 
 <a name="button"/>
 ## Button
@@ -905,7 +980,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <Prop name="label" values={["cualquier texto a mostrar"]} />
 <Prop name="name" values={["nombre del input"]} />
-<Prop name="options" values={["formato que se muestra en el código"]} />
+<Prop name="options" values={["formato que se muestra en el código de ejemplo"]} />
 <Prop name="icon" value={"check circular"} values={["consultar Icons"]} />
 
 
@@ -950,7 +1025,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <Prop name="label" values={["cualquier texto a mostrar"]} />
 <Prop name="name" values={["nombre del input"]} />
-<Prop name="options" values={["formato que se muestra en el código"]} />
+<Prop name="options" values={["formato que se muestra en el código de ejemplo"]} />
 <Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
 <Prop name="multiple" />
 
@@ -994,7 +1069,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <Prop name="label" values={["cualquier texto a mostrar"]} />
 <Prop name="name" values={["nombre del input"]} />
-<Prop name="options" values={["formato que se muestra en el código"]} />
+<Prop name="options" values={["formato que se muestra en el código de ejemplo"]} />
 <Prop name="icon" value={"check circular"} values={["consultar Icons"]} />
 
 
@@ -1040,7 +1115,7 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
 
 <Prop name="label" values={["cualquier texto a mostrar"]} />
 <Prop name="name" values={["nombre del input"]} />
-<Prop name="options" values={["formato que se muestra en el código"]} />
+<Prop name="options" values={["formato que se muestra en el código de ejemplo de ene"]} />
 <Prop name="icon" value={"check cuadrado"} values={["consultar Icons"]} />
 <Prop name="multiple" />
 
@@ -1168,13 +1243,14 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
                   ["Cine", "cine", true],
                   ["Música", "musica", true],
                   ["Playa", "playa", false]
-              ]
+              ],
+              icon: <HeartIcon colorChecked="green" />
           },
           {
               labels: ["Guardar datos", "Guardando datos ..."],
               component: "Submit",
               color: "blue",
-              // round: "none"
+              round: "lg"
           }
           ]}
   />
@@ -1229,13 +1305,14 @@ Los siguientes spinners no están incluidos en esta biblioteca. Se muestran aqu�
                   ["Cine", "cine", true],
                   ["Música", "musica", true],
                   ["Playa", "playa", false]
-              ]
+              ],
+              icon: <HeartIcon colorChecked="green" />
           },
           {
               labels: ["Guardar datos", "Guardando datos ..."],
               component: "Submit",
               color: "blue",
-              // round: "none"
+              round: "lg"
           }
           ]}
   />
@@ -1811,6 +1888,8 @@ const actions = [
 ### Propiedades
 
 <Prop name="color" value="fill-white" values={["color de relleno de tailwindcss"]} />
+
+
 
 
 
