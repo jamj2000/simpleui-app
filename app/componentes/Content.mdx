@@ -591,9 +591,9 @@ export default function RootLayout({ children }) {
     >
 
       <Layout
-        header={<Header />}
-        leftsidebar={<Sidebar> <ListaComponentes /> </Sidebar>}
+        header={<Header />} 
         footer={<Footer />}
+        leftsidebar={ <Sidebar> <ListaComponentes /> </Sidebar> } 
       >
         {children}
       </Layout>
@@ -618,6 +618,49 @@ export default function RootLayout({ children }) {
   El orden de las propiedades no importa. 
 </Alert>
 
+### Bonus
+
+Esta biblioteca no tiene componentes para `Header`, ni `Footer`, pero puedes usar los que se muestran a continuación como plantilla.
+
+```jsx
+const Header = () => (
+  <nav className="z-50 px-2 flex gap-2 items-center justify-between py-4 bg-neutral-500/50">
+
+    <Link href="/" className="p-3 bg-white dark:bg-black flex gap-2 items-center hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full">
+      <HomeIcon />
+      <span className="hidden md:block font-bold">
+        Simple UI
+      </span>
+    </Link>
+
+
+    <div className="flex gap-2 items-center">
+      <ThemeToggle />
+      <MainMenu>
+        <MenuLink href="/componentes"> Componentes </MenuLink>
+        <MenuLink href="/test"> Test </MenuLink>
+      </MainMenu>
+    </div>
+
+  </nav>
+)
+
+
+
+const Footer = async () => {
+  'use cache'
+  return (
+    <div className="text-center py-2 bg-neutral-500/50">{
+      new Date().toLocaleDateString('es-ES', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}
+    </div>
+  )
+}
+```
 
 
 
