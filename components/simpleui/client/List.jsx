@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 
@@ -16,8 +15,6 @@ export function List({
     children,
 }) {
     const Card = card ?? CardEmpty
-
-    const router = useRouter()
 
     const [orden, setOrden] = useState({
         columna: sort,
@@ -66,24 +63,26 @@ export function List({
                 </div>
 
                 {/* Buscador y Ordenación */}
-                <div className="my-2 flex flex-col-reverse items-end gap-2 md:flex-row md:justify-between px-4 py-2 bg-zinc-200 dark:bg-zinc-600 rounded-md w-full  ">
-                    <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-100 dark:bg-zinc-700 rounded-md border border-current/20">
-                        {columns.map(({ name, label }) => (
-                            <div key={name} onClick={() => ordenar(name)} className={`cursor-pointer`}>
-                                {label}
-                                {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
-                            </div>
-                        ))}
-                    </div>
+                <div className="@container">
+                    <div className="my-2 flex flex-col-reverse items-end gap-2 @3xl:flex-row @3xl:justify-between px-4 py-2 bg-zinc-200 dark:bg-zinc-600 rounded-md w-full  ">
+                        <div className="w-fit flex gap-4 px-4 py-2 bg-zinc-100 dark:bg-zinc-700 rounded-md border border-current/20">
+                            {columns.map(({ name, label }) => (
+                                <div key={name} onClick={() => ordenar(name)} className={`cursor-pointer`}>
+                                    {label}
+                                    {orden.columna === name && (orden.direccion === "asc" ? " ▲" : " ▼")}
+                                </div>
+                            ))}
+                        </div>
 
-                    <input type="search" placeholder="🔎 Buscar..."
-                        onChange={e => { setBusqueda(e.target.value) }}
-                        className="px-4 py-2 bg-zinc-100 dark:bg-zinc-700 outline-none border border-current/20  focus:border-current/40 rounded-md"
-                    />
+                        <input type="search" placeholder="🔎 Buscar..."
+                            onChange={e => { setBusqueda(e.target.value) }}
+                            className="px-4 py-2 bg-zinc-100 dark:bg-zinc-700 outline-none border border-current/20  focus:border-current/40 rounded-md"
+                        />
+                    </div>
                 </div>
 
 
-                <div className='grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-10 items-stretch'>
+                <div className='grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6 items-stretch'>
                     {orderedData
                         .filter((item) => {
                             if (!busqueda.trim()) return true;
@@ -93,18 +92,14 @@ export function List({
                             );
                         })
                         .map((data) =>
-                            <div
+                            <Card
                                 key={data.id}
-                                onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
-                                className={prefix ? "cursor-pointer" : ""}
-                            >
-                                <Card
-                                    onClick={() => prefix ? router.push(prefix + '/' + data.id) : {}}
-                                    data={data}
-                                    actions={actions}
-                                />
-                            </div>
-                        )}
+                                prefix={prefix}
+                                data={data}
+                                actions={actions}
+                            />
+                        )
+                    }
                 </div>
 
             </div>
