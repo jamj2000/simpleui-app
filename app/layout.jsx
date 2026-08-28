@@ -52,7 +52,7 @@ const Github = () => (
   <Link
     href="https://github.com/jamj2000/simpleui-app"
     target="_blank"
-    className="fixed bottom-5 right-5 bg-white rounded-full border border-slate-400"
+    className="fixed bottom-5 right-5 z-10 bg-white rounded-full border border-slate-400"
   >
     <svg width={32} height={32} viewBox="-5 -5 30 30">
       <g id="Page-1" stroke="currentColor" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -102,13 +102,15 @@ const Header = () => (
 const Footer = async () => {
   'use cache'
   return (
-    <div className="text-center py-2 bg-neutral-500/50">{
-      new Date().toLocaleDateString('es-ES', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })}
+    <div className="text-center py-2 bg-neutral-500/50">
+      <div className="px-4 w-fit justify-self-center bg-white dark:bg-black rounded-full">
+        {new Date().toLocaleDateString('es-ES', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
     </div>
   )
 }
