@@ -1,8 +1,11 @@
 'use client'
 
 import { DeleteEmpleado, UpdateEmpleado } from "@/components/Actions"
-import { Switch } from "@/components/simpleui"
+import { Switch, Toggle } from "@/components/simpleui"
 import { toggleEmpleadoActivo } from "@/lib/actions"
+import { UserRoundX, UserRoundPlus } from 'lucide-react'
+
+
 
 
 export const InfoEmpleado = ({ empleado }) => {
@@ -23,9 +26,15 @@ export const InfoEmpleado = ({ empleado }) => {
                 <p>{JSON.parse(empleado.aficiones).join(', ')}</p>
 
                 {process.env.NODE_ENV != 'production' &&
-                    <Switch
-                        labelOn="Activo"
-                        labelOff="Inactivo"
+                    // <Switch
+                    //     labelOn="Activo"
+                    //     labelOff="Inactivo"
+                    //     value={empleado.activo}
+                    //     onChange={(value) => toggleEmpleadoActivo(empleado.id, value)}
+                    // />
+                    <Toggle
+                        iconOn={UserRoundPlus}
+                        iconOff={UserRoundX}
                         value={empleado.activo}
                         onChange={(value) => toggleEmpleadoActivo(empleado.id, value)}
                     />

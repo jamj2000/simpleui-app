@@ -2,19 +2,22 @@
 
 import { Switch } from "@/components/simpleui"
 import { toggleEmpleadoActivo } from "@/lib/actions"
+import Link from "next/link"
 
 export const CardEmpleado = ({ data = {}, actions }) => (
     <div className="p-4 rounded-xl border border-gray-300 dark:border-gray-700 flex flex-col shadow-md shadow-gray-600">
 
-        <h3 className="text-xl font-bold">{data.nombre}</h3>
+        <Link prefetch href={`/empleado/${data.id}`}>
+            <h3 className="text-xl font-bold">{data.nombre}</h3>
 
-        <p className="text-stone-500 font-bold">{data.cargo}</p>
+            <p className="text-stone-500 font-bold">{data.cargo}</p>
 
-        <p className="text-stone-500">{data.empresa}</p>
+            <p className="text-stone-500">{data.empresa}</p>
 
-        <p className="text-md">{data.nivel}</p>
+            <p className="text-md">{data.nivel}</p>
 
-        <p className="text-stone-500">{data?.aficiones?.join(', ')}</p>
+            <p className="text-stone-500">{data?.aficiones?.join(', ')}</p>
+        </Link>
 
         {process.env.NODE_ENV != 'production' &&
             <Switch

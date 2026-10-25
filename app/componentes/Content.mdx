@@ -1,4 +1,4 @@
-import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Tooltip, Popover, Separator, Skeleton, Space, Spinner, Switch, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, InputArea, Form, Table, List, Card, List2, Card2, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
+import { Drawer, Submit, Alert, Badge, Dropdown, Dropdown2, MainMenu, HomeIcon, MenuLink, Modal, Tooltip, Popover, Separator, Skeleton, Space, Spinner, Switch, Toggle, InputText,  InputNumber, InputRange, InputDate, InputImage, InputCheck, InputGroup, InputSelect, DragAndDrop, Button, InputArea, Form, Table, List, Card, List2, Card2, CircleIcon, SquareIcon, HeartIcon, StarIcon, HexagonIcon, CrossIcon } from "@/components/simpleui";
 
 import { CardEmpleado } from '@/components/CardEmpleado'
 import { CardEmpleado2 } from '@/components/CardEmpleado2'
@@ -12,7 +12,7 @@ import { Suspense } from "react";
 import { toggleEmpleadoActivo } from '@/lib/actions'
 import { getEmpleados } from "@/lib/data";
 import { toast } from "sonner"
-
+import { UserRoundPlus, UserRoundX } from 'lucide-react'
 
 
 
@@ -704,7 +704,7 @@ const Footer = async () => {
 
 ### Propiedades
 
-<Prop name="onClick" values={["función a ejectar"]}/>
+<Prop name="onClick" values={["función a ejecutar"]}/>
 <Prop name="color" value="current" values={["current", "white", "black", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
 <Prop name="size" value="lg" values={["xs", "sm", "md", "lg", "xl", "2xl", "3xl"]} />
 <Prop name="round" value="full" values={["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"]}/>
@@ -739,10 +739,45 @@ const Footer = async () => {
 ### Propiedades
 
 <Prop name="value" value="false" values={["true", "false"]}/>
-<Prop name="onChange" values={["función a ejectar en el servidor"]}/>
+<Prop name="onChange" values={["función a ejecutar en el servidor"]}/>
 <Prop name="labelOn" values={["mensaje cuando valor es true"]} />
 <Prop name="labelOff" values={["mensaje cuando valor es false"]} />
 
+
+
+<a name="toggle"/>
+## Toggle
+<Alert small type="warning">
+  Este componente debe importarse dentro de una página o componente con 'use client'
+  - Motivo: hace uso de función evento onChange
+</Alert>
+> Componente de lado cliente para ejecutar acción de servidor desde fuera de un formulario.
+
+<Toggle
+    iconOn={UserRoundPlus}
+    iconOff={UserRoundX}
+    labelOn="Activo"
+    labelOff="Inactivo"
+
+/>
+
+### Código de ejemplo
+
+```js
+<Toggle
+    iconOn={UserRoundPlus}
+    iconOff={UserRoundX}
+    value={empleado.activo}
+    onChange={(value) => toggleEmpleadoActivo(empleado.id, value)}
+/>
+```
+
+### Propiedades
+
+<Prop name="value" value="false" values={["true", "false"]}/>
+<Prop name="onChange" values={["función a ejecutar en el servidor"]}/>
+<Prop name="iconOn" values={["icono cuando valor es true"]} />
+<Prop name="iconOff" values={["icono cuando valor es false"]} />
 
 
 
@@ -1221,7 +1256,7 @@ const Footer = async () => {
 ### Propiedades
 
 <Prop name="labels" values={["array con 2 valores, por ej: ['Enviar datos', 'Procesando datos ...']"]} />
-<Prop name="formAction" values={["acción de servidor a ejectar"]}/>
+<Prop name="formAction" values={["acción de servidor a ejecutar"]}/>
 <Prop name="color" value="current" values={["current", "white", "black", "red", "green", "blue", "yellow", "amber", "orange", "pink", "purple", "indigo"]} />
 <Prop name="size" value="lg" values={["xs", "sm", "md", "lg", "xl", "2xl", "3xl"]} />
 <Prop name="round" value="full" values={["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "full"]}/>

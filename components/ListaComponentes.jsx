@@ -35,6 +35,7 @@ export function ListaComponentes() {
             <div className="font-bold mt-4">CLICKables  </div>
             <Link href="/componentes#button" className="md:px-2 py-1 hover:bg-slate-200 dark:hover:bg-slate-900">Button</Link>
             <Link href="/componentes#switch" className="md:px-2 py-1 hover:bg-slate-200 dark:hover:bg-slate-900">Switch</Link>
+            <Link href="/componentes#toggle" className="md:px-2 py-1 hover:bg-slate-200 dark:hover:bg-slate-900">Toggle</Link>
 
 
             <div className="font-bold mt-4"> FORMULARIOS </div>
