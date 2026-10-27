@@ -1,8 +1,9 @@
-# Simple UI App
+# Simple UI Demo
 
-Aplicación web de ejemplo de uso de componentes de biblioteca [Simple UI](https://github.com/jamj2000/simpleui)
+Aplicación web de ejemplo para la biblioteca [Simple UI](https://github.com/jamj2000/simpleui)
 
 
 ## Documentación
 
-Documentación disponible en el [repositorio de la biblioteca](https://github.com/jamj2000/simpleui/blob/main/README.md).
+- [Lista de componentes](https://www.simpleui.dev/componentes)
+- [Testing](https://www.simpleui.dev/test)
